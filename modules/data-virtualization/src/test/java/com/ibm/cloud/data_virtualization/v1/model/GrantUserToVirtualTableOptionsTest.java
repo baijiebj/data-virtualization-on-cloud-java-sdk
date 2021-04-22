@@ -35,12 +35,12 @@ public class GrantUserToVirtualTableOptionsTest {
   @Test
   public void testGrantUserToVirtualTableOptions() throws Throwable {
     PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .authid("PUBLIC")
       .build();
-    assertEquals(postUserPrivilegesParametersBodyItemModel.objectName(), "EMPLOYEE");
-    assertEquals(postUserPrivilegesParametersBodyItemModel.objectSchema(), "USER999");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.tableName(), "EMPLOYEE");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.tableSchema(), "USER999");
     assertEquals(postUserPrivilegesParametersBodyItemModel.authid(), "PUBLIC");
 
     GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()

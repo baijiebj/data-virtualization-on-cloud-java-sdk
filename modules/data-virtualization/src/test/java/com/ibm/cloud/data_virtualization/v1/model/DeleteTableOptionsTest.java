@@ -33,10 +33,10 @@ public class DeleteTableOptionsTest {
   public void testDeleteTableOptions() throws Throwable {
     DeleteTableOptions deleteTableOptionsModel = new DeleteTableOptions.Builder()
       .schemaName("testString")
-      .objectName("testString")
+      .tableName("testString")
       .build();
     assertEquals(deleteTableOptionsModel.schemaName(), "testString");
-    assertEquals(deleteTableOptionsModel.objectName(), "testString");
+    assertEquals(deleteTableOptionsModel.tableName(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

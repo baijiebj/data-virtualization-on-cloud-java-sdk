@@ -24,13 +24,13 @@ import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetTablesForRoleOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponse;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2Options;
+import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromTableV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2Options;
 import com.ibm.cloud.sdk.core.http.RequestBuilder;
@@ -154,9 +154,6 @@ public class DataVirtualization extends BaseService {
     if (addDatasourceConnectionOptions.assetCategory() != null) {
       contentJson.addProperty("asset_category", addDatasourceConnectionOptions.assetCategory());
     }
-    if (addDatasourceConnectionOptions.remoteNodes() != null) {
-      contentJson.addProperty("remote_nodes", addDatasourceConnectionOptions.remoteNodes());
-    }
     builder.bodyJson(contentJson);
     ResponseConverter<PostDatasourceConnectionResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PostDatasourceConnectionResponse>() { }.getType());
@@ -224,7 +221,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Revoke user acccess.
    *
-   * Revokes user access to the virtualized tables.
+   * Revokes user access to the virtualized table.
    *
    * @param revokeUserFromObjectOptions the {@link RevokeUserFromObjectOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -238,8 +235,8 @@ public class DataVirtualization extends BaseService {
       builder.header(header.getKey(), header.getValue());
     }
     builder.query("authid", String.valueOf(revokeUserFromObjectOptions.authid()));
-    builder.query("object_name", String.valueOf(revokeUserFromObjectOptions.objectName()));
-    builder.query("object_schema", String.valueOf(revokeUserFromObjectOptions.objectSchema()));
+    builder.query("table_name", String.valueOf(revokeUserFromObjectOptions.tableName()));
+    builder.query("table_schema", String.valueOf(revokeUserFromObjectOptions.tableSchema()));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
@@ -247,7 +244,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Grant user role.
    *
-   * Grants a user role access to a specific virtualized tables.
+   * Grants a user role access to a specific virtualized table.
    *
    * @param grantRolesToVirtualizedTableOptions the {@link GrantRolesToVirtualizedTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -272,7 +269,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Grant user role.
    *
-   * Grants a user role access to a specific virtualized tables.
+   * Grants a user role access to a specific virtualized table.
    *
    * @return a {@link ServiceCall} with a void result
    */
@@ -283,47 +280,47 @@ public class DataVirtualization extends BaseService {
   /**
    * Delete role.
    *
-   * Revokes roles for a virtualized tables.
+   * Revokes roles for a virtualized table.
    *
-   * @param revokeRoleFromObjectV2Options the {@link RevokeRoleFromObjectV2Options} containing the options for the call
+   * @param revokeRoleFromTableV2Options the {@link RevokeRoleFromTableV2Options} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> revokeRoleFromObjectV2(RevokeRoleFromObjectV2Options revokeRoleFromObjectV2Options) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(revokeRoleFromObjectV2Options,
-      "revokeRoleFromObjectV2Options cannot be null");
+  public ServiceCall<Void> revokeRoleFromTableV2(RevokeRoleFromTableV2Options revokeRoleFromTableV2Options) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(revokeRoleFromTableV2Options,
+      "revokeRoleFromTableV2Options cannot be null");
     RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/privileges/roles"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "revokeRoleFromObjectV2");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "revokeRoleFromTableV2");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("role_to_revoke", String.valueOf(revokeRoleFromObjectV2Options.roleToRevoke()));
-    builder.query("object_name", String.valueOf(revokeRoleFromObjectV2Options.objectName()));
-    builder.query("object_schema", String.valueOf(revokeRoleFromObjectV2Options.objectSchema()));
+    builder.query("role_to_revoke", String.valueOf(revokeRoleFromTableV2Options.roleToRevoke()));
+    builder.query("table_name", String.valueOf(revokeRoleFromTableV2Options.tableName()));
+    builder.query("table_schema", String.valueOf(revokeRoleFromTableV2Options.tableSchema()));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Get objects by role.
+   * Get virtualized tables by role.
    *
-   * Retrieves the list of virtualized tables or views that have a specific role.
+   * Retrieves the list of virtualized tables that have a specific role.
    *
-   * @param getObjectsForRoleOptions the {@link GetObjectsForRoleOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link ObjectsForRoleResponse}
+   * @param getTablesForRoleOptions the {@link GetTablesForRoleOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link TablesForRoleResponse}
    */
-  public ServiceCall<ObjectsForRoleResponse> getObjectsForRole(GetObjectsForRoleOptions getObjectsForRoleOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(getObjectsForRoleOptions,
-      "getObjectsForRoleOptions cannot be null");
+  public ServiceCall<TablesForRoleResponse> getTablesForRole(GetTablesForRoleOptions getTablesForRoleOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getTablesForRoleOptions,
+      "getTablesForRoleOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("rolename", getObjectsForRoleOptions.rolename());
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v1/privileges/objects/role/{rolename}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getObjectsForRole");
+    pathParamsMap.put("rolename", getTablesForRoleOptions.rolename());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/privileges/tables/role/{rolename}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getTablesForRole");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    ResponseConverter<ObjectsForRoleResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ObjectsForRoleResponse>() { }.getType());
+    ResponseConverter<TablesForRoleResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<TablesForRoleResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -364,9 +361,9 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
-   * Delete table or view.
+   * Delete virtualized table.
    *
-   * Removes the specified table. You must specify the schema and table name.
+   * Removes the specified virtualized table. You must specify the schema and table name.
    *
    * @param deleteTableOptions the {@link DeleteTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -375,8 +372,8 @@ public class DataVirtualization extends BaseService {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteTableOptions,
       "deleteTableOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("object_name", deleteTableOptions.objectName());
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/mydata/tables/{object_name}", pathParamsMap));
+    pathParamsMap.put("table_name", deleteTableOptions.tableName());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/mydata/tables/{table_name}", pathParamsMap));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "deleteTable");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());

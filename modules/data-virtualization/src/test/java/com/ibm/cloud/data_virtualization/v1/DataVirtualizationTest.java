@@ -20,17 +20,17 @@ import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2Datas
 import com.ibm.cloud.data_virtualization.v1.model.DeleteDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetTablesForRoleOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponse;
-import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersProperties;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
 import com.ibm.cloud.data_virtualization.v1.model.PostRolePrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.model.PostUserPrivilegesParametersBodyItem;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2Options;
+import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromTableV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterSourceTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
@@ -176,7 +176,6 @@ public class DataVirtualizationTest  {
     .originCountry("testString")
     .xProperties(postDatasourceConnectionParametersPropertiesModel)
     .assetCategory("testString")
-    .remoteNodes("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -278,8 +277,8 @@ public class DataVirtualizationTest  {
 
     // Construct an instance of the PostUserPrivilegesParametersBodyItem model
     PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
+    .tableName("EMPLOYEE")
+    .tableSchema("USER999")
     .authid("PUBLIC")
     .build();
 
@@ -324,8 +323,8 @@ public class DataVirtualizationTest  {
     // Construct an instance of the RevokeUserFromObjectOptions model
     RevokeUserFromObjectOptions revokeUserFromObjectOptionsModel = new RevokeUserFromObjectOptions.Builder()
     .authid("PUBLIC")
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
+    .tableName("EMPLOYEE")
+    .tableSchema("USER999")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -345,8 +344,8 @@ public class DataVirtualizationTest  {
     assertNotNull(query);
     // Get query params
     assertEquals(query.get("authid"), "PUBLIC");
-    assertEquals(query.get("object_name"), "EMPLOYEE");
-    assertEquals(query.get("object_schema"), "USER999");
+    assertEquals(query.get("table_name"), "EMPLOYEE");
+    assertEquals(query.get("table_schema"), "USER999");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, revokeUserFromObjectPath);
@@ -378,8 +377,8 @@ public class DataVirtualizationTest  {
 
     // Construct an instance of the PostRolePrivilegesParametersBodyItem model
     PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
+    .tableName("EMPLOYEE")
+    .tableSchema("USER999")
     .roleToGrant("PUBLIC")
     .build();
 
@@ -410,10 +409,10 @@ public class DataVirtualizationTest  {
   }
 
   @Test
-  public void testRevokeRoleFromObjectV2WOptions() throws Throwable {
+  public void testRevokeRoleFromTableV2WOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String revokeRoleFromObjectV2Path = "/v2/privileges/roles";
+    String revokeRoleFromTableV2Path = "/v2/privileges/roles";
 
     server.enqueue(new MockResponse()
     .setResponseCode(204)
@@ -421,15 +420,15 @@ public class DataVirtualizationTest  {
 
     constructClientService();
 
-    // Construct an instance of the RevokeRoleFromObjectV2Options model
-    RevokeRoleFromObjectV2Options revokeRoleFromObjectV2OptionsModel = new RevokeRoleFromObjectV2Options.Builder()
+    // Construct an instance of the RevokeRoleFromTableV2Options model
+    RevokeRoleFromTableV2Options revokeRoleFromTableV2OptionsModel = new RevokeRoleFromTableV2Options.Builder()
     .roleToRevoke("DV_ENGINEER")
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
+    .tableName("EMPLOYEE")
+    .tableSchema("USER999")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = dataVirtualizationService.revokeRoleFromObjectV2(revokeRoleFromObjectV2OptionsModel).execute();
+    Response<Void> response = dataVirtualizationService.revokeRoleFromTableV2(revokeRoleFromTableV2OptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -445,30 +444,30 @@ public class DataVirtualizationTest  {
     assertNotNull(query);
     // Get query params
     assertEquals(query.get("role_to_revoke"), "DV_ENGINEER");
-    assertEquals(query.get("object_name"), "EMPLOYEE");
-    assertEquals(query.get("object_schema"), "USER999");
+    assertEquals(query.get("table_name"), "EMPLOYEE");
+    assertEquals(query.get("table_schema"), "USER999");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, revokeRoleFromObjectV2Path);
+    assertEquals(parsedPath, revokeRoleFromTableV2Path);
   }
 
-  // Test the revokeRoleFromObjectV2 operation with null options model parameter
+  // Test the revokeRoleFromTableV2 operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testRevokeRoleFromObjectV2NoOptions() throws Throwable {
+  public void testRevokeRoleFromTableV2NoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    dataVirtualizationService.revokeRoleFromObjectV2(null).execute();
+    dataVirtualizationService.revokeRoleFromTableV2(null).execute();
   }
 
   @Test
-  public void testGetObjectsForRoleWOptions() throws Throwable {
+  public void testGetTablesForRoleWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"objects\": [{\"object_name\": \"objectName\", \"object_schema\": \"objectSchema\", \"object_type\": \"objectType\"}]}";
-    String getObjectsForRolePath = "/v1/privileges/objects/role/ADMIN%20%7C%20STEWARD%20%7C%20ENGINEER%20%7C%20USER";
+    String mockResponseBody = "{\"objects\": [{\"table_name\": \"tableName\", \"table_schema\": \"tableSchema\"}]}";
+    String getTablesForRolePath = "/v2/privileges/tables/role/ADMIN%20%7C%20STEWARD%20%7C%20ENGINEER%20%7C%20USER";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -477,15 +476,15 @@ public class DataVirtualizationTest  {
 
     constructClientService();
 
-    // Construct an instance of the GetObjectsForRoleOptions model
-    GetObjectsForRoleOptions getObjectsForRoleOptionsModel = new GetObjectsForRoleOptions.Builder()
+    // Construct an instance of the GetTablesForRoleOptions model
+    GetTablesForRoleOptions getTablesForRoleOptionsModel = new GetTablesForRoleOptions.Builder()
     .rolename("ADMIN | STEWARD | ENGINEER | USER")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<ObjectsForRoleResponse> response = dataVirtualizationService.getObjectsForRole(getObjectsForRoleOptionsModel).execute();
+    Response<TablesForRoleResponse> response = dataVirtualizationService.getTablesForRole(getTablesForRoleOptionsModel).execute();
     assertNotNull(response);
-    ObjectsForRoleResponse responseObj = response.getResult();
+    TablesForRoleResponse responseObj = response.getResult();
     assertNotNull(responseObj);
 
     // Verify the contents of the request
@@ -499,19 +498,19 @@ public class DataVirtualizationTest  {
 
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, getObjectsForRolePath);
+    assertEquals(parsedPath, getTablesForRolePath);
   }
 
-  // Test the getObjectsForRole operation with null options model parameter
+  // Test the getTablesForRole operation with null options model parameter
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetObjectsForRoleNoOptions() throws Throwable {
+  public void testGetTablesForRoleNoOptions() throws Throwable {
     // construct the service
     constructClientService();
 
     server.enqueue(new MockResponse());
 
     // Invoke operation with null options model (negative test)
-    dataVirtualizationService.getObjectsForRole(null).execute();
+    dataVirtualizationService.getTablesForRole(null).execute();
   }
 
   @Test
@@ -598,7 +597,7 @@ public class DataVirtualizationTest  {
     // Construct an instance of the DeleteTableOptions model
     DeleteTableOptions deleteTableOptionsModel = new DeleteTableOptions.Builder()
     .schemaName("testString")
-    .objectName("testString")
+    .tableName("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)

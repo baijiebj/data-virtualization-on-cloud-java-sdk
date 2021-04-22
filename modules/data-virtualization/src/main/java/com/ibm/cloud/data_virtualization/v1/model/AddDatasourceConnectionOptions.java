@@ -24,7 +24,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
   protected String originCountry;
   protected PostDatasourceConnectionParametersProperties xProperties;
   protected String assetCategory;
-  protected String remoteNodes;
 
   /**
    * Builder.
@@ -35,7 +34,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
     private String originCountry;
     private PostDatasourceConnectionParametersProperties xProperties;
     private String assetCategory;
-    private String remoteNodes;
 
     private Builder(AddDatasourceConnectionOptions addDatasourceConnectionOptions) {
       this.datasourceType = addDatasourceConnectionOptions.datasourceType;
@@ -43,7 +41,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
       this.originCountry = addDatasourceConnectionOptions.originCountry;
       this.xProperties = addDatasourceConnectionOptions.xProperties;
       this.assetCategory = addDatasourceConnectionOptions.assetCategory;
-      this.remoteNodes = addDatasourceConnectionOptions.remoteNodes;
     }
 
     /**
@@ -130,17 +127,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
       this.assetCategory = assetCategory;
       return this;
     }
-
-    /**
-     * Set the remoteNodes.
-     *
-     * @param remoteNodes the remoteNodes
-     * @return the AddDatasourceConnectionOptions builder
-     */
-    public Builder remoteNodes(String remoteNodes) {
-      this.remoteNodes = remoteNodes;
-      return this;
-    }
   }
 
   protected AddDatasourceConnectionOptions(Builder builder) {
@@ -157,7 +143,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
     originCountry = builder.originCountry;
     xProperties = builder.xProperties;
     assetCategory = builder.assetCategory;
-    remoteNodes = builder.remoteNodes;
   }
 
   /**
@@ -218,17 +203,6 @@ public class AddDatasourceConnectionOptions extends GenericModel {
    */
   public String assetCategory() {
     return assetCategory;
-  }
-
-  /**
-   * Gets the remoteNodes.
-   *
-   * The remote connector to associate to the data source.
-   *
-   * @return the remoteNodes
-   */
-  public String remoteNodes() {
-    return remoteNodes;
   }
 }
 

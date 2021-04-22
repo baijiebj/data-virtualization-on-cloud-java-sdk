@@ -12,24 +12,39 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.List;
-
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * ObjectsForRoleResponse.
+ * TablesForRoleResponseObjectsItem.
  */
-public class ObjectsForRoleResponse extends GenericModel {
+public class TablesForRoleResponseObjectsItem extends GenericModel {
 
-  protected List<ObjectsForRoleResponseObjectsItem> objects;
+  @SerializedName("table_name")
+  protected String tableName;
+  @SerializedName("table_schema")
+  protected String tableSchema;
 
   /**
-   * Gets the objects.
+   * Gets the tableName.
    *
-   * @return the objects
+   * The virtualized table name that is granted access to role ROLENAME.
+   *
+   * @return the tableName
    */
-  public List<ObjectsForRoleResponseObjectsItem> getObjects() {
-    return objects;
+  public String getTableName() {
+    return tableName;
+  }
+
+  /**
+   * Gets the tableSchema.
+   *
+   * The SCHEMA of virtualized table that is granted access to role ROLENAME.
+   *
+   * @return the tableSchema
+   */
+  public String getTableSchema() {
+    return tableSchema;
   }
 }
 

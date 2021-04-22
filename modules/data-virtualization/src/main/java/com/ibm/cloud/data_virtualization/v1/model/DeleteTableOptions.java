@@ -20,18 +20,18 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DeleteTableOptions extends GenericModel {
 
   protected String schemaName;
-  protected String objectName;
+  protected String tableName;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String schemaName;
-    private String objectName;
+    private String tableName;
 
     private Builder(DeleteTableOptions deleteTableOptions) {
       this.schemaName = deleteTableOptions.schemaName;
-      this.objectName = deleteTableOptions.objectName;
+      this.tableName = deleteTableOptions.tableName;
     }
 
     /**
@@ -44,11 +44,11 @@ public class DeleteTableOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param schemaName the schemaName
-     * @param objectName the objectName
+     * @param tableName the tableName
      */
-    public Builder(String schemaName, String objectName) {
+    public Builder(String schemaName, String tableName) {
       this.schemaName = schemaName;
-      this.objectName = objectName;
+      this.tableName = tableName;
     }
 
     /**
@@ -72,13 +72,13 @@ public class DeleteTableOptions extends GenericModel {
     }
 
     /**
-     * Set the objectName.
+     * Set the tableName.
      *
-     * @param objectName the objectName
+     * @param tableName the tableName
      * @return the DeleteTableOptions builder
      */
-    public Builder objectName(String objectName) {
-      this.objectName = objectName;
+    public Builder tableName(String tableName) {
+      this.tableName = tableName;
       return this;
     }
   }
@@ -86,10 +86,10 @@ public class DeleteTableOptions extends GenericModel {
   protected DeleteTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.schemaName,
       "schemaName cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.objectName,
-      "objectName cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.tableName,
+      "tableName cannot be empty");
     schemaName = builder.schemaName;
-    objectName = builder.objectName;
+    tableName = builder.tableName;
   }
 
   /**
@@ -104,7 +104,7 @@ public class DeleteTableOptions extends GenericModel {
   /**
    * Gets the schemaName.
    *
-   * The schema of table to be deleted.
+   * The schema of virtualized table to be deleted.
    *
    * @return the schemaName
    */
@@ -113,14 +113,14 @@ public class DeleteTableOptions extends GenericModel {
   }
 
   /**
-   * Gets the objectName.
+   * Gets the tableName.
    *
-   * The name of table to be deleted.
+   * The name of virtualized table to be deleted.
    *
-   * @return the objectName
+   * @return the tableName
    */
-  public String objectName() {
-    return objectName;
+  public String tableName() {
+    return tableName;
   }
 }
 

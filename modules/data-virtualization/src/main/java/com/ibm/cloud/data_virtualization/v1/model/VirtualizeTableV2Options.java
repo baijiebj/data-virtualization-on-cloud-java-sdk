@@ -324,7 +324,7 @@ public class VirtualizeTableV2Options extends GenericModel {
   /**
    * Gets the isIncludedColumns.
    *
-   * The columns that are included in the table.
+   * The columns that are included in the source table.
    *
    * @return the isIncludedColumns
    */
