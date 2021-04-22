@@ -13,7 +13,8 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,23 +24,15 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GetObjectsForRoleOptions model.
+ * Unit test class for the TablesForRoleResponse model.
  */
-public class GetObjectsForRoleOptionsTest {
+public class TablesForRoleResponseTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGetObjectsForRoleOptions() throws Throwable {
-    GetObjectsForRoleOptions getObjectsForRoleOptionsModel = new GetObjectsForRoleOptions.Builder()
-      .rolename("ADMIN | STEWARD | ENGINEER | USER")
-      .build();
-    assertEquals(getObjectsForRoleOptionsModel.rolename(), "ADMIN | STEWARD | ENGINEER | USER");
+  public void testTablesForRoleResponse() throws Throwable {
+    TablesForRoleResponse tablesForRoleResponseModel = new TablesForRoleResponse();
+    assertNull(tablesForRoleResponseModel.getObjects());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGetObjectsForRoleOptionsError() throws Throwable {
-    new GetObjectsForRoleOptions.Builder().build();
-  }
-
 }

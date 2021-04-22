@@ -35,12 +35,12 @@ public class GrantRolesToVirtualizedTableOptionsTest {
   @Test
   public void testGrantRolesToVirtualizedTableOptions() throws Throwable {
     PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .roleToGrant("PUBLIC")
       .build();
-    assertEquals(postRolePrivilegesParametersBodyItemModel.objectName(), "EMPLOYEE");
-    assertEquals(postRolePrivilegesParametersBodyItemModel.objectSchema(), "USER999");
+    assertEquals(postRolePrivilegesParametersBodyItemModel.tableName(), "EMPLOYEE");
+    assertEquals(postRolePrivilegesParametersBodyItemModel.tableSchema(), "USER999");
     assertEquals(postRolePrivilegesParametersBodyItemModel.roleToGrant(), "PUBLIC");
 
     GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptionsModel = new GrantRolesToVirtualizedTableOptions.Builder()

@@ -41,7 +41,7 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericMo
   /**
    * Gets the nodeName.
    *
-   * The name of the node.
+   * The name of the node that a datasource connection associates.
    *
    * @return the nodeName
    */
@@ -52,7 +52,7 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericMo
   /**
    * Gets the nodeDescription.
    *
-   * The description of the node.
+   * The description of the node that a datasource connection associates.
    *
    * @return the nodeDescription
    */
@@ -63,7 +63,8 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericMo
   /**
    * Gets the agentClass.
    *
-   * The type of connector, which includes internal connector and remote connector.
+   * The type of connector, for example, H stands for Hosted, ie running within the cluster, F means Fenced Mode
+   * Process, ie direct within Data Virtualization instance.
    *
    * @return the agentClass
    */

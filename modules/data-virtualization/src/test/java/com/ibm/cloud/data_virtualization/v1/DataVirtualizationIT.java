@@ -20,17 +20,17 @@ import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2Datas
 import com.ibm.cloud.data_virtualization.v1.model.DeleteDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetTablesForRoleOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponse;
-import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersProperties;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
 import com.ibm.cloud.data_virtualization.v1.model.PostRolePrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.model.PostUserPrivilegesParametersBodyItem;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2Options;
+import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromTableV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
+import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterSourceTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
@@ -150,7 +150,6 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       .originCountry("testString")
       .xProperties(postDatasourceConnectionParametersPropertiesModel)
       .assetCategory("testString")
-      .remoteNodes("testString")
       .build();
 
       // Invoke operation
@@ -172,8 +171,8 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
   public void testGrantUserToVirtualTable() throws Exception {
     try {
       PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .authid("PUBLIC")
       .build();
 
@@ -196,8 +195,8 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
   public void testGrantRolesToVirtualizedTable() throws Exception {
     try {
       PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .roleToGrant("PUBLIC")
       .build();
 
@@ -217,21 +216,21 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testGetObjectsForRole() throws Exception {
+  public void testGetTablesForRole() throws Exception {
     try {
-      GetObjectsForRoleOptions getObjectsForRoleOptions = new GetObjectsForRoleOptions.Builder()
+      GetTablesForRoleOptions getTablesForRoleOptions = new GetTablesForRoleOptions.Builder()
       .rolename("ADMIN | STEWARD | ENGINEER | USER")
       .build();
 
       // Invoke operation
-      Response<ObjectsForRoleResponse> response = service.getObjectsForRole(getObjectsForRoleOptions).execute();
+      Response<TablesForRoleResponse> response = service.getTablesForRole(getTablesForRoleOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 200);
 
-      ObjectsForRoleResponse objectsForRoleResponseResult = response.getResult();
+      TablesForRoleResponse tablesForRoleResponseResult = response.getResult();
 
-      assertNotNull(objectsForRoleResponseResult);
+      assertNotNull(tablesForRoleResponseResult);
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s\nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -282,8 +281,8 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
     try {
       RevokeUserFromObjectOptions revokeUserFromObjectOptions = new RevokeUserFromObjectOptions.Builder()
       .authid("PUBLIC")
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .build();
 
       // Invoke operation
@@ -298,16 +297,16 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
   }
 
   @Test
-  public void testRevokeRoleFromObjectV2() throws Exception {
+  public void testRevokeRoleFromTableV2() throws Exception {
     try {
-      RevokeRoleFromObjectV2Options revokeRoleFromObjectV2Options = new RevokeRoleFromObjectV2Options.Builder()
+      RevokeRoleFromTableV2Options revokeRoleFromTableV2Options = new RevokeRoleFromTableV2Options.Builder()
       .roleToRevoke("DV_ENGINEER")
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .build();
 
       // Invoke operation
-      Response<Void> response = service.revokeRoleFromObjectV2(revokeRoleFromObjectV2Options).execute();
+      Response<Void> response = service.revokeRoleFromTableV2(revokeRoleFromTableV2Options).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
@@ -322,7 +321,7 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
     try {
       DeleteTableOptions deleteTableOptions = new DeleteTableOptions.Builder()
       .schemaName("testString")
-      .objectName("testString")
+      .tableName("testString")
       .build();
 
       // Invoke operation

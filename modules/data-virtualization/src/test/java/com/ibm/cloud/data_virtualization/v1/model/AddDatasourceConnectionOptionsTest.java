@@ -101,14 +101,12 @@ public class AddDatasourceConnectionOptionsTest {
       .originCountry("testString")
       .xProperties(postDatasourceConnectionParametersPropertiesModel)
       .assetCategory("testString")
-      .remoteNodes("testString")
       .build();
     assertEquals(addDatasourceConnectionOptionsModel.datasourceType(), "testString");
     assertEquals(addDatasourceConnectionOptionsModel.name(), "testString");
     assertEquals(addDatasourceConnectionOptionsModel.originCountry(), "testString");
     assertEquals(addDatasourceConnectionOptionsModel.xProperties(), postDatasourceConnectionParametersPropertiesModel);
     assertEquals(addDatasourceConnectionOptionsModel.assetCategory(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.remoteNodes(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

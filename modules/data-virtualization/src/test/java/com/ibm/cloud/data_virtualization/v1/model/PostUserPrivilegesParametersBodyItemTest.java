@@ -32,20 +32,20 @@ public class PostUserPrivilegesParametersBodyItemTest {
   @Test
   public void testPostUserPrivilegesParametersBodyItem() throws Throwable {
     PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
-      .objectName("EMPLOYEE")
-      .objectSchema("USER999")
+      .tableName("EMPLOYEE")
+      .tableSchema("USER999")
       .authid("PUBLIC")
       .build();
-    assertEquals(postUserPrivilegesParametersBodyItemModel.objectName(), "EMPLOYEE");
-    assertEquals(postUserPrivilegesParametersBodyItemModel.objectSchema(), "USER999");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.tableName(), "EMPLOYEE");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.tableSchema(), "USER999");
     assertEquals(postUserPrivilegesParametersBodyItemModel.authid(), "PUBLIC");
 
     String json = TestUtilities.serialize(postUserPrivilegesParametersBodyItemModel);
 
     PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModelNew = TestUtilities.deserialize(json, PostUserPrivilegesParametersBodyItem.class);
     assertTrue(postUserPrivilegesParametersBodyItemModelNew instanceof PostUserPrivilegesParametersBodyItem);
-    assertEquals(postUserPrivilegesParametersBodyItemModelNew.objectName(), "EMPLOYEE");
-    assertEquals(postUserPrivilegesParametersBodyItemModelNew.objectSchema(), "USER999");
+    assertEquals(postUserPrivilegesParametersBodyItemModelNew.tableName(), "EMPLOYEE");
+    assertEquals(postUserPrivilegesParametersBodyItemModelNew.tableSchema(), "USER999");
     assertEquals(postUserPrivilegesParametersBodyItemModelNew.authid(), "PUBLIC");
   }
 }

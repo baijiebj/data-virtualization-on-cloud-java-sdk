@@ -15,11 +15,11 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The revokeUserFromObject options.
+ * The revokeRoleFromTableV2 options.
  */
-public class RevokeUserFromObjectOptions extends GenericModel {
+public class RevokeRoleFromTableV2Options extends GenericModel {
 
-  protected String authid;
+  protected String roleToRevoke;
   protected String tableName;
   protected String tableSchema;
 
@@ -27,14 +27,14 @@ public class RevokeUserFromObjectOptions extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String authid;
+    private String roleToRevoke;
     private String tableName;
     private String tableSchema;
 
-    private Builder(RevokeUserFromObjectOptions revokeUserFromObjectOptions) {
-      this.authid = revokeUserFromObjectOptions.authid;
-      this.tableName = revokeUserFromObjectOptions.tableName;
-      this.tableSchema = revokeUserFromObjectOptions.tableSchema;
+    private Builder(RevokeRoleFromTableV2Options revokeRoleFromTableV2Options) {
+      this.roleToRevoke = revokeRoleFromTableV2Options.roleToRevoke;
+      this.tableName = revokeRoleFromTableV2Options.tableName;
+      this.tableSchema = revokeRoleFromTableV2Options.tableSchema;
     }
 
     /**
@@ -46,33 +46,33 @@ public class RevokeUserFromObjectOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param authid the authid
+     * @param roleToRevoke the roleToRevoke
      * @param tableName the tableName
      * @param tableSchema the tableSchema
      */
-    public Builder(String authid, String tableName, String tableSchema) {
-      this.authid = authid;
+    public Builder(String roleToRevoke, String tableName, String tableSchema) {
+      this.roleToRevoke = roleToRevoke;
       this.tableName = tableName;
       this.tableSchema = tableSchema;
     }
 
     /**
-     * Builds a RevokeUserFromObjectOptions.
+     * Builds a RevokeRoleFromTableV2Options.
      *
-     * @return the new RevokeUserFromObjectOptions instance
+     * @return the new RevokeRoleFromTableV2Options instance
      */
-    public RevokeUserFromObjectOptions build() {
-      return new RevokeUserFromObjectOptions(this);
+    public RevokeRoleFromTableV2Options build() {
+      return new RevokeRoleFromTableV2Options(this);
     }
 
     /**
-     * Set the authid.
+     * Set the roleToRevoke.
      *
-     * @param authid the authid
-     * @return the RevokeUserFromObjectOptions builder
+     * @param roleToRevoke the roleToRevoke
+     * @return the RevokeRoleFromTableV2Options builder
      */
-    public Builder authid(String authid) {
-      this.authid = authid;
+    public Builder roleToRevoke(String roleToRevoke) {
+      this.roleToRevoke = roleToRevoke;
       return this;
     }
 
@@ -80,7 +80,7 @@ public class RevokeUserFromObjectOptions extends GenericModel {
      * Set the tableName.
      *
      * @param tableName the tableName
-     * @return the RevokeUserFromObjectOptions builder
+     * @return the RevokeRoleFromTableV2Options builder
      */
     public Builder tableName(String tableName) {
       this.tableName = tableName;
@@ -91,7 +91,7 @@ public class RevokeUserFromObjectOptions extends GenericModel {
      * Set the tableSchema.
      *
      * @param tableSchema the tableSchema
-     * @return the RevokeUserFromObjectOptions builder
+     * @return the RevokeRoleFromTableV2Options builder
      */
     public Builder tableSchema(String tableSchema) {
       this.tableSchema = tableSchema;
@@ -99,14 +99,14 @@ public class RevokeUserFromObjectOptions extends GenericModel {
     }
   }
 
-  protected RevokeUserFromObjectOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.authid,
-      "authid cannot be null");
+  protected RevokeRoleFromTableV2Options(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.roleToRevoke,
+      "roleToRevoke cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableName,
       "tableName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableSchema,
       "tableSchema cannot be null");
-    authid = builder.authid;
+    roleToRevoke = builder.roleToRevoke;
     tableName = builder.tableName;
     tableSchema = builder.tableSchema;
   }
@@ -114,22 +114,21 @@ public class RevokeUserFromObjectOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a RevokeUserFromObjectOptions builder
+   * @return a RevokeRoleFromTableV2Options builder
    */
   public Builder newBuilder() {
     return new Builder(this);
   }
 
   /**
-   * Gets the authid.
+   * Gets the roleToRevoke.
    *
-   * The Data Virtualization user name, if the value is PUBLIC, it means revoke access privilege from all Data
-   * Virtualization users.
+   * The Data Virtualization role type, the value could be DV_ADMIN, DV_ENGINEER, DV_STEWARD or DV_WORKER.
    *
-   * @return the authid
+   * @return the roleToRevoke
    */
-  public String authid() {
-    return authid;
+  public String roleToRevoke() {
+    return roleToRevoke;
   }
 
   /**

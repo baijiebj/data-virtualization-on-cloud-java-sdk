@@ -20,10 +20,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PostRolePrivilegesParametersBodyItem extends GenericModel {
 
-  @SerializedName("object_name")
-  protected String objectName;
-  @SerializedName("object_schema")
-  protected String objectSchema;
+  @SerializedName("table_name")
+  protected String tableName;
+  @SerializedName("table_schema")
+  protected String tableSchema;
   @SerializedName("role_to_grant")
   protected String roleToGrant;
 
@@ -31,13 +31,13 @@ public class PostRolePrivilegesParametersBodyItem extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String objectName;
-    private String objectSchema;
+    private String tableName;
+    private String tableSchema;
     private String roleToGrant;
 
     private Builder(PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItem) {
-      this.objectName = postRolePrivilegesParametersBodyItem.objectName;
-      this.objectSchema = postRolePrivilegesParametersBodyItem.objectSchema;
+      this.tableName = postRolePrivilegesParametersBodyItem.tableName;
+      this.tableSchema = postRolePrivilegesParametersBodyItem.tableSchema;
       this.roleToGrant = postRolePrivilegesParametersBodyItem.roleToGrant;
     }
 
@@ -57,24 +57,24 @@ public class PostRolePrivilegesParametersBodyItem extends GenericModel {
     }
 
     /**
-     * Set the objectName.
+     * Set the tableName.
      *
-     * @param objectName the objectName
+     * @param tableName the tableName
      * @return the PostRolePrivilegesParametersBodyItem builder
      */
-    public Builder objectName(String objectName) {
-      this.objectName = objectName;
+    public Builder tableName(String tableName) {
+      this.tableName = tableName;
       return this;
     }
 
     /**
-     * Set the objectSchema.
+     * Set the tableSchema.
      *
-     * @param objectSchema the objectSchema
+     * @param tableSchema the tableSchema
      * @return the PostRolePrivilegesParametersBodyItem builder
      */
-    public Builder objectSchema(String objectSchema) {
-      this.objectSchema = objectSchema;
+    public Builder tableSchema(String tableSchema) {
+      this.tableSchema = tableSchema;
       return this;
     }
 
@@ -91,8 +91,8 @@ public class PostRolePrivilegesParametersBodyItem extends GenericModel {
   }
 
   protected PostRolePrivilegesParametersBodyItem(Builder builder) {
-    objectName = builder.objectName;
-    objectSchema = builder.objectSchema;
+    tableName = builder.tableName;
+    tableSchema = builder.tableSchema;
     roleToGrant = builder.roleToGrant;
   }
 
@@ -106,25 +106,25 @@ public class PostRolePrivilegesParametersBodyItem extends GenericModel {
   }
 
   /**
-   * Gets the objectName.
+   * Gets the tableName.
    *
    * The name of the virtualized table.
    *
-   * @return the objectName
+   * @return the tableName
    */
-  public String objectName() {
-    return objectName;
+  public String tableName() {
+    return tableName;
   }
 
   /**
-   * Gets the objectSchema.
+   * Gets the tableSchema.
    *
    * The schema of the virtualized table.
    *
-   * @return the objectSchema
+   * @return the tableSchema
    */
-  public String objectSchema() {
-    return objectSchema;
+  public String tableSchema() {
+    return tableSchema;
   }
 
   /**

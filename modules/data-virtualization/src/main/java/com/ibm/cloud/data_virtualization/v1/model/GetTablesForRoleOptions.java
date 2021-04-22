@@ -15,9 +15,9 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The getObjectsForRole options.
+ * The getTablesForRole options.
  */
-public class GetObjectsForRoleOptions extends GenericModel {
+public class GetTablesForRoleOptions extends GenericModel {
 
   protected String rolename;
 
@@ -27,8 +27,8 @@ public class GetObjectsForRoleOptions extends GenericModel {
   public static class Builder {
     private String rolename;
 
-    private Builder(GetObjectsForRoleOptions getObjectsForRoleOptions) {
-      this.rolename = getObjectsForRoleOptions.rolename;
+    private Builder(GetTablesForRoleOptions getTablesForRoleOptions) {
+      this.rolename = getTablesForRoleOptions.rolename;
     }
 
     /**
@@ -47,19 +47,19 @@ public class GetObjectsForRoleOptions extends GenericModel {
     }
 
     /**
-     * Builds a GetObjectsForRoleOptions.
+     * Builds a GetTablesForRoleOptions.
      *
-     * @return the new GetObjectsForRoleOptions instance
+     * @return the new GetTablesForRoleOptions instance
      */
-    public GetObjectsForRoleOptions build() {
-      return new GetObjectsForRoleOptions(this);
+    public GetTablesForRoleOptions build() {
+      return new GetTablesForRoleOptions(this);
     }
 
     /**
      * Set the rolename.
      *
      * @param rolename the rolename
-     * @return the GetObjectsForRoleOptions builder
+     * @return the GetTablesForRoleOptions builder
      */
     public Builder rolename(String rolename) {
       this.rolename = rolename;
@@ -67,7 +67,7 @@ public class GetObjectsForRoleOptions extends GenericModel {
     }
   }
 
-  protected GetObjectsForRoleOptions(Builder builder) {
+  protected GetTablesForRoleOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.rolename,
       "rolename cannot be empty");
     rolename = builder.rolename;
@@ -76,7 +76,7 @@ public class GetObjectsForRoleOptions extends GenericModel {
   /**
    * New builder.
    *
-   * @return a GetObjectsForRoleOptions builder
+   * @return a GetTablesForRoleOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
