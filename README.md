@@ -1,8 +1,8 @@
 [![Build Status](https://travis.ibm.com/CloudEngineering/java-sdk-template.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis.ibm.com/CloudEngineering/java-sdk-template)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud My Services Java SDK Version 0.0.1
-Java client library to interact with various [IBM Cloud My Services](https://cloud.ibm.com/apidocs?category=<service-category>).
+# IBM Data Virtualization on Cloud Java SDK Version 0.0.0
+Java client library to interact with various [IBM Cloud My Services](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
 Changes might occur which impact applications that use this SDK.
@@ -37,11 +37,11 @@ Changes might occur which impact applications that use this SDK.
 
 ## Overview
 
-The IBM Cloud My Services Java SDK allows developers to programmatically interact with the following IBM Cloud services:
+The IBM data virtualization on cloud Java SDK allows developers to programmatically interact with the following IBM Cloud services:
 
 Service Name | Artifact Coordinates
 --- | ---
-[Example Service](https://cloud.ibm.com/apidocs/example-service) | com.ibm.cloud:example-service:0.0.1
+[Example Service](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud-java-sdk) | com.ibm.cloud.data_virtualization.v1
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.0.1
+The current version of this SDK is: 0.0.0
 
 Each service's artifact coordinates are listed in the table above.
 
@@ -70,14 +70,14 @@ Here are examples for maven and gradle:
 ```xml
 <dependency>
     <groupId>com.ibm.cloud</groupId>
-    <artifactId>example-service</artifactId>
-    <version>0.0.1</version>
+    <artifactId>data-virtualization</artifactId>
+    <version>0.0.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-compile 'com.ibm.cloud:example-service:0.0.1'
+compile 'com.ibm.cloud.data-virtualization.0.0.0'
 ```
 
 ## Using the SDK
@@ -91,7 +91,7 @@ please ask a question at
 
 ## Issues
 If you encounter an issue with the project, you are welcome to submit a
-[bug report](<github-repo-url>/issues).
+[bug report](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/issues).
 Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 ## Open source @ IBM
