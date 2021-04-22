@@ -12,12 +12,38 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The getDatasourceNodes options.
+ * PostDatasourceConnectionResponse.
  */
-public class GetDatasourceNodesOptions extends GenericModel {
+public class PostDatasourceConnectionResponse extends GenericModel {
 
+  @SerializedName("datasource_type")
+  protected String datasourceType;
+  protected String name;
+
+  /**
+   * Gets the datasourceType.
+   *
+   * The type of data source that you want to add.
+   *
+   * @return the datasourceType
+   */
+  public String getDatasourceType() {
+    return datasourceType;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name of data source.
+   *
+   * @return the name
+   */
+  public String getName() {
+    return name;
+  }
 }
 

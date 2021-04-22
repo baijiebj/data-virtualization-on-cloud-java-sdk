@@ -12,6 +12,9 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -19,41 +22,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GrantRolesToVirtualizedTableOptions extends GenericModel {
 
-  protected String authid;
-  protected String objectName;
-  protected String objectSchema;
+  protected List<PostRolePrivilegesParametersBodyItem> body;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String authid;
-    private String objectName;
-    private String objectSchema;
+    private List<PostRolePrivilegesParametersBodyItem> body;
 
     private Builder(GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptions) {
-      this.authid = grantRolesToVirtualizedTableOptions.authid;
-      this.objectName = grantRolesToVirtualizedTableOptions.objectName;
-      this.objectSchema = grantRolesToVirtualizedTableOptions.objectSchema;
+      this.body = grantRolesToVirtualizedTableOptions.body;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param authid the authid
-     * @param objectName the objectName
-     * @param objectSchema the objectSchema
-     */
-    public Builder(String authid, String objectName, String objectSchema) {
-      this.authid = authid;
-      this.objectName = objectName;
-      this.objectSchema = objectSchema;
     }
 
     /**
@@ -66,49 +50,36 @@ public class GrantRolesToVirtualizedTableOptions extends GenericModel {
     }
 
     /**
-     * Set the authid.
+     * Adds an body to body.
      *
-     * @param authid the authid
+     * @param body the new body
      * @return the GrantRolesToVirtualizedTableOptions builder
      */
-    public Builder authid(String authid) {
-      this.authid = authid;
+    public Builder addBody(PostRolePrivilegesParametersBodyItem body) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
+        "body cannot be null");
+      if (this.body == null) {
+        this.body = new ArrayList<PostRolePrivilegesParametersBodyItem>();
+      }
+      this.body.add(body);
       return this;
     }
 
     /**
-     * Set the objectName.
+     * Set the body.
+     * Existing body will be replaced.
      *
-     * @param objectName the objectName
+     * @param body the body
      * @return the GrantRolesToVirtualizedTableOptions builder
      */
-    public Builder objectName(String objectName) {
-      this.objectName = objectName;
-      return this;
-    }
-
-    /**
-     * Set the objectSchema.
-     *
-     * @param objectSchema the objectSchema
-     * @return the GrantRolesToVirtualizedTableOptions builder
-     */
-    public Builder objectSchema(String objectSchema) {
-      this.objectSchema = objectSchema;
+    public Builder body(List<PostRolePrivilegesParametersBodyItem> body) {
+      this.body = body;
       return this;
     }
   }
 
   protected GrantRolesToVirtualizedTableOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.authid,
-      "authid cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectName,
-      "objectName cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectSchema,
-      "objectSchema cannot be null");
-    authid = builder.authid;
-    objectName = builder.objectName;
-    objectSchema = builder.objectSchema;
+    body = builder.body;
   }
 
   /**
@@ -121,36 +92,12 @@ public class GrantRolesToVirtualizedTableOptions extends GenericModel {
   }
 
   /**
-   * Gets the authid.
+   * Gets the body.
    *
-   * Authentication ID.
-   *
-   * @return the authid
+   * @return the body
    */
-  public String authid() {
-    return authid;
-  }
-
-  /**
-   * Gets the objectName.
-   *
-   * Object name to be deleleted.
-   *
-   * @return the objectName
-   */
-  public String objectName() {
-    return objectName;
-  }
-
-  /**
-   * Gets the objectSchema.
-   *
-   * Object schema name.
-   *
-   * @return the objectSchema
-   */
-  public String objectSchema() {
-    return objectSchema;
+  public List<PostRolePrivilegesParametersBodyItem> body() {
+    return body;
   }
 }
 

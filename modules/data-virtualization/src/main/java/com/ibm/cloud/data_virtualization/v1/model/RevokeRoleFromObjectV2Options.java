@@ -12,9 +12,6 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,22 +19,41 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RevokeRoleFromObjectV2Options extends GenericModel {
 
-  protected List<RevokeRoleFromObjectV2RequestBodyItem> body;
+  protected String roleToRevoke;
+  protected String objectName;
+  protected String objectSchema;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<RevokeRoleFromObjectV2RequestBodyItem> body;
+    private String roleToRevoke;
+    private String objectName;
+    private String objectSchema;
 
     private Builder(RevokeRoleFromObjectV2Options revokeRoleFromObjectV2Options) {
-      this.body = revokeRoleFromObjectV2Options.body;
+      this.roleToRevoke = revokeRoleFromObjectV2Options.roleToRevoke;
+      this.objectName = revokeRoleFromObjectV2Options.objectName;
+      this.objectSchema = revokeRoleFromObjectV2Options.objectSchema;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param roleToRevoke the roleToRevoke
+     * @param objectName the objectName
+     * @param objectSchema the objectSchema
+     */
+    public Builder(String roleToRevoke, String objectName, String objectSchema) {
+      this.roleToRevoke = roleToRevoke;
+      this.objectName = objectName;
+      this.objectSchema = objectSchema;
     }
 
     /**
@@ -50,36 +66,49 @@ public class RevokeRoleFromObjectV2Options extends GenericModel {
     }
 
     /**
-     * Adds an body to body.
+     * Set the roleToRevoke.
      *
-     * @param body the new body
+     * @param roleToRevoke the roleToRevoke
      * @return the RevokeRoleFromObjectV2Options builder
      */
-    public Builder addBody(RevokeRoleFromObjectV2RequestBodyItem body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<RevokeRoleFromObjectV2RequestBodyItem>();
-      }
-      this.body.add(body);
+    public Builder roleToRevoke(String roleToRevoke) {
+      this.roleToRevoke = roleToRevoke;
       return this;
     }
 
     /**
-     * Set the body.
-     * Existing body will be replaced.
+     * Set the objectName.
      *
-     * @param body the body
+     * @param objectName the objectName
      * @return the RevokeRoleFromObjectV2Options builder
      */
-    public Builder body(List<RevokeRoleFromObjectV2RequestBodyItem> body) {
-      this.body = body;
+    public Builder objectName(String objectName) {
+      this.objectName = objectName;
+      return this;
+    }
+
+    /**
+     * Set the objectSchema.
+     *
+     * @param objectSchema the objectSchema
+     * @return the RevokeRoleFromObjectV2Options builder
+     */
+    public Builder objectSchema(String objectSchema) {
+      this.objectSchema = objectSchema;
       return this;
     }
   }
 
   protected RevokeRoleFromObjectV2Options(Builder builder) {
-    body = builder.body;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.roleToRevoke,
+      "roleToRevoke cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectName,
+      "objectName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectSchema,
+      "objectSchema cannot be null");
+    roleToRevoke = builder.roleToRevoke;
+    objectName = builder.objectName;
+    objectSchema = builder.objectSchema;
   }
 
   /**
@@ -92,12 +121,36 @@ public class RevokeRoleFromObjectV2Options extends GenericModel {
   }
 
   /**
-   * Gets the body.
+   * Gets the roleToRevoke.
    *
-   * @return the body
+   * The Data Virtualization role type, the value could be DV_ADMIN, DV_ENGINEER, DV_STEWARD or DV_WORKER.
+   *
+   * @return the roleToRevoke
    */
-  public List<RevokeRoleFromObjectV2RequestBodyItem> body() {
-    return body;
+  public String roleToRevoke() {
+    return roleToRevoke;
+  }
+
+  /**
+   * Gets the objectName.
+   *
+   * The virtualized table's name.
+   *
+   * @return the objectName
+   */
+  public String objectName() {
+    return objectName;
+  }
+
+  /**
+   * Gets the objectSchema.
+   *
+   * The virtualized table's schema name.
+   *
+   * @return the objectSchema
+   */
+  public String objectSchema() {
+    return objectSchema;
   }
 }
 

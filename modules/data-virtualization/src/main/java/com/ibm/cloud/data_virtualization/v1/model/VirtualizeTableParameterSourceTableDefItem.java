@@ -16,9 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VirtualizeTableV2RequestSourceTableDefItem.
+ * VirtualizeTableParameterSourceTableDefItem.
  */
-public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
+public class VirtualizeTableParameterSourceTableDefItem extends GenericModel {
 
   @SerializedName("column_name")
   protected String columnName;
@@ -32,9 +32,9 @@ public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
     private String columnName;
     private String columnType;
 
-    private Builder(VirtualizeTableV2RequestSourceTableDefItem virtualizeTableV2RequestSourceTableDefItem) {
-      this.columnName = virtualizeTableV2RequestSourceTableDefItem.columnName;
-      this.columnType = virtualizeTableV2RequestSourceTableDefItem.columnType;
+    private Builder(VirtualizeTableParameterSourceTableDefItem virtualizeTableParameterSourceTableDefItem) {
+      this.columnName = virtualizeTableParameterSourceTableDefItem.columnName;
+      this.columnType = virtualizeTableParameterSourceTableDefItem.columnType;
     }
 
     /**
@@ -55,19 +55,19 @@ public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
     }
 
     /**
-     * Builds a VirtualizeTableV2RequestSourceTableDefItem.
+     * Builds a VirtualizeTableParameterSourceTableDefItem.
      *
-     * @return the new VirtualizeTableV2RequestSourceTableDefItem instance
+     * @return the new VirtualizeTableParameterSourceTableDefItem instance
      */
-    public VirtualizeTableV2RequestSourceTableDefItem build() {
-      return new VirtualizeTableV2RequestSourceTableDefItem(this);
+    public VirtualizeTableParameterSourceTableDefItem build() {
+      return new VirtualizeTableParameterSourceTableDefItem(this);
     }
 
     /**
      * Set the columnName.
      *
      * @param columnName the columnName
-     * @return the VirtualizeTableV2RequestSourceTableDefItem builder
+     * @return the VirtualizeTableParameterSourceTableDefItem builder
      */
     public Builder columnName(String columnName) {
       this.columnName = columnName;
@@ -78,7 +78,7 @@ public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
      * Set the columnType.
      *
      * @param columnType the columnType
-     * @return the VirtualizeTableV2RequestSourceTableDefItem builder
+     * @return the VirtualizeTableParameterSourceTableDefItem builder
      */
     public Builder columnType(String columnType) {
       this.columnType = columnType;
@@ -86,7 +86,7 @@ public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
     }
   }
 
-  protected VirtualizeTableV2RequestSourceTableDefItem(Builder builder) {
+  protected VirtualizeTableParameterSourceTableDefItem(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.columnName,
       "columnName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.columnType,
@@ -98,7 +98,7 @@ public class VirtualizeTableV2RequestSourceTableDefItem extends GenericModel {
   /**
    * New builder.
    *
-   * @return a VirtualizeTableV2RequestSourceTableDefItem builder
+   * @return a VirtualizeTableParameterSourceTableDefItem builder
    */
   public Builder newBuilder() {
     return new Builder(this);

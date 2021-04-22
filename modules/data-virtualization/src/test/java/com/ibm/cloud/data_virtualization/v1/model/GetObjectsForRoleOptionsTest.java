@@ -32,9 +32,9 @@ public class GetObjectsForRoleOptionsTest {
   @Test
   public void testGetObjectsForRoleOptions() throws Throwable {
     GetObjectsForRoleOptions getObjectsForRoleOptionsModel = new GetObjectsForRoleOptions.Builder()
-      .rolename("User")
+      .rolename("ADMIN | STEWARD | ENGINEER | USER")
       .build();
-    assertEquals(getObjectsForRoleOptionsModel.rolename(), "User");
+    assertEquals(getObjectsForRoleOptionsModel.rolename(), "ADMIN | STEWARD | ENGINEER | USER");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

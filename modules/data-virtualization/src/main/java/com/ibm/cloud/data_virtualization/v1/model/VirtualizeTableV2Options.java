@@ -23,11 +23,11 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VirtualizeTableV2Options extends GenericModel {
 
   protected String sourceName;
-  protected List<VirtualizeTableV2RequestSourceTableDefItem> sourceTableDef;
+  protected List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef;
   protected List<String> sources;
   protected String virtualName;
   protected String virtualSchema;
-  protected List<VirtualizeTableV2RequestVirtualTableDefItem> virtualTableDef;
+  protected List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef;
   protected String isIncludedColumns;
   protected Boolean replace;
 
@@ -36,11 +36,11 @@ public class VirtualizeTableV2Options extends GenericModel {
    */
   public static class Builder {
     private String sourceName;
-    private List<VirtualizeTableV2RequestSourceTableDefItem> sourceTableDef;
+    private List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef;
     private List<String> sources;
     private String virtualName;
     private String virtualSchema;
-    private List<VirtualizeTableV2RequestVirtualTableDefItem> virtualTableDef;
+    private List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef;
     private String isIncludedColumns;
     private Boolean replace;
 
@@ -71,7 +71,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * @param virtualSchema the virtualSchema
      * @param virtualTableDef the virtualTableDef
      */
-    public Builder(String sourceName, List<VirtualizeTableV2RequestSourceTableDefItem> sourceTableDef, List<String> sources, String virtualName, String virtualSchema, List<VirtualizeTableV2RequestVirtualTableDefItem> virtualTableDef) {
+    public Builder(String sourceName, List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef, List<String> sources, String virtualName, String virtualSchema, List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef) {
       this.sourceName = sourceName;
       this.sourceTableDef = sourceTableDef;
       this.sources = sources;
@@ -95,11 +95,11 @@ public class VirtualizeTableV2Options extends GenericModel {
      * @param sourceTableDef the new sourceTableDef
      * @return the VirtualizeTableV2Options builder
      */
-    public Builder addSourceTableDef(VirtualizeTableV2RequestSourceTableDefItem sourceTableDef) {
+    public Builder addSourceTableDef(VirtualizeTableParameterSourceTableDefItem sourceTableDef) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(sourceTableDef,
         "sourceTableDef cannot be null");
       if (this.sourceTableDef == null) {
-        this.sourceTableDef = new ArrayList<VirtualizeTableV2RequestSourceTableDefItem>();
+        this.sourceTableDef = new ArrayList<VirtualizeTableParameterSourceTableDefItem>();
       }
       this.sourceTableDef.add(sourceTableDef);
       return this;
@@ -127,11 +127,11 @@ public class VirtualizeTableV2Options extends GenericModel {
      * @param virtualTableDef the new virtualTableDef
      * @return the VirtualizeTableV2Options builder
      */
-    public Builder addVirtualTableDef(VirtualizeTableV2RequestVirtualTableDefItem virtualTableDef) {
+    public Builder addVirtualTableDef(VirtualizeTableParameterVirtualTableDefItem virtualTableDef) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(virtualTableDef,
         "virtualTableDef cannot be null");
       if (this.virtualTableDef == null) {
-        this.virtualTableDef = new ArrayList<VirtualizeTableV2RequestVirtualTableDefItem>();
+        this.virtualTableDef = new ArrayList<VirtualizeTableParameterVirtualTableDefItem>();
       }
       this.virtualTableDef.add(virtualTableDef);
       return this;
@@ -155,7 +155,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * @param sourceTableDef the sourceTableDef
      * @return the VirtualizeTableV2Options builder
      */
-    public Builder sourceTableDef(List<VirtualizeTableV2RequestSourceTableDefItem> sourceTableDef) {
+    public Builder sourceTableDef(List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef) {
       this.sourceTableDef = sourceTableDef;
       return this;
     }
@@ -201,7 +201,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * @param virtualTableDef the virtualTableDef
      * @return the VirtualizeTableV2Options builder
      */
-    public Builder virtualTableDef(List<VirtualizeTableV2RequestVirtualTableDefItem> virtualTableDef) {
+    public Builder virtualTableDef(List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef) {
       this.virtualTableDef = virtualTableDef;
       return this;
     }
@@ -277,7 +277,7 @@ public class VirtualizeTableV2Options extends GenericModel {
    *
    * @return the sourceTableDef
    */
-  public List<VirtualizeTableV2RequestSourceTableDefItem> sourceTableDef() {
+  public List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef() {
     return sourceTableDef;
   }
 
@@ -317,7 +317,7 @@ public class VirtualizeTableV2Options extends GenericModel {
    *
    * @return the virtualTableDef
    */
-  public List<VirtualizeTableV2RequestVirtualTableDefItem> virtualTableDef() {
+  public List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef() {
     return virtualTableDef;
   }
 

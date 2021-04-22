@@ -13,27 +13,24 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.PostRolePrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GrantRolesToVirtualizedTableOptions model.
+ * Unit test class for the PostRolePrivilegesParametersBodyItem model.
  */
-public class GrantRolesToVirtualizedTableOptionsTest {
+public class PostRolePrivilegesParametersBodyItemTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGrantRolesToVirtualizedTableOptions() throws Throwable {
+  public void testPostRolePrivilegesParametersBodyItem() throws Throwable {
     PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
       .objectName("EMPLOYEE")
       .objectSchema("USER999")
@@ -43,9 +40,12 @@ public class GrantRolesToVirtualizedTableOptionsTest {
     assertEquals(postRolePrivilegesParametersBodyItemModel.objectSchema(), "USER999");
     assertEquals(postRolePrivilegesParametersBodyItemModel.roleToGrant(), "PUBLIC");
 
-    GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptionsModel = new GrantRolesToVirtualizedTableOptions.Builder()
-      .body(new java.util.ArrayList<PostRolePrivilegesParametersBodyItem>(java.util.Arrays.asList(postRolePrivilegesParametersBodyItemModel)))
-      .build();
-    assertEquals(grantRolesToVirtualizedTableOptionsModel.body(), new java.util.ArrayList<PostRolePrivilegesParametersBodyItem>(java.util.Arrays.asList(postRolePrivilegesParametersBodyItemModel)));
+    String json = TestUtilities.serialize(postRolePrivilegesParametersBodyItemModel);
+
+    PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModelNew = TestUtilities.deserialize(json, PostRolePrivilegesParametersBodyItem.class);
+    assertTrue(postRolePrivilegesParametersBodyItemModelNew instanceof PostRolePrivilegesParametersBodyItem);
+    assertEquals(postRolePrivilegesParametersBodyItemModelNew.objectName(), "EMPLOYEE");
+    assertEquals(postRolePrivilegesParametersBodyItemModelNew.objectSchema(), "USER999");
+    assertEquals(postRolePrivilegesParametersBodyItemModelNew.roleToGrant(), "PUBLIC");
   }
 }

@@ -19,22 +19,22 @@ import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2Datas
 import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceNodesOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToObjectOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToObjectRequestBodyItem;
+import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponse;
 import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponseObjectsItem;
-import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersV2Properties;
+import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersProperties;
+import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
+import com.ibm.cloud.data_virtualization.v1.model.PostRolePrivilegesParametersBodyItem;
+import com.ibm.cloud.data_virtualization.v1.model.PostUserPrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2Options;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2RequestBodyItem;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectRequestBodyItem;
-import com.ibm.cloud.data_virtualization.v1.model.SuccessResponse;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterSourceTableDefItem;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterVirtualTableDefItem;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2Options;
-import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2RequestSourceTableDefItem;
-import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2RequestVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.security.Authenticator;
@@ -87,25 +87,63 @@ public class DataVirtualizationTest  {
   }
 
   @Test
+  public void testGetDatasourceConnectionsWOptions() throws Throwable {
+    // Schedule some responses.
+    String mockResponseBody = "{\"datasource_nodes_array\": [{\"node_name\": \"nodeName\", \"node_description\": \"nodeDescription\", \"agent_class\": \"agentClass\", \"hostname\": \"hostname\", \"port\": \"port\", \"os_user\": \"osUser\", \"is_docker\": \"isDocker\", \"dscount\": \"dscount\", \"data_sources\": [{\"cid\": \"cid\", \"dbname\": \"dbname\", \"srchostname\": \"srchostname\", \"srcport\": \"srcport\", \"srctype\": \"srctype\", \"usr\": \"usr\", \"uri\": \"uri\", \"status\": \"status\", \"connection_name\": \"connectionName\"}]}]}";
+    String getDatasourceConnectionsPath = "/v2/datasource_connections";
+
+    server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
+    .setResponseCode(200)
+    .setBody(mockResponseBody));
+
+    constructClientService();
+
+    // Construct an instance of the GetDatasourceConnectionsOptions model
+    GetDatasourceConnectionsOptions getDatasourceConnectionsOptionsModel = new GetDatasourceConnectionsOptions();
+
+    // Invoke operation with valid options model (positive test)
+    Response<DatasourceNodesResponseV2> response = dataVirtualizationService.getDatasourceConnections(getDatasourceConnectionsOptionsModel).execute();
+    assertNotNull(response);
+    DatasourceNodesResponseV2 responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+
+    // Check query
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNull(query);
+
+    // Check request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, getDatasourceConnectionsPath);
+  }
+
+  @Test
   public void testAddDatasourceConnectionWOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "";
+    String mockResponseBody = "{\"datasource_type\": \"datasourceType\", \"name\": \"name\"}";
     String addDatasourceConnectionPath = "/v2/datasource_connections";
 
     server.enqueue(new MockResponse()
+    .setHeader("Content-type", "application/json")
     .setResponseCode(201)
     .setBody(mockResponseBody));
 
     constructClientService();
 
-    // Construct an instance of the PostDatasourceConnectionParametersV2Properties model
-    PostDatasourceConnectionParametersV2Properties postDatasourceConnectionParametersV2PropertiesModel = new PostDatasourceConnectionParametersV2Properties.Builder()
+    // Construct an instance of the PostDatasourceConnectionParametersProperties model
+    PostDatasourceConnectionParametersProperties postDatasourceConnectionParametersPropertiesModel = new PostDatasourceConnectionParametersProperties.Builder()
     .accessToken("testString")
     .accountName("testString")
     .apiKey("testString")
     .authType("testString")
     .clientId("testString")
     .clientSecret("testString")
+    .collection("testString")
     .credentials("testString")
     .database("testString")
     .host("testString")
@@ -118,6 +156,7 @@ public class DataVirtualizationTest  {
     .projectId("testString")
     .xProperties("testString")
     .refreshToken("testString")
+    .role("testString")
     .sapGatewayUrl("testString")
     .server("testString")
     .serviceName("testString")
@@ -135,17 +174,16 @@ public class DataVirtualizationTest  {
     .datasourceType("testString")
     .name("testString")
     .originCountry("testString")
-    .xProperties(postDatasourceConnectionParametersV2PropertiesModel)
+    .xProperties(postDatasourceConnectionParametersPropertiesModel)
     .assetCategory("testString")
     .remoteNodes("testString")
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = dataVirtualizationService.addDatasourceConnection(addDatasourceConnectionOptionsModel).execute();
+    Response<PostDatasourceConnectionResponse> response = dataVirtualizationService.addDatasourceConnection(addDatasourceConnectionOptionsModel).execute();
     assertNotNull(response);
-    Void responseObj = response.getResult();
-    // Response does not have a return type. Check that the result is null.
-    assertNull(responseObj);
+    PostDatasourceConnectionResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
 
     // Verify the contents of the request
     RecordedRequest request = server.takeRequest();
@@ -180,7 +218,7 @@ public class DataVirtualizationTest  {
     String deleteDatasourceConnectionPath = "/v2/datasource_connections";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();
@@ -205,8 +243,10 @@ public class DataVirtualizationTest  {
 
     // Check query
     Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNull(query);
-
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("cid"), "DB210013");
+    assertEquals(query.get("connection_id"), "75e4d01b-7417-4abc-b267-8ffb393fb970");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, deleteDatasourceConnectionPath);
@@ -225,67 +265,31 @@ public class DataVirtualizationTest  {
   }
 
   @Test
-  public void testGetDatasourceNodesWOptions() throws Throwable {
-    // Schedule some responses.
-    String mockResponseBody = "{\"datasource_nodes_array\": [{\"node_name\": \"nodeName\", \"node_description\": \"nodeDescription\", \"agent_class\": \"agentClass\", \"hostname\": \"hostname\", \"port\": \"port\", \"os_user\": \"osUser\", \"is_docker\": \"isDocker\", \"dscount\": \"dscount\", \"data_sources\": [{\"cid\": \"cid\", \"dbname\": \"dbname\", \"srchostname\": \"srchostname\", \"srcport\": \"srcport\", \"srctype\": \"srctype\", \"usr\": \"usr\", \"uri\": \"uri\", \"status\": \"status\", \"connection_name\": \"connectionName\"}]}]}";
-    String getDatasourceNodesPath = "/v2/datasource_nodes";
-
-    server.enqueue(new MockResponse()
-    .setHeader("Content-type", "application/json")
-    .setResponseCode(200)
-    .setBody(mockResponseBody));
-
-    constructClientService();
-
-    // Construct an instance of the GetDatasourceNodesOptions model
-    GetDatasourceNodesOptions getDatasourceNodesOptionsModel = new GetDatasourceNodesOptions();
-
-    // Invoke operation with valid options model (positive test)
-    Response<DatasourceNodesResponseV2> response = dataVirtualizationService.getDatasourceNodes(getDatasourceNodesOptionsModel).execute();
-    assertNotNull(response);
-    DatasourceNodesResponseV2 responseObj = response.getResult();
-    assertNotNull(responseObj);
-
-    // Verify the contents of the request
-    RecordedRequest request = server.takeRequest();
-    assertNotNull(request);
-    assertEquals(request.getMethod(), "GET");
-
-    // Check query
-    Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNull(query);
-
-    // Check request path
-    String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, getDatasourceNodesPath);
-  }
-
-  @Test
-  public void testGrantUserToObjectWOptions() throws Throwable {
+  public void testGrantUserToVirtualTableWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "";
-    String grantUserToObjectPath = "/v2/privileges/users";
+    String grantUserToVirtualTablePath = "/v2/privileges/users";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();
 
-    // Construct an instance of the GrantUserToObjectRequestBodyItem model
-    GrantUserToObjectRequestBodyItem grantUserToObjectRequestBodyItemModel = new GrantUserToObjectRequestBodyItem.Builder()
+    // Construct an instance of the PostUserPrivilegesParametersBodyItem model
+    PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
     .objectName("EMPLOYEE")
     .objectSchema("USER999")
     .authid("PUBLIC")
     .build();
 
-    // Construct an instance of the GrantUserToObjectOptions model
-    GrantUserToObjectOptions grantUserToObjectOptionsModel = new GrantUserToObjectOptions.Builder()
-    .body(new java.util.ArrayList<GrantUserToObjectRequestBodyItem>(java.util.Arrays.asList(grantUserToObjectRequestBodyItemModel)))
+    // Construct an instance of the GrantUserToVirtualTableOptions model
+    GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()
+    .body(new java.util.ArrayList<PostUserPrivilegesParametersBodyItem>(java.util.Arrays.asList(postUserPrivilegesParametersBodyItemModel)))
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<Void> response = dataVirtualizationService.grantUserToObject(grantUserToObjectOptionsModel).execute();
+    Response<Void> response = dataVirtualizationService.grantUserToVirtualTable(grantUserToVirtualTableOptionsModel).execute();
     assertNotNull(response);
     Void responseObj = response.getResult();
     // Response does not have a return type. Check that the result is null.
@@ -302,19 +306,7 @@ public class DataVirtualizationTest  {
 
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
-    assertEquals(parsedPath, grantUserToObjectPath);
-  }
-
-  // Test the grantUserToObject operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantUserToObjectNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    dataVirtualizationService.grantUserToObject(null).execute();
+    assertEquals(parsedPath, grantUserToVirtualTablePath);
   }
 
   @Test
@@ -324,21 +316,16 @@ public class DataVirtualizationTest  {
     String revokeUserFromObjectPath = "/v2/privileges/users";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();
 
-    // Construct an instance of the RevokeUserFromObjectRequestBodyItem model
-    RevokeUserFromObjectRequestBodyItem revokeUserFromObjectRequestBodyItemModel = new RevokeUserFromObjectRequestBodyItem.Builder()
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
-    .authid("PUBLIC")
-    .build();
-
     // Construct an instance of the RevokeUserFromObjectOptions model
     RevokeUserFromObjectOptions revokeUserFromObjectOptionsModel = new RevokeUserFromObjectOptions.Builder()
-    .body(new java.util.ArrayList<RevokeUserFromObjectRequestBodyItem>(java.util.Arrays.asList(revokeUserFromObjectRequestBodyItemModel)))
+    .authid("PUBLIC")
+    .objectName("EMPLOYEE")
+    .objectSchema("USER999")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -355,8 +342,11 @@ public class DataVirtualizationTest  {
 
     // Check query
     Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNull(query);
-
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("authid"), "PUBLIC");
+    assertEquals(query.get("object_name"), "EMPLOYEE");
+    assertEquals(query.get("object_schema"), "USER999");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, revokeUserFromObjectPath);
@@ -381,16 +371,21 @@ public class DataVirtualizationTest  {
     String grantRolesToVirtualizedTablePath = "/v2/privileges/roles";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();
 
-    // Construct an instance of the GrantRolesToVirtualizedTableOptions model
-    GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptionsModel = new GrantRolesToVirtualizedTableOptions.Builder()
-    .authid("PUBLIC")
+    // Construct an instance of the PostRolePrivilegesParametersBodyItem model
+    PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
     .objectName("EMPLOYEE")
     .objectSchema("USER999")
+    .roleToGrant("PUBLIC")
+    .build();
+
+    // Construct an instance of the GrantRolesToVirtualizedTableOptions model
+    GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptionsModel = new GrantRolesToVirtualizedTableOptions.Builder()
+    .body(new java.util.ArrayList<PostRolePrivilegesParametersBodyItem>(java.util.Arrays.asList(postRolePrivilegesParametersBodyItemModel)))
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -407,26 +402,11 @@ public class DataVirtualizationTest  {
 
     // Check query
     Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNotNull(query);
-    // Get query params
-    assertEquals(query.get("authid"), "PUBLIC");
-    assertEquals(query.get("object_name"), "EMPLOYEE");
-    assertEquals(query.get("object_schema"), "USER999");
+    assertNull(query);
+
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, grantRolesToVirtualizedTablePath);
-  }
-
-  // Test the grantRolesToVirtualizedTable operation with null options model parameter
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantRolesToVirtualizedTableNoOptions() throws Throwable {
-    // construct the service
-    constructClientService();
-
-    server.enqueue(new MockResponse());
-
-    // Invoke operation with null options model (negative test)
-    dataVirtualizationService.grantRolesToVirtualizedTable(null).execute();
   }
 
   @Test
@@ -436,21 +416,16 @@ public class DataVirtualizationTest  {
     String revokeRoleFromObjectV2Path = "/v2/privileges/roles";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();
 
-    // Construct an instance of the RevokeRoleFromObjectV2RequestBodyItem model
-    RevokeRoleFromObjectV2RequestBodyItem revokeRoleFromObjectV2RequestBodyItemModel = new RevokeRoleFromObjectV2RequestBodyItem.Builder()
-    .objectName("EMPLOYEE")
-    .objectSchema("USER999")
-    .roleToRevoke("DV_ENGINEER")
-    .build();
-
     // Construct an instance of the RevokeRoleFromObjectV2Options model
     RevokeRoleFromObjectV2Options revokeRoleFromObjectV2OptionsModel = new RevokeRoleFromObjectV2Options.Builder()
-    .body(new java.util.ArrayList<RevokeRoleFromObjectV2RequestBodyItem>(java.util.Arrays.asList(revokeRoleFromObjectV2RequestBodyItemModel)))
+    .roleToRevoke("DV_ENGINEER")
+    .objectName("EMPLOYEE")
+    .objectSchema("USER999")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -467,18 +442,33 @@ public class DataVirtualizationTest  {
 
     // Check query
     Map<String, String> query = TestUtilities.parseQueryString(request);
-    assertNull(query);
-
+    assertNotNull(query);
+    // Get query params
+    assertEquals(query.get("role_to_revoke"), "DV_ENGINEER");
+    assertEquals(query.get("object_name"), "EMPLOYEE");
+    assertEquals(query.get("object_schema"), "USER999");
     // Check request path
     String parsedPath = TestUtilities.parseReqPath(request);
     assertEquals(parsedPath, revokeRoleFromObjectV2Path);
+  }
+
+  // Test the revokeRoleFromObjectV2 operation with null options model parameter
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRevokeRoleFromObjectV2NoOptions() throws Throwable {
+    // construct the service
+    constructClientService();
+
+    server.enqueue(new MockResponse());
+
+    // Invoke operation with null options model (negative test)
+    dataVirtualizationService.revokeRoleFromObjectV2(null).execute();
   }
 
   @Test
   public void testGetObjectsForRoleWOptions() throws Throwable {
     // Schedule some responses.
     String mockResponseBody = "{\"objects\": [{\"object_name\": \"objectName\", \"object_schema\": \"objectSchema\", \"object_type\": \"objectType\"}]}";
-    String getObjectsForRolePath = "/v1/privileges/objects/role/User";
+    String getObjectsForRolePath = "/v1/privileges/objects/role/ADMIN%20%7C%20STEWARD%20%7C%20ENGINEER%20%7C%20USER";
 
     server.enqueue(new MockResponse()
     .setHeader("Content-type", "application/json")
@@ -489,7 +479,7 @@ public class DataVirtualizationTest  {
 
     // Construct an instance of the GetObjectsForRoleOptions model
     GetObjectsForRoleOptions getObjectsForRoleOptionsModel = new GetObjectsForRoleOptions.Builder()
-    .rolename("User")
+    .rolename("ADMIN | STEWARD | ENGINEER | USER")
     .build();
 
     // Invoke operation with valid options model (positive test)
@@ -527,7 +517,7 @@ public class DataVirtualizationTest  {
   @Test
   public void testVirtualizeTableV2WOptions() throws Throwable {
     // Schedule some responses.
-    String mockResponseBody = "{\"message\": \"message\"}";
+    String mockResponseBody = "{\"source_name\": \"Tab1\", \"virtual_name\": \"Tab1\", \"virtual_schema\": \"USER999\"}";
     String virtualizeTableV2Path = "/v2/virtualize/tables";
 
     server.enqueue(new MockResponse()
@@ -537,14 +527,14 @@ public class DataVirtualizationTest  {
 
     constructClientService();
 
-    // Construct an instance of the VirtualizeTableV2RequestSourceTableDefItem model
-    VirtualizeTableV2RequestSourceTableDefItem virtualizeTableV2RequestSourceTableDefItemModel = new VirtualizeTableV2RequestSourceTableDefItem.Builder()
+    // Construct an instance of the VirtualizeTableParameterSourceTableDefItem model
+    VirtualizeTableParameterSourceTableDefItem virtualizeTableParameterSourceTableDefItemModel = new VirtualizeTableParameterSourceTableDefItem.Builder()
     .columnName("Column1")
     .columnType("INTEGER")
     .build();
 
-    // Construct an instance of the VirtualizeTableV2RequestVirtualTableDefItem model
-    VirtualizeTableV2RequestVirtualTableDefItem virtualizeTableV2RequestVirtualTableDefItemModel = new VirtualizeTableV2RequestVirtualTableDefItem.Builder()
+    // Construct an instance of the VirtualizeTableParameterVirtualTableDefItem model
+    VirtualizeTableParameterVirtualTableDefItem virtualizeTableParameterVirtualTableDefItemModel = new VirtualizeTableParameterVirtualTableDefItem.Builder()
     .columnName("Column_1")
     .columnType("INTEGER")
     .build();
@@ -552,19 +542,19 @@ public class DataVirtualizationTest  {
     // Construct an instance of the VirtualizeTableV2Options model
     VirtualizeTableV2Options virtualizeTableV2OptionsModel = new VirtualizeTableV2Options.Builder()
     .sourceName("Tab1")
-    .sourceTableDef(new java.util.ArrayList<VirtualizeTableV2RequestSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestSourceTableDefItemModel)))
+    .sourceTableDef(new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)))
     .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")))
     .virtualName("Tab1")
     .virtualSchema("USER999")
-    .virtualTableDef(new java.util.ArrayList<VirtualizeTableV2RequestVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestVirtualTableDefItemModel)))
+    .virtualTableDef(new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)))
     .isIncludedColumns("Y, Y, N")
     .replace(false)
     .build();
 
     // Invoke operation with valid options model (positive test)
-    Response<SuccessResponse> response = dataVirtualizationService.virtualizeTableV2(virtualizeTableV2OptionsModel).execute();
+    Response<VirtualizeTableResponse> response = dataVirtualizationService.virtualizeTableV2(virtualizeTableV2OptionsModel).execute();
     assertNotNull(response);
-    SuccessResponse responseObj = response.getResult();
+    VirtualizeTableResponse responseObj = response.getResult();
     assertNotNull(responseObj);
 
     // Verify the contents of the request
@@ -600,7 +590,7 @@ public class DataVirtualizationTest  {
     String deleteTablePath = "/v2/mydata/tables/testString";
 
     server.enqueue(new MockResponse()
-    .setResponseCode(200)
+    .setResponseCode(204)
     .setBody(mockResponseBody));
 
     constructClientService();

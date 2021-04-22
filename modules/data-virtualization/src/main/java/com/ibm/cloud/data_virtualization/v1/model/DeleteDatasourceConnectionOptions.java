@@ -104,7 +104,7 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
   /**
    * Gets the cid.
    *
-   * The identifier of the connection.
+   * Specifies the data source connection to be deleted.
    *
    * @return the cid
    */
@@ -115,7 +115,7 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
   /**
    * Gets the connectionId.
    *
-   * The name of the connection.
+   * Specifies the data source connection to be deleted.
    *
    * @return the connectionId
    */

@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterSourceTableDefItem;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2Options;
-import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2RequestSourceTableDefItem;
-import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2RequestVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -35,36 +35,36 @@ public class VirtualizeTableV2OptionsTest {
 
   @Test
   public void testVirtualizeTableV2Options() throws Throwable {
-    VirtualizeTableV2RequestSourceTableDefItem virtualizeTableV2RequestSourceTableDefItemModel = new VirtualizeTableV2RequestSourceTableDefItem.Builder()
+    VirtualizeTableParameterSourceTableDefItem virtualizeTableParameterSourceTableDefItemModel = new VirtualizeTableParameterSourceTableDefItem.Builder()
       .columnName("Column1")
       .columnType("INTEGER")
       .build();
-    assertEquals(virtualizeTableV2RequestSourceTableDefItemModel.columnName(), "Column1");
-    assertEquals(virtualizeTableV2RequestSourceTableDefItemModel.columnType(), "INTEGER");
+    assertEquals(virtualizeTableParameterSourceTableDefItemModel.columnName(), "Column1");
+    assertEquals(virtualizeTableParameterSourceTableDefItemModel.columnType(), "INTEGER");
 
-    VirtualizeTableV2RequestVirtualTableDefItem virtualizeTableV2RequestVirtualTableDefItemModel = new VirtualizeTableV2RequestVirtualTableDefItem.Builder()
+    VirtualizeTableParameterVirtualTableDefItem virtualizeTableParameterVirtualTableDefItemModel = new VirtualizeTableParameterVirtualTableDefItem.Builder()
       .columnName("Column_1")
       .columnType("INTEGER")
       .build();
-    assertEquals(virtualizeTableV2RequestVirtualTableDefItemModel.columnName(), "Column_1");
-    assertEquals(virtualizeTableV2RequestVirtualTableDefItemModel.columnType(), "INTEGER");
+    assertEquals(virtualizeTableParameterVirtualTableDefItemModel.columnName(), "Column_1");
+    assertEquals(virtualizeTableParameterVirtualTableDefItemModel.columnType(), "INTEGER");
 
     VirtualizeTableV2Options virtualizeTableV2OptionsModel = new VirtualizeTableV2Options.Builder()
       .sourceName("Tab1")
-      .sourceTableDef(new java.util.ArrayList<VirtualizeTableV2RequestSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestSourceTableDefItemModel)))
+      .sourceTableDef(new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)))
       .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")))
       .virtualName("Tab1")
       .virtualSchema("USER999")
-      .virtualTableDef(new java.util.ArrayList<VirtualizeTableV2RequestVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestVirtualTableDefItemModel)))
+      .virtualTableDef(new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)))
       .isIncludedColumns("Y, Y, N")
       .replace(false)
       .build();
     assertEquals(virtualizeTableV2OptionsModel.sourceName(), "Tab1");
-    assertEquals(virtualizeTableV2OptionsModel.sourceTableDef(), new java.util.ArrayList<VirtualizeTableV2RequestSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestSourceTableDefItemModel)));
+    assertEquals(virtualizeTableV2OptionsModel.sourceTableDef(), new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)));
     assertEquals(virtualizeTableV2OptionsModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")));
     assertEquals(virtualizeTableV2OptionsModel.virtualName(), "Tab1");
     assertEquals(virtualizeTableV2OptionsModel.virtualSchema(), "USER999");
-    assertEquals(virtualizeTableV2OptionsModel.virtualTableDef(), new java.util.ArrayList<VirtualizeTableV2RequestVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableV2RequestVirtualTableDefItemModel)));
+    assertEquals(virtualizeTableV2OptionsModel.virtualTableDef(), new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)));
     assertEquals(virtualizeTableV2OptionsModel.isIncludedColumns(), "Y, Y, N");
     assertEquals(virtualizeTableV2OptionsModel.replace(), Boolean.valueOf(false));
   }

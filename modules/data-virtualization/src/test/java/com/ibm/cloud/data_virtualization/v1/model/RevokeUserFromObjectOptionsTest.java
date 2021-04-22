@@ -14,12 +14,9 @@
 package com.ibm.cloud.data_virtualization.v1.model;
 
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
-import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectRequestBodyItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,19 +31,14 @@ public class RevokeUserFromObjectOptionsTest {
 
   @Test
   public void testRevokeUserFromObjectOptions() throws Throwable {
-    RevokeUserFromObjectRequestBodyItem revokeUserFromObjectRequestBodyItemModel = new RevokeUserFromObjectRequestBodyItem.Builder()
+    RevokeUserFromObjectOptions revokeUserFromObjectOptionsModel = new RevokeUserFromObjectOptions.Builder()
+      .authid("PUBLIC")
       .objectName("EMPLOYEE")
       .objectSchema("USER999")
-      .authid("PUBLIC")
       .build();
-    assertEquals(revokeUserFromObjectRequestBodyItemModel.objectName(), "EMPLOYEE");
-    assertEquals(revokeUserFromObjectRequestBodyItemModel.objectSchema(), "USER999");
-    assertEquals(revokeUserFromObjectRequestBodyItemModel.authid(), "PUBLIC");
-
-    RevokeUserFromObjectOptions revokeUserFromObjectOptionsModel = new RevokeUserFromObjectOptions.Builder()
-      .body(new java.util.ArrayList<RevokeUserFromObjectRequestBodyItem>(java.util.Arrays.asList(revokeUserFromObjectRequestBodyItemModel)))
-      .build();
-    assertEquals(revokeUserFromObjectOptionsModel.body(), new java.util.ArrayList<RevokeUserFromObjectRequestBodyItem>(java.util.Arrays.asList(revokeUserFromObjectRequestBodyItemModel)));
+    assertEquals(revokeUserFromObjectOptionsModel.authid(), "PUBLIC");
+    assertEquals(revokeUserFromObjectOptionsModel.objectName(), "EMPLOYEE");
+    assertEquals(revokeUserFromObjectOptionsModel.objectSchema(), "USER999");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

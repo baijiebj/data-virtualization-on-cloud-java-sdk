@@ -13,7 +13,6 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.AddDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersProperties;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -24,14 +23,14 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the AddDatasourceConnectionOptions model.
+ * Unit test class for the PostDatasourceConnectionParametersProperties model.
  */
-public class AddDatasourceConnectionOptionsTest {
+public class PostDatasourceConnectionParametersPropertiesTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testAddDatasourceConnectionOptions() throws Throwable {
+  public void testPostDatasourceConnectionParametersProperties() throws Throwable {
     PostDatasourceConnectionParametersProperties postDatasourceConnectionParametersPropertiesModel = new PostDatasourceConnectionParametersProperties.Builder()
       .accessToken("testString")
       .accountName("testString")
@@ -95,25 +94,39 @@ public class AddDatasourceConnectionOptionsTest {
     assertEquals(postDatasourceConnectionParametersPropertiesModel.username(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.warehouse(), "testString");
 
-    AddDatasourceConnectionOptions addDatasourceConnectionOptionsModel = new AddDatasourceConnectionOptions.Builder()
-      .datasourceType("testString")
-      .name("testString")
-      .originCountry("testString")
-      .xProperties(postDatasourceConnectionParametersPropertiesModel)
-      .assetCategory("testString")
-      .remoteNodes("testString")
-      .build();
-    assertEquals(addDatasourceConnectionOptionsModel.datasourceType(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.name(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.originCountry(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.xProperties(), postDatasourceConnectionParametersPropertiesModel);
-    assertEquals(addDatasourceConnectionOptionsModel.assetCategory(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.remoteNodes(), "testString");
-  }
+    String json = TestUtilities.serialize(postDatasourceConnectionParametersPropertiesModel);
 
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testAddDatasourceConnectionOptionsError() throws Throwable {
-    new AddDatasourceConnectionOptions.Builder().build();
+    PostDatasourceConnectionParametersProperties postDatasourceConnectionParametersPropertiesModelNew = TestUtilities.deserialize(json, PostDatasourceConnectionParametersProperties.class);
+    assertTrue(postDatasourceConnectionParametersPropertiesModelNew instanceof PostDatasourceConnectionParametersProperties);
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.accessToken(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.accountName(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.apiKey(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.authType(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.clientId(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.clientSecret(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.collection(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.credentials(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.database(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.host(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.httpPath(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.jarUris(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.jdbcDriver(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.jdbcUrl(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.password(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.port(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.projectId(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.xProperties(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.refreshToken(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.role(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.sapGatewayUrl(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.server(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.serviceName(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.sid(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.ssl(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.sslCertificate(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.sslCertificateHost(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.sslCertificateValidation(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.username(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModelNew.warehouse(), "testString");
   }
-
 }

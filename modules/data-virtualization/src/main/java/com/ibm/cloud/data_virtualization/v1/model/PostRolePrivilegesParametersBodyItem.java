@@ -16,15 +16,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * GrantUserToObjectRequestBodyItem.
+ * PostRolePrivilegesParametersBodyItem.
  */
-public class GrantUserToObjectRequestBodyItem extends GenericModel {
+public class PostRolePrivilegesParametersBodyItem extends GenericModel {
 
   @SerializedName("object_name")
   protected String objectName;
   @SerializedName("object_schema")
   protected String objectSchema;
-  protected String authid;
+  @SerializedName("role_to_grant")
+  protected String roleToGrant;
 
   /**
    * Builder.
@@ -32,12 +33,12 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
   public static class Builder {
     private String objectName;
     private String objectSchema;
-    private String authid;
+    private String roleToGrant;
 
-    private Builder(GrantUserToObjectRequestBodyItem grantUserToObjectRequestBodyItem) {
-      this.objectName = grantUserToObjectRequestBodyItem.objectName;
-      this.objectSchema = grantUserToObjectRequestBodyItem.objectSchema;
-      this.authid = grantUserToObjectRequestBodyItem.authid;
+    private Builder(PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItem) {
+      this.objectName = postRolePrivilegesParametersBodyItem.objectName;
+      this.objectSchema = postRolePrivilegesParametersBodyItem.objectSchema;
+      this.roleToGrant = postRolePrivilegesParametersBodyItem.roleToGrant;
     }
 
     /**
@@ -47,19 +48,19 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
     }
 
     /**
-     * Builds a GrantUserToObjectRequestBodyItem.
+     * Builds a PostRolePrivilegesParametersBodyItem.
      *
-     * @return the new GrantUserToObjectRequestBodyItem instance
+     * @return the new PostRolePrivilegesParametersBodyItem instance
      */
-    public GrantUserToObjectRequestBodyItem build() {
-      return new GrantUserToObjectRequestBodyItem(this);
+    public PostRolePrivilegesParametersBodyItem build() {
+      return new PostRolePrivilegesParametersBodyItem(this);
     }
 
     /**
      * Set the objectName.
      *
      * @param objectName the objectName
-     * @return the GrantUserToObjectRequestBodyItem builder
+     * @return the PostRolePrivilegesParametersBodyItem builder
      */
     public Builder objectName(String objectName) {
       this.objectName = objectName;
@@ -70,7 +71,7 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
      * Set the objectSchema.
      *
      * @param objectSchema the objectSchema
-     * @return the GrantUserToObjectRequestBodyItem builder
+     * @return the PostRolePrivilegesParametersBodyItem builder
      */
     public Builder objectSchema(String objectSchema) {
       this.objectSchema = objectSchema;
@@ -78,27 +79,27 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
     }
 
     /**
-     * Set the authid.
+     * Set the roleToGrant.
      *
-     * @param authid the authid
-     * @return the GrantUserToObjectRequestBodyItem builder
+     * @param roleToGrant the roleToGrant
+     * @return the PostRolePrivilegesParametersBodyItem builder
      */
-    public Builder authid(String authid) {
-      this.authid = authid;
+    public Builder roleToGrant(String roleToGrant) {
+      this.roleToGrant = roleToGrant;
       return this;
     }
   }
 
-  protected GrantUserToObjectRequestBodyItem(Builder builder) {
+  protected PostRolePrivilegesParametersBodyItem(Builder builder) {
     objectName = builder.objectName;
     objectSchema = builder.objectSchema;
-    authid = builder.authid;
+    roleToGrant = builder.roleToGrant;
   }
 
   /**
    * New builder.
    *
-   * @return a GrantUserToObjectRequestBodyItem builder
+   * @return a PostRolePrivilegesParametersBodyItem builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -107,7 +108,7 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
   /**
    * Gets the objectName.
    *
-   * The name of the virtualized object.
+   * The name of the virtualized table.
    *
    * @return the objectName
    */
@@ -118,7 +119,7 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
   /**
    * Gets the objectSchema.
    *
-   * The schema of the virtualized object.
+   * The schema of the virtualized table.
    *
    * @return the objectSchema
    */
@@ -127,15 +128,15 @@ public class GrantUserToObjectRequestBodyItem extends GenericModel {
   }
 
   /**
-   * Gets the authid.
+   * Gets the roleToGrant.
    *
    * The identifier of the authorization, if grant access to all users, the value is PUBLIC, othervise the value is the
    * data virtualization username.
    *
-   * @return the authid
+   * @return the roleToGrant
    */
-  public String authid() {
-    return authid;
+  public String roleToGrant() {
+    return roleToGrant;
   }
 }
 

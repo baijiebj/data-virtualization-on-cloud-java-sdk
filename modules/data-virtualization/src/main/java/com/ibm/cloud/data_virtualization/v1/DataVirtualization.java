@@ -23,14 +23,15 @@ import com.ibm.cloud.data_virtualization.v1.model.AddDatasourceConnectionOptions
 import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceNodesOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GetObjectsForRoleOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ObjectsForRoleResponse;
+import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeRoleFromObjectV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
-import com.ibm.cloud.data_virtualization.v1.model.SuccessResponse;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableV2Options;
 import com.ibm.cloud.sdk.core.http.RequestBuilder;
 import com.ibm.cloud.sdk.core.http.ResponseConverter;
@@ -98,14 +99,45 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
+   * Get data source connections.
+   *
+   * Gets all data source connections that are connected to the service.
+   *
+   * @param getDatasourceConnectionsOptions the {@link GetDatasourceConnectionsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link DatasourceNodesResponseV2}
+   */
+  public ServiceCall<DatasourceNodesResponseV2> getDatasourceConnections(GetDatasourceConnectionsOptions getDatasourceConnectionsOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/datasource_connections"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getDatasourceConnections");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    ResponseConverter<DatasourceNodesResponseV2> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DatasourceNodesResponseV2>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get data source connections.
+   *
+   * Gets all data source connections that are connected to the service.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link DatasourceNodesResponseV2}
+   */
+  public ServiceCall<DatasourceNodesResponseV2> getDatasourceConnections() {
+    return getDatasourceConnections(null);
+  }
+
+  /**
    * Add data source connection.
    *
    * Adds a data source connection to the Data Virtualization service.
    *
    * @param addDatasourceConnectionOptions the {@link AddDatasourceConnectionOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
+   * @return a {@link ServiceCall} with a result of type {@link PostDatasourceConnectionResponse}
    */
-  public ServiceCall<Void> addDatasourceConnection(AddDatasourceConnectionOptions addDatasourceConnectionOptions) {
+  public ServiceCall<PostDatasourceConnectionResponse> addDatasourceConnection(AddDatasourceConnectionOptions addDatasourceConnectionOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(addDatasourceConnectionOptions,
       "addDatasourceConnectionOptions cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/datasource_connections"));
@@ -113,6 +145,7 @@ public class DataVirtualization extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
+    builder.header("Accept", "application/json");
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("datasource_type", addDatasourceConnectionOptions.datasourceType());
     contentJson.addProperty("name", addDatasourceConnectionOptions.name());
@@ -125,7 +158,8 @@ public class DataVirtualization extends BaseService {
       contentJson.addProperty("remote_nodes", addDatasourceConnectionOptions.remoteNodes());
     }
     builder.bodyJson(contentJson);
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    ResponseConverter<PostDatasourceConnectionResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PostDatasourceConnectionResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -145,43 +179,10 @@ public class DataVirtualization extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("cid", deleteDatasourceConnectionOptions.cid());
-    contentJson.addProperty("connection_id", deleteDatasourceConnectionOptions.connectionId());
-    builder.bodyJson(contentJson);
+    builder.query("cid", String.valueOf(deleteDatasourceConnectionOptions.cid()));
+    builder.query("connection_id", String.valueOf(deleteDatasourceConnectionOptions.connectionId()));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get data source nodes.
-   *
-   * Gets all data source nodes that are connected to the service.
-   *
-   * @param getDatasourceNodesOptions the {@link GetDatasourceNodesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DatasourceNodesResponseV2}
-   */
-  public ServiceCall<DatasourceNodesResponseV2> getDatasourceNodes(GetDatasourceNodesOptions getDatasourceNodesOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/datasource_nodes"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getDatasourceNodes");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    ResponseConverter<DatasourceNodesResponseV2> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DatasourceNodesResponseV2>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get data source nodes.
-   *
-   * Gets all data source nodes that are connected to the service.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link DatasourceNodesResponseV2}
-   */
-  public ServiceCall<DatasourceNodesResponseV2> getDatasourceNodes() {
-    return getDatasourceNodes(null);
   }
 
   /**
@@ -189,28 +190,41 @@ public class DataVirtualization extends BaseService {
    *
    * Grants a user access to a specific virtualized table.
    *
-   * @param grantUserToObjectOptions the {@link GrantUserToObjectOptions} containing the options for the call
+   * @param grantUserToVirtualTableOptions the {@link GrantUserToVirtualTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Void> grantUserToObject(GrantUserToObjectOptions grantUserToObjectOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(grantUserToObjectOptions,
-      "grantUserToObjectOptions cannot be null");
+  public ServiceCall<Void> grantUserToVirtualTable(GrantUserToVirtualTableOptions grantUserToVirtualTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(grantUserToVirtualTableOptions,
+      "grantUserToVirtualTableOptions cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/privileges/users"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "grantUserToObject");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "grantUserToVirtualTable");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("body", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(grantUserToObjectOptions.body()));
+    if (grantUserToVirtualTableOptions.body() != null) {
+      contentJson.add("body", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(grantUserToVirtualTableOptions.body()));
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
+   * Grant user access.
+   *
+   * Grants a user access to a specific virtualized table.
+   *
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> grantUserToVirtualTable() {
+    return grantUserToVirtualTable(null);
+  }
+
+  /**
    * Revoke user acccess.
    *
-   * Revokes user access to the virtualized object.
+   * Revokes user access to the virtualized tables.
    *
    * @param revokeUserFromObjectOptions the {@link RevokeUserFromObjectOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -223,9 +237,9 @@ public class DataVirtualization extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("body", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(revokeUserFromObjectOptions.body()));
-    builder.bodyJson(contentJson);
+    builder.query("authid", String.valueOf(revokeUserFromObjectOptions.authid()));
+    builder.query("object_name", String.valueOf(revokeUserFromObjectOptions.objectName()));
+    builder.query("object_schema", String.valueOf(revokeUserFromObjectOptions.objectSchema()));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
@@ -233,7 +247,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Grant user role.
    *
-   * Grants a user role access to a specific virtualized object.
+   * Grants a user role access to a specific virtualized tables.
    *
    * @param grantRolesToVirtualizedTableOptions the {@link GrantRolesToVirtualizedTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -246,17 +260,30 @@ public class DataVirtualization extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.query("authid", String.valueOf(grantRolesToVirtualizedTableOptions.authid()));
-    builder.query("object_name", String.valueOf(grantRolesToVirtualizedTableOptions.objectName()));
-    builder.query("object_schema", String.valueOf(grantRolesToVirtualizedTableOptions.objectSchema()));
+    final JsonObject contentJson = new JsonObject();
+    if (grantRolesToVirtualizedTableOptions.body() != null) {
+      contentJson.add("body", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(grantRolesToVirtualizedTableOptions.body()));
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
+   * Grant user role.
+   *
+   * Grants a user role access to a specific virtualized tables.
+   *
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> grantRolesToVirtualizedTable() {
+    return grantRolesToVirtualizedTable(null);
+  }
+
+  /**
    * Delete role.
    *
-   * Revokes roles for a virtualized object.
+   * Revokes roles for a virtualized tables.
    *
    * @param revokeRoleFromObjectV2Options the {@link RevokeRoleFromObjectV2Options} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -269,30 +296,17 @@ public class DataVirtualization extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    final JsonObject contentJson = new JsonObject();
-    if (revokeRoleFromObjectV2Options.body() != null) {
-      contentJson.add("body", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(revokeRoleFromObjectV2Options.body()));
-    }
-    builder.bodyJson(contentJson);
+    builder.query("role_to_revoke", String.valueOf(revokeRoleFromObjectV2Options.roleToRevoke()));
+    builder.query("object_name", String.valueOf(revokeRoleFromObjectV2Options.objectName()));
+    builder.query("object_schema", String.valueOf(revokeRoleFromObjectV2Options.objectSchema()));
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Delete role.
-   *
-   * Revokes roles for a virtualized object.
-   *
-   * @return a {@link ServiceCall} with a void result
-   */
-  public ServiceCall<Void> revokeRoleFromObjectV2() {
-    return revokeRoleFromObjectV2(null);
-  }
-
-  /**
    * Get objects by role.
    *
-   * Retrieves the list of virtualized objects that have a specific role.
+   * Retrieves the list of virtualized tables or views that have a specific role.
    *
    * @param getObjectsForRoleOptions the {@link GetObjectsForRoleOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ObjectsForRoleResponse}
@@ -319,9 +333,9 @@ public class DataVirtualization extends BaseService {
    * Transforms a given data source table into a virtualized table.
    *
    * @param virtualizeTableV2Options the {@link VirtualizeTableV2Options} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   * @return a {@link ServiceCall} with a result of type {@link VirtualizeTableResponse}
    */
-  public ServiceCall<SuccessResponse> virtualizeTableV2(VirtualizeTableV2Options virtualizeTableV2Options) {
+  public ServiceCall<VirtualizeTableResponse> virtualizeTableV2(VirtualizeTableV2Options virtualizeTableV2Options) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(virtualizeTableV2Options,
       "virtualizeTableV2Options cannot be null");
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/virtualize/tables"));
@@ -344,13 +358,13 @@ public class DataVirtualization extends BaseService {
       contentJson.addProperty("replace", virtualizeTableV2Options.replace());
     }
     builder.bodyJson(contentJson);
-    ResponseConverter<SuccessResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    ResponseConverter<VirtualizeTableResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VirtualizeTableResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Delete table.
+   * Delete table or view.
    *
    * Removes the specified table. You must specify the schema and table name.
    *

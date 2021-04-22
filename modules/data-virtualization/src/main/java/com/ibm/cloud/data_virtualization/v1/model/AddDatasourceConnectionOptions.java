@@ -22,7 +22,7 @@ public class AddDatasourceConnectionOptions extends GenericModel {
   protected String datasourceType;
   protected String name;
   protected String originCountry;
-  protected PostDatasourceConnectionParametersV2Properties xProperties;
+  protected PostDatasourceConnectionParametersProperties xProperties;
   protected String assetCategory;
   protected String remoteNodes;
 
@@ -33,7 +33,7 @@ public class AddDatasourceConnectionOptions extends GenericModel {
     private String datasourceType;
     private String name;
     private String originCountry;
-    private PostDatasourceConnectionParametersV2Properties xProperties;
+    private PostDatasourceConnectionParametersProperties xProperties;
     private String assetCategory;
     private String remoteNodes;
 
@@ -60,7 +60,7 @@ public class AddDatasourceConnectionOptions extends GenericModel {
      * @param originCountry the originCountry
      * @param xProperties the xProperties
      */
-    public Builder(String datasourceType, String name, String originCountry, PostDatasourceConnectionParametersV2Properties xProperties) {
+    public Builder(String datasourceType, String name, String originCountry, PostDatasourceConnectionParametersProperties xProperties) {
       this.datasourceType = datasourceType;
       this.name = name;
       this.originCountry = originCountry;
@@ -115,7 +115,7 @@ public class AddDatasourceConnectionOptions extends GenericModel {
      * @param xProperties the xProperties
      * @return the AddDatasourceConnectionOptions builder
      */
-    public Builder xProperties(PostDatasourceConnectionParametersV2Properties xProperties) {
+    public Builder xProperties(PostDatasourceConnectionParametersProperties xProperties) {
       this.xProperties = xProperties;
       return this;
     }
@@ -207,7 +207,7 @@ public class AddDatasourceConnectionOptions extends GenericModel {
    *
    * @return the xProperties
    */
-  public PostDatasourceConnectionParametersV2Properties xProperties() {
+  public PostDatasourceConnectionParametersProperties xProperties() {
     return xProperties;
   }
 

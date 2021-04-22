@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.SuccessResponse;
+import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,15 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the SuccessResponse model.
+ * Unit test class for the PostDatasourceConnectionResponse model.
  */
-public class SuccessResponseTest {
+public class PostDatasourceConnectionResponseTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testSuccessResponse() throws Throwable {
-    SuccessResponse successResponseModel = new SuccessResponse();
-    assertNull(successResponseModel.getMessage());
+  public void testPostDatasourceConnectionResponse() throws Throwable {
+    PostDatasourceConnectionResponse postDatasourceConnectionResponseModel = new PostDatasourceConnectionResponse();
+    assertNull(postDatasourceConnectionResponseModel.getDatasourceType());
+    assertNull(postDatasourceConnectionResponseModel.getName());
   }
 }

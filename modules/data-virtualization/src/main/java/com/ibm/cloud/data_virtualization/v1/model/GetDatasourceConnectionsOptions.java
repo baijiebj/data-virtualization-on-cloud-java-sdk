@@ -15,19 +15,9 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * SuccessResponse.
+ * The getDatasourceConnections options.
  */
-public class SuccessResponse extends GenericModel {
+public class GetDatasourceConnectionsOptions extends GenericModel {
 
-  protected String message;
-
-  /**
-   * Gets the message.
-   *
-   * @return the message
-   */
-  public String getMessage() {
-    return message;
-  }
 }
 

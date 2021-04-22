@@ -12,9 +12,6 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,16 +19,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class RevokeUserFromObjectOptions extends GenericModel {
 
-  protected List<RevokeUserFromObjectRequestBodyItem> body;
+  protected String authid;
+  protected String objectName;
+  protected String objectSchema;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<RevokeUserFromObjectRequestBodyItem> body;
+    private String authid;
+    private String objectName;
+    private String objectSchema;
 
     private Builder(RevokeUserFromObjectOptions revokeUserFromObjectOptions) {
-      this.body = revokeUserFromObjectOptions.body;
+      this.authid = revokeUserFromObjectOptions.authid;
+      this.objectName = revokeUserFromObjectOptions.objectName;
+      this.objectSchema = revokeUserFromObjectOptions.objectSchema;
     }
 
     /**
@@ -43,10 +46,14 @@ public class RevokeUserFromObjectOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param body the body
+     * @param authid the authid
+     * @param objectName the objectName
+     * @param objectSchema the objectSchema
      */
-    public Builder(List<RevokeUserFromObjectRequestBodyItem> body) {
-      this.body = body;
+    public Builder(String authid, String objectName, String objectSchema) {
+      this.authid = authid;
+      this.objectName = objectName;
+      this.objectSchema = objectSchema;
     }
 
     /**
@@ -59,38 +66,49 @@ public class RevokeUserFromObjectOptions extends GenericModel {
     }
 
     /**
-     * Adds an body to body.
+     * Set the authid.
      *
-     * @param body the new body
+     * @param authid the authid
      * @return the RevokeUserFromObjectOptions builder
      */
-    public Builder addBody(RevokeUserFromObjectRequestBodyItem body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<RevokeUserFromObjectRequestBodyItem>();
-      }
-      this.body.add(body);
+    public Builder authid(String authid) {
+      this.authid = authid;
       return this;
     }
 
     /**
-     * Set the body.
-     * Existing body will be replaced.
+     * Set the objectName.
      *
-     * @param body the body
+     * @param objectName the objectName
      * @return the RevokeUserFromObjectOptions builder
      */
-    public Builder body(List<RevokeUserFromObjectRequestBodyItem> body) {
-      this.body = body;
+    public Builder objectName(String objectName) {
+      this.objectName = objectName;
+      return this;
+    }
+
+    /**
+     * Set the objectSchema.
+     *
+     * @param objectSchema the objectSchema
+     * @return the RevokeUserFromObjectOptions builder
+     */
+    public Builder objectSchema(String objectSchema) {
+      this.objectSchema = objectSchema;
       return this;
     }
   }
 
   protected RevokeUserFromObjectOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.body,
-      "body cannot be null");
-    body = builder.body;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.authid,
+      "authid cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectName,
+      "objectName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.objectSchema,
+      "objectSchema cannot be null");
+    authid = builder.authid;
+    objectName = builder.objectName;
+    objectSchema = builder.objectSchema;
   }
 
   /**
@@ -103,12 +121,37 @@ public class RevokeUserFromObjectOptions extends GenericModel {
   }
 
   /**
-   * Gets the body.
+   * Gets the authid.
    *
-   * @return the body
+   * The Data Virtualization user name, if the value is PUBLIC, it means revoke access privilege from all Data
+   * Virtualization users.
+   *
+   * @return the authid
    */
-  public List<RevokeUserFromObjectRequestBodyItem> body() {
-    return body;
+  public String authid() {
+    return authid;
+  }
+
+  /**
+   * Gets the objectName.
+   *
+   * The virtualized table's name.
+   *
+   * @return the objectName
+   */
+  public String objectName() {
+    return objectName;
+  }
+
+  /**
+   * Gets the objectSchema.
+   *
+   * The virtualized table's schema name.
+   *
+   * @return the objectSchema
+   */
+  public String objectSchema() {
+    return objectSchema;
   }
 }
 

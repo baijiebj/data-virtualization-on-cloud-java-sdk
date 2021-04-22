@@ -16,9 +16,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * PostDatasourceConnectionParametersV2Properties.
+ * PostDatasourceConnectionParametersProperties.
  */
-public class PostDatasourceConnectionParametersV2Properties extends GenericModel {
+public class PostDatasourceConnectionParametersProperties extends GenericModel {
 
   @SerializedName("access_token")
   protected String accessToken;
@@ -32,6 +32,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
   protected String clientId;
   @SerializedName("client_secret")
   protected String clientSecret;
+  protected String collection;
   protected String credentials;
   protected String database;
   protected String host;
@@ -51,6 +52,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
   protected String xProperties;
   @SerializedName("refresh_token")
   protected String refreshToken;
+  protected String role;
   @SerializedName("sap_gateway_url")
   protected String sapGatewayUrl;
   protected String server;
@@ -77,6 +79,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     private String authType;
     private String clientId;
     private String clientSecret;
+    private String collection;
     private String credentials;
     private String database;
     private String host;
@@ -89,6 +92,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     private String projectId;
     private String xProperties;
     private String refreshToken;
+    private String role;
     private String sapGatewayUrl;
     private String server;
     private String serviceName;
@@ -100,35 +104,37 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     private String username;
     private String warehouse;
 
-    private Builder(PostDatasourceConnectionParametersV2Properties postDatasourceConnectionParametersV2Properties) {
-      this.accessToken = postDatasourceConnectionParametersV2Properties.accessToken;
-      this.accountName = postDatasourceConnectionParametersV2Properties.accountName;
-      this.apiKey = postDatasourceConnectionParametersV2Properties.apiKey;
-      this.authType = postDatasourceConnectionParametersV2Properties.authType;
-      this.clientId = postDatasourceConnectionParametersV2Properties.clientId;
-      this.clientSecret = postDatasourceConnectionParametersV2Properties.clientSecret;
-      this.credentials = postDatasourceConnectionParametersV2Properties.credentials;
-      this.database = postDatasourceConnectionParametersV2Properties.database;
-      this.host = postDatasourceConnectionParametersV2Properties.host;
-      this.httpPath = postDatasourceConnectionParametersV2Properties.httpPath;
-      this.jarUris = postDatasourceConnectionParametersV2Properties.jarUris;
-      this.jdbcDriver = postDatasourceConnectionParametersV2Properties.jdbcDriver;
-      this.jdbcUrl = postDatasourceConnectionParametersV2Properties.jdbcUrl;
-      this.password = postDatasourceConnectionParametersV2Properties.password;
-      this.port = postDatasourceConnectionParametersV2Properties.port;
-      this.projectId = postDatasourceConnectionParametersV2Properties.projectId;
-      this.xProperties = postDatasourceConnectionParametersV2Properties.xProperties;
-      this.refreshToken = postDatasourceConnectionParametersV2Properties.refreshToken;
-      this.sapGatewayUrl = postDatasourceConnectionParametersV2Properties.sapGatewayUrl;
-      this.server = postDatasourceConnectionParametersV2Properties.server;
-      this.serviceName = postDatasourceConnectionParametersV2Properties.serviceName;
-      this.sid = postDatasourceConnectionParametersV2Properties.sid;
-      this.ssl = postDatasourceConnectionParametersV2Properties.ssl;
-      this.sslCertificate = postDatasourceConnectionParametersV2Properties.sslCertificate;
-      this.sslCertificateHost = postDatasourceConnectionParametersV2Properties.sslCertificateHost;
-      this.sslCertificateValidation = postDatasourceConnectionParametersV2Properties.sslCertificateValidation;
-      this.username = postDatasourceConnectionParametersV2Properties.username;
-      this.warehouse = postDatasourceConnectionParametersV2Properties.warehouse;
+    private Builder(PostDatasourceConnectionParametersProperties postDatasourceConnectionParametersProperties) {
+      this.accessToken = postDatasourceConnectionParametersProperties.accessToken;
+      this.accountName = postDatasourceConnectionParametersProperties.accountName;
+      this.apiKey = postDatasourceConnectionParametersProperties.apiKey;
+      this.authType = postDatasourceConnectionParametersProperties.authType;
+      this.clientId = postDatasourceConnectionParametersProperties.clientId;
+      this.clientSecret = postDatasourceConnectionParametersProperties.clientSecret;
+      this.collection = postDatasourceConnectionParametersProperties.collection;
+      this.credentials = postDatasourceConnectionParametersProperties.credentials;
+      this.database = postDatasourceConnectionParametersProperties.database;
+      this.host = postDatasourceConnectionParametersProperties.host;
+      this.httpPath = postDatasourceConnectionParametersProperties.httpPath;
+      this.jarUris = postDatasourceConnectionParametersProperties.jarUris;
+      this.jdbcDriver = postDatasourceConnectionParametersProperties.jdbcDriver;
+      this.jdbcUrl = postDatasourceConnectionParametersProperties.jdbcUrl;
+      this.password = postDatasourceConnectionParametersProperties.password;
+      this.port = postDatasourceConnectionParametersProperties.port;
+      this.projectId = postDatasourceConnectionParametersProperties.projectId;
+      this.xProperties = postDatasourceConnectionParametersProperties.xProperties;
+      this.refreshToken = postDatasourceConnectionParametersProperties.refreshToken;
+      this.role = postDatasourceConnectionParametersProperties.role;
+      this.sapGatewayUrl = postDatasourceConnectionParametersProperties.sapGatewayUrl;
+      this.server = postDatasourceConnectionParametersProperties.server;
+      this.serviceName = postDatasourceConnectionParametersProperties.serviceName;
+      this.sid = postDatasourceConnectionParametersProperties.sid;
+      this.ssl = postDatasourceConnectionParametersProperties.ssl;
+      this.sslCertificate = postDatasourceConnectionParametersProperties.sslCertificate;
+      this.sslCertificateHost = postDatasourceConnectionParametersProperties.sslCertificateHost;
+      this.sslCertificateValidation = postDatasourceConnectionParametersProperties.sslCertificateValidation;
+      this.username = postDatasourceConnectionParametersProperties.username;
+      this.warehouse = postDatasourceConnectionParametersProperties.warehouse;
     }
 
     /**
@@ -138,19 +144,19 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     }
 
     /**
-     * Builds a PostDatasourceConnectionParametersV2Properties.
+     * Builds a PostDatasourceConnectionParametersProperties.
      *
-     * @return the new PostDatasourceConnectionParametersV2Properties instance
+     * @return the new PostDatasourceConnectionParametersProperties instance
      */
-    public PostDatasourceConnectionParametersV2Properties build() {
-      return new PostDatasourceConnectionParametersV2Properties(this);
+    public PostDatasourceConnectionParametersProperties build() {
+      return new PostDatasourceConnectionParametersProperties(this);
     }
 
     /**
      * Set the accessToken.
      *
      * @param accessToken the accessToken
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder accessToken(String accessToken) {
       this.accessToken = accessToken;
@@ -161,7 +167,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the accountName.
      *
      * @param accountName the accountName
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder accountName(String accountName) {
       this.accountName = accountName;
@@ -172,7 +178,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the apiKey.
      *
      * @param apiKey the apiKey
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder apiKey(String apiKey) {
       this.apiKey = apiKey;
@@ -183,7 +189,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the authType.
      *
      * @param authType the authType
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder authType(String authType) {
       this.authType = authType;
@@ -194,7 +200,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the clientId.
      *
      * @param clientId the clientId
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder clientId(String clientId) {
       this.clientId = clientId;
@@ -205,7 +211,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the clientSecret.
      *
      * @param clientSecret the clientSecret
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder clientSecret(String clientSecret) {
       this.clientSecret = clientSecret;
@@ -213,10 +219,21 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     }
 
     /**
+     * Set the collection.
+     *
+     * @param collection the collection
+     * @return the PostDatasourceConnectionParametersProperties builder
+     */
+    public Builder collection(String collection) {
+      this.collection = collection;
+      return this;
+    }
+
+    /**
      * Set the credentials.
      *
      * @param credentials the credentials
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder credentials(String credentials) {
       this.credentials = credentials;
@@ -227,7 +244,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the database.
      *
      * @param database the database
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder database(String database) {
       this.database = database;
@@ -238,7 +255,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the host.
      *
      * @param host the host
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder host(String host) {
       this.host = host;
@@ -249,7 +266,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the httpPath.
      *
      * @param httpPath the httpPath
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder httpPath(String httpPath) {
       this.httpPath = httpPath;
@@ -260,7 +277,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the jarUris.
      *
      * @param jarUris the jarUris
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder jarUris(String jarUris) {
       this.jarUris = jarUris;
@@ -271,7 +288,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the jdbcDriver.
      *
      * @param jdbcDriver the jdbcDriver
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder jdbcDriver(String jdbcDriver) {
       this.jdbcDriver = jdbcDriver;
@@ -282,7 +299,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the jdbcUrl.
      *
      * @param jdbcUrl the jdbcUrl
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder jdbcUrl(String jdbcUrl) {
       this.jdbcUrl = jdbcUrl;
@@ -293,7 +310,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the password.
      *
      * @param password the password
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder password(String password) {
       this.password = password;
@@ -304,7 +321,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the port.
      *
      * @param port the port
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder port(String port) {
       this.port = port;
@@ -315,7 +332,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the projectId.
      *
      * @param projectId the projectId
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder projectId(String projectId) {
       this.projectId = projectId;
@@ -326,7 +343,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the xProperties.
      *
      * @param xProperties the xProperties
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder xProperties(String xProperties) {
       this.xProperties = xProperties;
@@ -337,7 +354,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the refreshToken.
      *
      * @param refreshToken the refreshToken
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder refreshToken(String refreshToken) {
       this.refreshToken = refreshToken;
@@ -345,10 +362,21 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     }
 
     /**
+     * Set the role.
+     *
+     * @param role the role
+     * @return the PostDatasourceConnectionParametersProperties builder
+     */
+    public Builder role(String role) {
+      this.role = role;
+      return this;
+    }
+
+    /**
      * Set the sapGatewayUrl.
      *
      * @param sapGatewayUrl the sapGatewayUrl
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder sapGatewayUrl(String sapGatewayUrl) {
       this.sapGatewayUrl = sapGatewayUrl;
@@ -359,7 +387,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the server.
      *
      * @param server the server
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder server(String server) {
       this.server = server;
@@ -370,7 +398,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the serviceName.
      *
      * @param serviceName the serviceName
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder serviceName(String serviceName) {
       this.serviceName = serviceName;
@@ -381,7 +409,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the sid.
      *
      * @param sid the sid
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder sid(String sid) {
       this.sid = sid;
@@ -392,7 +420,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the ssl.
      *
      * @param ssl the ssl
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder ssl(String ssl) {
       this.ssl = ssl;
@@ -403,7 +431,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the sslCertificate.
      *
      * @param sslCertificate the sslCertificate
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder sslCertificate(String sslCertificate) {
       this.sslCertificate = sslCertificate;
@@ -414,7 +442,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the sslCertificateHost.
      *
      * @param sslCertificateHost the sslCertificateHost
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder sslCertificateHost(String sslCertificateHost) {
       this.sslCertificateHost = sslCertificateHost;
@@ -425,7 +453,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the sslCertificateValidation.
      *
      * @param sslCertificateValidation the sslCertificateValidation
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder sslCertificateValidation(String sslCertificateValidation) {
       this.sslCertificateValidation = sslCertificateValidation;
@@ -436,7 +464,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the username.
      *
      * @param username the username
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder username(String username) {
       this.username = username;
@@ -447,7 +475,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
      * Set the warehouse.
      *
      * @param warehouse the warehouse
-     * @return the PostDatasourceConnectionParametersV2Properties builder
+     * @return the PostDatasourceConnectionParametersProperties builder
      */
     public Builder warehouse(String warehouse) {
       this.warehouse = warehouse;
@@ -455,13 +483,14 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     }
   }
 
-  protected PostDatasourceConnectionParametersV2Properties(Builder builder) {
+  protected PostDatasourceConnectionParametersProperties(Builder builder) {
     accessToken = builder.accessToken;
     accountName = builder.accountName;
     apiKey = builder.apiKey;
     authType = builder.authType;
     clientId = builder.clientId;
     clientSecret = builder.clientSecret;
+    collection = builder.collection;
     credentials = builder.credentials;
     database = builder.database;
     host = builder.host;
@@ -474,6 +503,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
     projectId = builder.projectId;
     xProperties = builder.xProperties;
     refreshToken = builder.refreshToken;
+    role = builder.role;
     sapGatewayUrl = builder.sapGatewayUrl;
     server = builder.server;
     serviceName = builder.serviceName;
@@ -489,7 +519,7 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
   /**
    * New builder.
    *
-   * @return a PostDatasourceConnectionParametersV2Properties builder
+   * @return a PostDatasourceConnectionParametersProperties builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -547,6 +577,15 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
    */
   public String clientSecret() {
     return clientSecret;
+  }
+
+  /**
+   * Gets the collection.
+   *
+   * @return the collection
+   */
+  public String collection() {
+    return collection;
   }
 
   /**
@@ -655,6 +694,15 @@ public class PostDatasourceConnectionParametersV2Properties extends GenericModel
    */
   public String refreshToken() {
     return refreshToken;
+  }
+
+  /**
+   * Gets the role.
+   *
+   * @return the role
+   */
+  public String role() {
+    return role;
   }
 
   /**

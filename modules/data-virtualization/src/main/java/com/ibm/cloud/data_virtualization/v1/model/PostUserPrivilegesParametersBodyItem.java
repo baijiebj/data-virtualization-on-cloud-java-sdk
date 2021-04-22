@@ -16,16 +16,15 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * RevokeRoleFromObjectV2RequestBodyItem.
+ * PostUserPrivilegesParametersBodyItem.
  */
-public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
+public class PostUserPrivilegesParametersBodyItem extends GenericModel {
 
   @SerializedName("object_name")
   protected String objectName;
   @SerializedName("object_schema")
   protected String objectSchema;
-  @SerializedName("role_to_revoke")
-  protected String roleToRevoke;
+  protected String authid;
 
   /**
    * Builder.
@@ -33,12 +32,12 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
   public static class Builder {
     private String objectName;
     private String objectSchema;
-    private String roleToRevoke;
+    private String authid;
 
-    private Builder(RevokeRoleFromObjectV2RequestBodyItem revokeRoleFromObjectV2RequestBodyItem) {
-      this.objectName = revokeRoleFromObjectV2RequestBodyItem.objectName;
-      this.objectSchema = revokeRoleFromObjectV2RequestBodyItem.objectSchema;
-      this.roleToRevoke = revokeRoleFromObjectV2RequestBodyItem.roleToRevoke;
+    private Builder(PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItem) {
+      this.objectName = postUserPrivilegesParametersBodyItem.objectName;
+      this.objectSchema = postUserPrivilegesParametersBodyItem.objectSchema;
+      this.authid = postUserPrivilegesParametersBodyItem.authid;
     }
 
     /**
@@ -48,19 +47,19 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
     }
 
     /**
-     * Builds a RevokeRoleFromObjectV2RequestBodyItem.
+     * Builds a PostUserPrivilegesParametersBodyItem.
      *
-     * @return the new RevokeRoleFromObjectV2RequestBodyItem instance
+     * @return the new PostUserPrivilegesParametersBodyItem instance
      */
-    public RevokeRoleFromObjectV2RequestBodyItem build() {
-      return new RevokeRoleFromObjectV2RequestBodyItem(this);
+    public PostUserPrivilegesParametersBodyItem build() {
+      return new PostUserPrivilegesParametersBodyItem(this);
     }
 
     /**
      * Set the objectName.
      *
      * @param objectName the objectName
-     * @return the RevokeRoleFromObjectV2RequestBodyItem builder
+     * @return the PostUserPrivilegesParametersBodyItem builder
      */
     public Builder objectName(String objectName) {
       this.objectName = objectName;
@@ -71,7 +70,7 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
      * Set the objectSchema.
      *
      * @param objectSchema the objectSchema
-     * @return the RevokeRoleFromObjectV2RequestBodyItem builder
+     * @return the PostUserPrivilegesParametersBodyItem builder
      */
     public Builder objectSchema(String objectSchema) {
       this.objectSchema = objectSchema;
@@ -79,27 +78,27 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
     }
 
     /**
-     * Set the roleToRevoke.
+     * Set the authid.
      *
-     * @param roleToRevoke the roleToRevoke
-     * @return the RevokeRoleFromObjectV2RequestBodyItem builder
+     * @param authid the authid
+     * @return the PostUserPrivilegesParametersBodyItem builder
      */
-    public Builder roleToRevoke(String roleToRevoke) {
-      this.roleToRevoke = roleToRevoke;
+    public Builder authid(String authid) {
+      this.authid = authid;
       return this;
     }
   }
 
-  protected RevokeRoleFromObjectV2RequestBodyItem(Builder builder) {
+  protected PostUserPrivilegesParametersBodyItem(Builder builder) {
     objectName = builder.objectName;
     objectSchema = builder.objectSchema;
-    roleToRevoke = builder.roleToRevoke;
+    authid = builder.authid;
   }
 
   /**
    * New builder.
    *
-   * @return a RevokeRoleFromObjectV2RequestBodyItem builder
+   * @return a PostUserPrivilegesParametersBodyItem builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -108,7 +107,7 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
   /**
    * Gets the objectName.
    *
-   * The name of the virtual object.
+   * The name of the virtualized table.
    *
    * @return the objectName
    */
@@ -119,7 +118,7 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
   /**
    * Gets the objectSchema.
    *
-   * The schema of the virtual object.
+   * The schema of the virtualized table.
    *
    * @return the objectSchema
    */
@@ -128,14 +127,15 @@ public class RevokeRoleFromObjectV2RequestBodyItem extends GenericModel {
   }
 
   /**
-   * Gets the roleToRevoke.
+   * Gets the authid.
    *
-   * The role to revoke from the user.
+   * The identifier of the authorization, if grant access to all users, the value is PUBLIC, othervise the value is the
+   * data virtualization username.
    *
-   * @return the roleToRevoke
+   * @return the authid
    */
-  public String roleToRevoke() {
-    return roleToRevoke;
+  public String authid() {
+    return authid;
   }
 }
 

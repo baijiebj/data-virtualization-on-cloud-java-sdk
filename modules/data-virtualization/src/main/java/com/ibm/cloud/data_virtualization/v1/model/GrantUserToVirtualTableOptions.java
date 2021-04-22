@@ -18,20 +18,20 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The grantUserToObject options.
+ * The grantUserToVirtualTable options.
  */
-public class GrantUserToObjectOptions extends GenericModel {
+public class GrantUserToVirtualTableOptions extends GenericModel {
 
-  protected List<GrantUserToObjectRequestBodyItem> body;
+  protected List<PostUserPrivilegesParametersBodyItem> body;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<GrantUserToObjectRequestBodyItem> body;
+    private List<PostUserPrivilegesParametersBodyItem> body;
 
-    private Builder(GrantUserToObjectOptions grantUserToObjectOptions) {
-      this.body = grantUserToObjectOptions.body;
+    private Builder(GrantUserToVirtualTableOptions grantUserToVirtualTableOptions) {
+      this.body = grantUserToVirtualTableOptions.body;
     }
 
     /**
@@ -41,34 +41,25 @@ public class GrantUserToObjectOptions extends GenericModel {
     }
 
     /**
-     * Instantiates a new builder with required properties.
+     * Builds a GrantUserToVirtualTableOptions.
      *
-     * @param body the body
+     * @return the new GrantUserToVirtualTableOptions instance
      */
-    public Builder(List<GrantUserToObjectRequestBodyItem> body) {
-      this.body = body;
-    }
-
-    /**
-     * Builds a GrantUserToObjectOptions.
-     *
-     * @return the new GrantUserToObjectOptions instance
-     */
-    public GrantUserToObjectOptions build() {
-      return new GrantUserToObjectOptions(this);
+    public GrantUserToVirtualTableOptions build() {
+      return new GrantUserToVirtualTableOptions(this);
     }
 
     /**
      * Adds an body to body.
      *
      * @param body the new body
-     * @return the GrantUserToObjectOptions builder
+     * @return the GrantUserToVirtualTableOptions builder
      */
-    public Builder addBody(GrantUserToObjectRequestBodyItem body) {
+    public Builder addBody(PostUserPrivilegesParametersBodyItem body) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(body,
         "body cannot be null");
       if (this.body == null) {
-        this.body = new ArrayList<GrantUserToObjectRequestBodyItem>();
+        this.body = new ArrayList<PostUserPrivilegesParametersBodyItem>();
       }
       this.body.add(body);
       return this;
@@ -79,24 +70,22 @@ public class GrantUserToObjectOptions extends GenericModel {
      * Existing body will be replaced.
      *
      * @param body the body
-     * @return the GrantUserToObjectOptions builder
+     * @return the GrantUserToVirtualTableOptions builder
      */
-    public Builder body(List<GrantUserToObjectRequestBodyItem> body) {
+    public Builder body(List<PostUserPrivilegesParametersBodyItem> body) {
       this.body = body;
       return this;
     }
   }
 
-  protected GrantUserToObjectOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.body,
-      "body cannot be null");
+  protected GrantUserToVirtualTableOptions(Builder builder) {
     body = builder.body;
   }
 
   /**
    * New builder.
    *
-   * @return a GrantUserToObjectOptions builder
+   * @return a GrantUserToVirtualTableOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -107,7 +96,7 @@ public class GrantUserToObjectOptions extends GenericModel {
    *
    * @return the body
    */
-  public List<GrantUserToObjectRequestBodyItem> body() {
+  public List<PostUserPrivilegesParametersBodyItem> body() {
     return body;
   }
 }

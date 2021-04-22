@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToObjectOptions;
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToObjectRequestBodyItem;
+import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.PostUserPrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -26,32 +26,26 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GrantUserToObjectOptions model.
+ * Unit test class for the GrantUserToVirtualTableOptions model.
  */
-public class GrantUserToObjectOptionsTest {
+public class GrantUserToVirtualTableOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGrantUserToObjectOptions() throws Throwable {
-    GrantUserToObjectRequestBodyItem grantUserToObjectRequestBodyItemModel = new GrantUserToObjectRequestBodyItem.Builder()
+  public void testGrantUserToVirtualTableOptions() throws Throwable {
+    PostUserPrivilegesParametersBodyItem postUserPrivilegesParametersBodyItemModel = new PostUserPrivilegesParametersBodyItem.Builder()
       .objectName("EMPLOYEE")
       .objectSchema("USER999")
       .authid("PUBLIC")
       .build();
-    assertEquals(grantUserToObjectRequestBodyItemModel.objectName(), "EMPLOYEE");
-    assertEquals(grantUserToObjectRequestBodyItemModel.objectSchema(), "USER999");
-    assertEquals(grantUserToObjectRequestBodyItemModel.authid(), "PUBLIC");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.objectName(), "EMPLOYEE");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.objectSchema(), "USER999");
+    assertEquals(postUserPrivilegesParametersBodyItemModel.authid(), "PUBLIC");
 
-    GrantUserToObjectOptions grantUserToObjectOptionsModel = new GrantUserToObjectOptions.Builder()
-      .body(new java.util.ArrayList<GrantUserToObjectRequestBodyItem>(java.util.Arrays.asList(grantUserToObjectRequestBodyItemModel)))
+    GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()
+      .body(new java.util.ArrayList<PostUserPrivilegesParametersBodyItem>(java.util.Arrays.asList(postUserPrivilegesParametersBodyItemModel)))
       .build();
-    assertEquals(grantUserToObjectOptionsModel.body(), new java.util.ArrayList<GrantUserToObjectRequestBodyItem>(java.util.Arrays.asList(grantUserToObjectRequestBodyItemModel)));
+    assertEquals(grantUserToVirtualTableOptionsModel.body(), new java.util.ArrayList<PostUserPrivilegesParametersBodyItem>(java.util.Arrays.asList(postUserPrivilegesParametersBodyItemModel)));
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantUserToObjectOptionsError() throws Throwable {
-    new GrantUserToObjectOptions.Builder().build();
-  }
-
 }

@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceNodesOptions;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,15 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GetDatasourceNodesOptions model.
+ * Unit test class for the VirtualizeTableResponse model.
  */
-public class GetDatasourceNodesOptionsTest {
+public class VirtualizeTableResponseTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGetDatasourceNodesOptions() throws Throwable {
-    GetDatasourceNodesOptions getDatasourceNodesOptionsModel = new GetDatasourceNodesOptions();
-    assertNotNull(getDatasourceNodesOptionsModel);
+  public void testVirtualizeTableResponse() throws Throwable {
+    VirtualizeTableResponse virtualizeTableResponseModel = new VirtualizeTableResponse();
+    assertNull(virtualizeTableResponseModel.getSourceName());
+    assertNull(virtualizeTableResponseModel.getVirtualName());
+    assertNull(virtualizeTableResponseModel.getVirtualSchema());
   }
 }

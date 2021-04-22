@@ -104,7 +104,7 @@ public class DeleteTableOptions extends GenericModel {
   /**
    * Gets the schemaName.
    *
-   * The schema of table or view to be deleted.
+   * The schema of table to be deleted.
    *
    * @return the schemaName
    */
@@ -115,7 +115,7 @@ public class DeleteTableOptions extends GenericModel {
   /**
    * Gets the objectName.
    *
-   * The name of table or view to be deleted.
+   * The name of table to be deleted.
    *
    * @return the objectName
    */
