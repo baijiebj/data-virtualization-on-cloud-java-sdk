@@ -13,37 +13,29 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.DatasourceConnectionsList;
+import com.ibm.cloud.data_virtualization.v1.model.DatasourceConnectionsListDatasourceConnectionsItem;
+import com.ibm.cloud.data_virtualization.v1.model.DatasourceConnectionsListDatasourceConnectionsItemDataSourcesItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GrantUserToVirtualTableOptions model.
+ * Unit test class for the DatasourceConnectionsList model.
  */
-public class GrantUserToVirtualTableOptionsTest {
+public class DatasourceConnectionsListTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGrantUserToVirtualTableOptions() throws Throwable {
-    GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()
-      .tableName("EMPLOYEE")
-      .tableSchema("dv_ibmid_060000s4y5")
-      .authid("PUBLIC")
-      .build();
-    assertEquals(grantUserToVirtualTableOptionsModel.tableName(), "EMPLOYEE");
-    assertEquals(grantUserToVirtualTableOptionsModel.tableSchema(), "dv_ibmid_060000s4y5");
-    assertEquals(grantUserToVirtualTableOptionsModel.authid(), "PUBLIC");
+  public void testDatasourceConnectionsList() throws Throwable {
+    DatasourceConnectionsList datasourceConnectionsListModel = new DatasourceConnectionsList();
+    assertNull(datasourceConnectionsListModel.getDatasourceConnections());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantUserToVirtualTableOptionsError() throws Throwable {
-    new GrantUserToVirtualTableOptions.Builder().build();
-  }
-
 }

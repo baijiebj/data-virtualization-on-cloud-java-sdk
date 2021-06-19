@@ -14,12 +14,9 @@
 package com.ibm.cloud.data_virtualization.v1.model;
 
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
-import com.ibm.cloud.data_virtualization.v1.model.PostRolePrivilegesParametersBodyItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
@@ -34,18 +31,19 @@ public class GrantRolesToVirtualizedTableOptionsTest {
 
   @Test
   public void testGrantRolesToVirtualizedTableOptions() throws Throwable {
-    PostRolePrivilegesParametersBodyItem postRolePrivilegesParametersBodyItemModel = new PostRolePrivilegesParametersBodyItem.Builder()
-      .tableName("EMPLOYEE")
-      .tableSchema("USER999")
-      .roleToGrant("PUBLIC")
-      .build();
-    assertEquals(postRolePrivilegesParametersBodyItemModel.tableName(), "EMPLOYEE");
-    assertEquals(postRolePrivilegesParametersBodyItemModel.tableSchema(), "USER999");
-    assertEquals(postRolePrivilegesParametersBodyItemModel.roleToGrant(), "PUBLIC");
-
     GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptionsModel = new GrantRolesToVirtualizedTableOptions.Builder()
-      .body(new java.util.ArrayList<PostRolePrivilegesParametersBodyItem>(java.util.Arrays.asList(postRolePrivilegesParametersBodyItemModel)))
+      .tableName("EMPLOYEE")
+      .tableSchema("dv_ibmid_060000s4y5")
+      .roleName("PUBLIC")
       .build();
-    assertEquals(grantRolesToVirtualizedTableOptionsModel.body(), new java.util.ArrayList<PostRolePrivilegesParametersBodyItem>(java.util.Arrays.asList(postRolePrivilegesParametersBodyItemModel)));
+    assertEquals(grantRolesToVirtualizedTableOptionsModel.tableName(), "EMPLOYEE");
+    assertEquals(grantRolesToVirtualizedTableOptionsModel.tableSchema(), "dv_ibmid_060000s4y5");
+    assertEquals(grantRolesToVirtualizedTableOptionsModel.roleName(), "PUBLIC");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testGrantRolesToVirtualizedTableOptionsError() throws Throwable {
+    new GrantRolesToVirtualizedTableOptions.Builder().build();
+  }
+
 }

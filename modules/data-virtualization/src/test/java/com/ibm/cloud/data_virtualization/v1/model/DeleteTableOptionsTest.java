@@ -32,11 +32,11 @@ public class DeleteTableOptionsTest {
   @Test
   public void testDeleteTableOptions() throws Throwable {
     DeleteTableOptions deleteTableOptionsModel = new DeleteTableOptions.Builder()
-      .schemaName("testString")
-      .tableName("testString")
+      .virtualSchema("testString")
+      .virtualName("testString")
       .build();
-    assertEquals(deleteTableOptionsModel.schemaName(), "testString");
-    assertEquals(deleteTableOptionsModel.tableName(), "testString");
+    assertEquals(deleteTableOptionsModel.virtualSchema(), "testString");
+    assertEquals(deleteTableOptionsModel.virtualName(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

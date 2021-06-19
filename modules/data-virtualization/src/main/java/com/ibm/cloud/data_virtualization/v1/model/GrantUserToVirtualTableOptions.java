@@ -12,9 +12,6 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,22 +19,41 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GrantUserToVirtualTableOptions extends GenericModel {
 
-  protected List<PostUserPrivilegesParametersBodyItem> body;
+  protected String tableName;
+  protected String tableSchema;
+  protected String authid;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<PostUserPrivilegesParametersBodyItem> body;
+    private String tableName;
+    private String tableSchema;
+    private String authid;
 
     private Builder(GrantUserToVirtualTableOptions grantUserToVirtualTableOptions) {
-      this.body = grantUserToVirtualTableOptions.body;
+      this.tableName = grantUserToVirtualTableOptions.tableName;
+      this.tableSchema = grantUserToVirtualTableOptions.tableSchema;
+      this.authid = grantUserToVirtualTableOptions.authid;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param tableName the tableName
+     * @param tableSchema the tableSchema
+     * @param authid the authid
+     */
+    public Builder(String tableName, String tableSchema, String authid) {
+      this.tableName = tableName;
+      this.tableSchema = tableSchema;
+      this.authid = authid;
     }
 
     /**
@@ -50,36 +66,49 @@ public class GrantUserToVirtualTableOptions extends GenericModel {
     }
 
     /**
-     * Adds an body to body.
+     * Set the tableName.
      *
-     * @param body the new body
+     * @param tableName the tableName
      * @return the GrantUserToVirtualTableOptions builder
      */
-    public Builder addBody(PostUserPrivilegesParametersBodyItem body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<PostUserPrivilegesParametersBodyItem>();
-      }
-      this.body.add(body);
+    public Builder tableName(String tableName) {
+      this.tableName = tableName;
       return this;
     }
 
     /**
-     * Set the body.
-     * Existing body will be replaced.
+     * Set the tableSchema.
      *
-     * @param body the body
+     * @param tableSchema the tableSchema
      * @return the GrantUserToVirtualTableOptions builder
      */
-    public Builder body(List<PostUserPrivilegesParametersBodyItem> body) {
-      this.body = body;
+    public Builder tableSchema(String tableSchema) {
+      this.tableSchema = tableSchema;
+      return this;
+    }
+
+    /**
+     * Set the authid.
+     *
+     * @param authid the authid
+     * @return the GrantUserToVirtualTableOptions builder
+     */
+    public Builder authid(String authid) {
+      this.authid = authid;
       return this;
     }
   }
 
   protected GrantUserToVirtualTableOptions(Builder builder) {
-    body = builder.body;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableName,
+      "tableName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableSchema,
+      "tableSchema cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.authid,
+      "authid cannot be null");
+    tableName = builder.tableName;
+    tableSchema = builder.tableSchema;
+    authid = builder.authid;
   }
 
   /**
@@ -92,12 +121,37 @@ public class GrantUserToVirtualTableOptions extends GenericModel {
   }
 
   /**
-   * Gets the body.
+   * Gets the tableName.
    *
-   * @return the body
+   * The name of the virtualized table.
+   *
+   * @return the tableName
    */
-  public List<PostUserPrivilegesParametersBodyItem> body() {
-    return body;
+  public String tableName() {
+    return tableName;
+  }
+
+  /**
+   * Gets the tableSchema.
+   *
+   * The schema of the virtualized table.
+   *
+   * @return the tableSchema
+   */
+  public String tableSchema() {
+    return tableSchema;
+  }
+
+  /**
+   * Gets the authid.
+   *
+   * The identifier of the authorization, if grant access to all users, the value is PUBLIC, othervise the value is the
+   * data virtualization username.
+   *
+   * @return the authid
+   */
+  public String authid() {
+    return authid;
   }
 }
 

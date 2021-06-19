@@ -16,12 +16,14 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem.
+ * DatasourceConnectionsListDatasourceConnectionsItemDataSourcesItem.
  */
-public class DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem extends GenericModel {
+public class DatasourceConnectionsListDatasourceConnectionsItemDataSourcesItem extends GenericModel {
 
   protected String cid;
   protected String dbname;
+  @SerializedName("connection_id")
+  protected String connectionId;
   protected String srchostname;
   protected String srcport;
   protected String srctype;
@@ -34,7 +36,7 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem ex
   /**
    * Gets the cid.
    *
-   * The identifier of the connection.
+   * The identifier of the connection for the Data Virtualization.
    *
    * @return the cid
    */
@@ -51,6 +53,17 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem ex
    */
   public String getDbname() {
     return dbname;
+  }
+
+  /**
+   * Gets the connectionId.
+   *
+   * The connection identifier for the platform.
+   *
+   * @return the connectionId
+   */
+  public String getConnectionId() {
+    return connectionId;
   }
 
   /**

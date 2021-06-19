@@ -32,8 +32,7 @@ public class VirtualizeTableResponseTest {
   @Test
   public void testVirtualizeTableResponse() throws Throwable {
     VirtualizeTableResponse virtualizeTableResponseModel = new VirtualizeTableResponse();
-    assertNull(virtualizeTableResponseModel.getSourceName());
-    assertNull(virtualizeTableResponseModel.getVirtualName());
-    assertNull(virtualizeTableResponseModel.getVirtualSchema());
+    assertNull(virtualizeTableResponseModel.getTableName());
+    assertNull(virtualizeTableResponseModel.getSchemaName());
   }
 }

@@ -18,9 +18,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * DatasourceNodesResponseV2DatasourceNodesArrayItem.
+ * DatasourceConnectionsListDatasourceConnectionsItem.
  */
-public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericModel {
+public class DatasourceConnectionsListDatasourceConnectionsItem extends GenericModel {
 
   @SerializedName("node_name")
   protected String nodeName;
@@ -36,7 +36,7 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericMo
   protected String isDocker;
   protected String dscount;
   @SerializedName("data_sources")
-  protected List<DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem> dataSources;
+  protected List<DatasourceConnectionsListDatasourceConnectionsItemDataSourcesItem> dataSources;
 
   /**
    * Gets the nodeName.
@@ -130,7 +130,7 @@ public class DatasourceNodesResponseV2DatasourceNodesArrayItem extends GenericMo
    *
    * @return the dataSources
    */
-  public List<DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem> getDataSources() {
+  public List<DatasourceConnectionsListDatasourceConnectionsItemDataSourcesItem> getDataSources() {
     return dataSources;
   }
 }

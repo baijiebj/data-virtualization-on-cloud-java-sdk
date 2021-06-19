@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.TurnOnPolicyV2Options;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,27 +23,23 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GrantUserToVirtualTableOptions model.
+ * Unit test class for the TurnOnPolicyV2Options model.
  */
-public class GrantUserToVirtualTableOptionsTest {
+public class TurnOnPolicyV2OptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGrantUserToVirtualTableOptions() throws Throwable {
-    GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()
-      .tableName("EMPLOYEE")
-      .tableSchema("dv_ibmid_060000s4y5")
-      .authid("PUBLIC")
+  public void testTurnOnPolicyV2Options() throws Throwable {
+    TurnOnPolicyV2Options turnOnPolicyV2OptionsModel = new TurnOnPolicyV2Options.Builder()
+      .status("enabled")
       .build();
-    assertEquals(grantUserToVirtualTableOptionsModel.tableName(), "EMPLOYEE");
-    assertEquals(grantUserToVirtualTableOptionsModel.tableSchema(), "dv_ibmid_060000s4y5");
-    assertEquals(grantUserToVirtualTableOptionsModel.authid(), "PUBLIC");
+    assertEquals(turnOnPolicyV2OptionsModel.status(), "enabled");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantUserToVirtualTableOptionsError() throws Throwable {
-    new GrantUserToVirtualTableOptions.Builder().build();
+  public void testTurnOnPolicyV2OptionsError() throws Throwable {
+    new TurnOnPolicyV2Options.Builder().build();
   }
 
 }

@@ -16,35 +16,51 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VirtualizeTableResponse.
+ * PrimaryCatalogInfoMetadata.
  */
-public class VirtualizeTableResponse extends GenericModel {
+public class PrimaryCatalogInfoMetadata extends GenericModel {
 
-  @SerializedName("table_name")
-  protected String tableName;
-  @SerializedName("schema_name")
-  protected String schemaName;
+  @SerializedName("create_time")
+  protected String createTime;
+  @SerializedName("creator_id")
+  protected String creatorId;
+  protected String guid;
+  protected String url;
 
   /**
-   * Gets the tableName.
+   * Gets the createTime.
    *
-   * The name of the table that is virtualized.
-   *
-   * @return the tableName
+   * @return the createTime
    */
-  public String getTableName() {
-    return tableName;
+  public String getCreateTime() {
+    return createTime;
   }
 
   /**
-   * Gets the schemaName.
+   * Gets the creatorId.
    *
-   * The schema of the table that is virtualized.
-   *
-   * @return the schemaName
+   * @return the creatorId
    */
-  public String getSchemaName() {
-    return schemaName;
+  public String getCreatorId() {
+    return creatorId;
+  }
+
+  /**
+   * Gets the guid.
+   *
+   * @return the guid
+   */
+  public String getGuid() {
+    return guid;
+  }
+
+  /**
+   * Gets the url.
+   *
+   * @return the url
+   */
+  public String getUrl() {
+    return url;
   }
 }
 

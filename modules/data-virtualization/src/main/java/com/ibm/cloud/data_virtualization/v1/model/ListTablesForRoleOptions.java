@@ -15,9 +15,9 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The getTablesForRole options.
+ * The listTablesForRole options.
  */
-public class GetTablesForRoleOptions extends GenericModel {
+public class ListTablesForRoleOptions extends GenericModel {
 
   protected String rolename;
 
@@ -27,8 +27,8 @@ public class GetTablesForRoleOptions extends GenericModel {
   public static class Builder {
     private String rolename;
 
-    private Builder(GetTablesForRoleOptions getTablesForRoleOptions) {
-      this.rolename = getTablesForRoleOptions.rolename;
+    private Builder(ListTablesForRoleOptions listTablesForRoleOptions) {
+      this.rolename = listTablesForRoleOptions.rolename;
     }
 
     /**
@@ -47,19 +47,19 @@ public class GetTablesForRoleOptions extends GenericModel {
     }
 
     /**
-     * Builds a GetTablesForRoleOptions.
+     * Builds a ListTablesForRoleOptions.
      *
-     * @return the new GetTablesForRoleOptions instance
+     * @return the new ListTablesForRoleOptions instance
      */
-    public GetTablesForRoleOptions build() {
-      return new GetTablesForRoleOptions(this);
+    public ListTablesForRoleOptions build() {
+      return new ListTablesForRoleOptions(this);
     }
 
     /**
      * Set the rolename.
      *
      * @param rolename the rolename
-     * @return the GetTablesForRoleOptions builder
+     * @return the ListTablesForRoleOptions builder
      */
     public Builder rolename(String rolename) {
       this.rolename = rolename;
@@ -67,16 +67,16 @@ public class GetTablesForRoleOptions extends GenericModel {
     }
   }
 
-  protected GetTablesForRoleOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.rolename,
-      "rolename cannot be empty");
+  protected ListTablesForRoleOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rolename,
+      "rolename cannot be null");
     rolename = builder.rolename;
   }
 
   /**
    * New builder.
    *
-   * @return a GetTablesForRoleOptions builder
+   * @return a ListTablesForRoleOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -85,7 +85,8 @@ public class GetTablesForRoleOptions extends GenericModel {
   /**
    * Gets the rolename.
    *
-   * Data Virtualization has four roles: ADMIN, STEWARD, ENGINEER and USER The value of rolename should be one of them.
+   * Data Virtualization has four roles: MANAGER, STEWARD, ENGINEER and USER The value of rolename should be one of
+   * them.
    *
    * @return the rolename
    */

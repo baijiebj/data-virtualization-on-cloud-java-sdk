@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.PostPrimaryCatalog;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,27 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GrantUserToVirtualTableOptions model.
+ * Unit test class for the PostPrimaryCatalog model.
  */
-public class GrantUserToVirtualTableOptionsTest {
+public class PostPrimaryCatalogTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGrantUserToVirtualTableOptions() throws Throwable {
-    GrantUserToVirtualTableOptions grantUserToVirtualTableOptionsModel = new GrantUserToVirtualTableOptions.Builder()
-      .tableName("EMPLOYEE")
-      .tableSchema("dv_ibmid_060000s4y5")
-      .authid("PUBLIC")
-      .build();
-    assertEquals(grantUserToVirtualTableOptionsModel.tableName(), "EMPLOYEE");
-    assertEquals(grantUserToVirtualTableOptionsModel.tableSchema(), "dv_ibmid_060000s4y5");
-    assertEquals(grantUserToVirtualTableOptionsModel.authid(), "PUBLIC");
+  public void testPostPrimaryCatalog() throws Throwable {
+    PostPrimaryCatalog postPrimaryCatalogModel = new PostPrimaryCatalog();
+    assertNull(postPrimaryCatalogModel.getGuid());
+    assertNull(postPrimaryCatalogModel.getName());
+    assertNull(postPrimaryCatalogModel.getDescription());
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testGrantUserToVirtualTableOptionsError() throws Throwable {
-    new GrantUserToVirtualTableOptions.Builder().build();
-  }
-
 }

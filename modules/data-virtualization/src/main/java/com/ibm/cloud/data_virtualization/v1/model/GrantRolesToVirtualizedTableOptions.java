@@ -12,9 +12,6 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -22,22 +19,39 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class GrantRolesToVirtualizedTableOptions extends GenericModel {
 
-  protected List<PostRolePrivilegesParametersBodyItem> body;
+  protected String tableName;
+  protected String tableSchema;
+  protected String roleName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private List<PostRolePrivilegesParametersBodyItem> body;
+    private String tableName;
+    private String tableSchema;
+    private String roleName;
 
     private Builder(GrantRolesToVirtualizedTableOptions grantRolesToVirtualizedTableOptions) {
-      this.body = grantRolesToVirtualizedTableOptions.body;
+      this.tableName = grantRolesToVirtualizedTableOptions.tableName;
+      this.tableSchema = grantRolesToVirtualizedTableOptions.tableSchema;
+      this.roleName = grantRolesToVirtualizedTableOptions.roleName;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param tableName the tableName
+     * @param tableSchema the tableSchema
+     */
+    public Builder(String tableName, String tableSchema) {
+      this.tableName = tableName;
+      this.tableSchema = tableSchema;
     }
 
     /**
@@ -50,36 +64,47 @@ public class GrantRolesToVirtualizedTableOptions extends GenericModel {
     }
 
     /**
-     * Adds an body to body.
+     * Set the tableName.
      *
-     * @param body the new body
+     * @param tableName the tableName
      * @return the GrantRolesToVirtualizedTableOptions builder
      */
-    public Builder addBody(PostRolePrivilegesParametersBodyItem body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<PostRolePrivilegesParametersBodyItem>();
-      }
-      this.body.add(body);
+    public Builder tableName(String tableName) {
+      this.tableName = tableName;
       return this;
     }
 
     /**
-     * Set the body.
-     * Existing body will be replaced.
+     * Set the tableSchema.
      *
-     * @param body the body
+     * @param tableSchema the tableSchema
      * @return the GrantRolesToVirtualizedTableOptions builder
      */
-    public Builder body(List<PostRolePrivilegesParametersBodyItem> body) {
-      this.body = body;
+    public Builder tableSchema(String tableSchema) {
+      this.tableSchema = tableSchema;
+      return this;
+    }
+
+    /**
+     * Set the roleName.
+     *
+     * @param roleName the roleName
+     * @return the GrantRolesToVirtualizedTableOptions builder
+     */
+    public Builder roleName(String roleName) {
+      this.roleName = roleName;
       return this;
     }
   }
 
   protected GrantRolesToVirtualizedTableOptions(Builder builder) {
-    body = builder.body;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableName,
+      "tableName cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableSchema,
+      "tableSchema cannot be null");
+    tableName = builder.tableName;
+    tableSchema = builder.tableSchema;
+    roleName = builder.roleName;
   }
 
   /**
@@ -92,12 +117,37 @@ public class GrantRolesToVirtualizedTableOptions extends GenericModel {
   }
 
   /**
-   * Gets the body.
+   * Gets the tableName.
    *
-   * @return the body
+   * The name of the virtualized table.
+   *
+   * @return the tableName
    */
-  public List<PostRolePrivilegesParametersBodyItem> body() {
-    return body;
+  public String tableName() {
+    return tableName;
+  }
+
+  /**
+   * Gets the tableSchema.
+   *
+   * The schema of the virtualized table.
+   *
+   * @return the tableSchema
+   */
+  public String tableSchema() {
+    return tableSchema;
+  }
+
+  /**
+   * Gets the roleName.
+   *
+   * The identifier of the authorization, if grant access to all users, the value is PUBLIC, othervise the value is the
+   * data virtualization username.
+   *
+   * @return the roleName
+   */
+  public String roleName() {
+    return roleName;
   }
 }
 
