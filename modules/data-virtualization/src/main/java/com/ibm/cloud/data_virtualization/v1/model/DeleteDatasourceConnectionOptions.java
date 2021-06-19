@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DeleteDatasourceConnectionOptions extends GenericModel {
 
-  protected String cid;
   protected String connectionId;
+  protected String cid;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String cid;
     private String connectionId;
+    private String cid;
 
     private Builder(DeleteDatasourceConnectionOptions deleteDatasourceConnectionOptions) {
-      this.cid = deleteDatasourceConnectionOptions.cid;
       this.connectionId = deleteDatasourceConnectionOptions.connectionId;
+      this.cid = deleteDatasourceConnectionOptions.cid;
     }
 
     /**
@@ -43,11 +43,9 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param cid the cid
      * @param connectionId the connectionId
      */
-    public Builder(String cid, String connectionId) {
-      this.cid = cid;
+    public Builder(String connectionId) {
       this.connectionId = connectionId;
     }
 
@@ -61,17 +59,6 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
     }
 
     /**
-     * Set the cid.
-     *
-     * @param cid the cid
-     * @return the DeleteDatasourceConnectionOptions builder
-     */
-    public Builder cid(String cid) {
-      this.cid = cid;
-      return this;
-    }
-
-    /**
      * Set the connectionId.
      *
      * @param connectionId the connectionId
@@ -81,15 +68,24 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
       this.connectionId = connectionId;
       return this;
     }
+
+    /**
+     * Set the cid.
+     *
+     * @param cid the cid
+     * @return the DeleteDatasourceConnectionOptions builder
+     */
+    public Builder cid(String cid) {
+      this.cid = cid;
+      return this;
+    }
   }
 
   protected DeleteDatasourceConnectionOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.cid,
-      "cid cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.connectionId,
-      "connectionId cannot be null");
-    cid = builder.cid;
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.connectionId,
+      "connectionId cannot be empty");
     connectionId = builder.connectionId;
+    cid = builder.cid;
   }
 
   /**
@@ -102,25 +98,25 @@ public class DeleteDatasourceConnectionOptions extends GenericModel {
   }
 
   /**
-   * Gets the cid.
-   *
-   * Specifies the data source connection to be deleted.
-   *
-   * @return the cid
-   */
-  public String cid() {
-    return cid;
-  }
-
-  /**
    * Gets the connectionId.
    *
-   * Specifies the data source connection to be deleted.
+   * The connection identifier for the platform..
    *
    * @return the connectionId
    */
   public String connectionId() {
     return connectionId;
+  }
+
+  /**
+   * Gets the cid.
+   *
+   * The identifier of the connection for the Data Virtualization..
+   *
+   * @return the cid
+   */
+  public String cid() {
+    return cid;
   }
 }
 

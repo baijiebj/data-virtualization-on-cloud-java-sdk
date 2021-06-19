@@ -15,11 +15,11 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The revokeRoleFromTableV2 options.
+ * The dvaasRevokeRoleFromTable options.
  */
-public class RevokeRoleFromTableV2Options extends GenericModel {
+public class DvaasRevokeRoleFromTableOptions extends GenericModel {
 
-  protected String roleToRevoke;
+  protected String roleName;
   protected String tableName;
   protected String tableSchema;
 
@@ -27,14 +27,14 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private String roleToRevoke;
+    private String roleName;
     private String tableName;
     private String tableSchema;
 
-    private Builder(RevokeRoleFromTableV2Options revokeRoleFromTableV2Options) {
-      this.roleToRevoke = revokeRoleFromTableV2Options.roleToRevoke;
-      this.tableName = revokeRoleFromTableV2Options.tableName;
-      this.tableSchema = revokeRoleFromTableV2Options.tableSchema;
+    private Builder(DvaasRevokeRoleFromTableOptions dvaasRevokeRoleFromTableOptions) {
+      this.roleName = dvaasRevokeRoleFromTableOptions.roleName;
+      this.tableName = dvaasRevokeRoleFromTableOptions.tableName;
+      this.tableSchema = dvaasRevokeRoleFromTableOptions.tableSchema;
     }
 
     /**
@@ -46,33 +46,33 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param roleToRevoke the roleToRevoke
+     * @param roleName the roleName
      * @param tableName the tableName
      * @param tableSchema the tableSchema
      */
-    public Builder(String roleToRevoke, String tableName, String tableSchema) {
-      this.roleToRevoke = roleToRevoke;
+    public Builder(String roleName, String tableName, String tableSchema) {
+      this.roleName = roleName;
       this.tableName = tableName;
       this.tableSchema = tableSchema;
     }
 
     /**
-     * Builds a RevokeRoleFromTableV2Options.
+     * Builds a DvaasRevokeRoleFromTableOptions.
      *
-     * @return the new RevokeRoleFromTableV2Options instance
+     * @return the new DvaasRevokeRoleFromTableOptions instance
      */
-    public RevokeRoleFromTableV2Options build() {
-      return new RevokeRoleFromTableV2Options(this);
+    public DvaasRevokeRoleFromTableOptions build() {
+      return new DvaasRevokeRoleFromTableOptions(this);
     }
 
     /**
-     * Set the roleToRevoke.
+     * Set the roleName.
      *
-     * @param roleToRevoke the roleToRevoke
-     * @return the RevokeRoleFromTableV2Options builder
+     * @param roleName the roleName
+     * @return the DvaasRevokeRoleFromTableOptions builder
      */
-    public Builder roleToRevoke(String roleToRevoke) {
-      this.roleToRevoke = roleToRevoke;
+    public Builder roleName(String roleName) {
+      this.roleName = roleName;
       return this;
     }
 
@@ -80,7 +80,7 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
      * Set the tableName.
      *
      * @param tableName the tableName
-     * @return the RevokeRoleFromTableV2Options builder
+     * @return the DvaasRevokeRoleFromTableOptions builder
      */
     public Builder tableName(String tableName) {
       this.tableName = tableName;
@@ -91,7 +91,7 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
      * Set the tableSchema.
      *
      * @param tableSchema the tableSchema
-     * @return the RevokeRoleFromTableV2Options builder
+     * @return the DvaasRevokeRoleFromTableOptions builder
      */
     public Builder tableSchema(String tableSchema) {
       this.tableSchema = tableSchema;
@@ -99,14 +99,14 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
     }
   }
 
-  protected RevokeRoleFromTableV2Options(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.roleToRevoke,
-      "roleToRevoke cannot be null");
+  protected DvaasRevokeRoleFromTableOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.roleName,
+      "roleName cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableName,
       "tableName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableSchema,
       "tableSchema cannot be null");
-    roleToRevoke = builder.roleToRevoke;
+    roleName = builder.roleName;
     tableName = builder.tableName;
     tableSchema = builder.tableSchema;
   }
@@ -114,21 +114,22 @@ public class RevokeRoleFromTableV2Options extends GenericModel {
   /**
    * New builder.
    *
-   * @return a RevokeRoleFromTableV2Options builder
+   * @return a DvaasRevokeRoleFromTableOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
   }
 
   /**
-   * Gets the roleToRevoke.
+   * Gets the roleName.
    *
-   * The Data Virtualization role type, the value could be DV_ADMIN, DV_ENGINEER, DV_STEWARD or DV_WORKER.
+   * The Data Virtualization role type. Values can be DV_ADMIN, DV_ENGINEER, DV_STEWARD, or DV_WORKER, which correspond
+   * to MANAGER, ENGINEER, STEWARD, and USER roles in the user interface.
    *
-   * @return the roleToRevoke
+   * @return the roleName
    */
-  public String roleToRevoke() {
-    return roleToRevoke;
+  public String roleName() {
+    return roleName;
   }
 
   /**

@@ -12,39 +12,42 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VirtualizeTableResponse.
+ * PrimaryCatalogInfo.
  */
-public class VirtualizeTableResponse extends GenericModel {
+public class PrimaryCatalogInfo extends GenericModel {
 
-  @SerializedName("table_name")
-  protected String tableName;
-  @SerializedName("schema_name")
-  protected String schemaName;
+  protected PrimaryCatalogInfoEntity entity;
+  protected String href;
+  protected PrimaryCatalogInfoMetadata metadata;
 
   /**
-   * Gets the tableName.
+   * Gets the entity.
    *
-   * The name of the table that is virtualized.
-   *
-   * @return the tableName
+   * @return the entity
    */
-  public String getTableName() {
-    return tableName;
+  public PrimaryCatalogInfoEntity getEntity() {
+    return entity;
   }
 
   /**
-   * Gets the schemaName.
+   * Gets the href.
    *
-   * The schema of the table that is virtualized.
-   *
-   * @return the schemaName
+   * @return the href
    */
-  public String getSchemaName() {
-    return schemaName;
+  public String getHref() {
+    return href;
+  }
+
+  /**
+   * Gets the metadata.
+   *
+   * @return the metadata
+   */
+  public PrimaryCatalogInfoMetadata getMetadata() {
+    return metadata;
   }
 }
 

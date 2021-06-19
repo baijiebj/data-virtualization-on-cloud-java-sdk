@@ -13,29 +13,29 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2;
-import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2DatasourceNodesArrayItem;
-import com.ibm.cloud.data_virtualization.v1.model.DatasourceNodesResponseV2DatasourceNodesArrayItemDataSourcesItem;
+import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfo;
+import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfoEntity;
+import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfoMetadata;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the DatasourceNodesResponseV2 model.
+ * Unit test class for the PrimaryCatalogInfo model.
  */
-public class DatasourceNodesResponseV2Test {
+public class PrimaryCatalogInfoTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testDatasourceNodesResponseV2() throws Throwable {
-    DatasourceNodesResponseV2 datasourceNodesResponseV2Model = new DatasourceNodesResponseV2();
-    assertNull(datasourceNodesResponseV2Model.getDatasourceNodesArray());
+  public void testPrimaryCatalogInfo() throws Throwable {
+    PrimaryCatalogInfo primaryCatalogInfoModel = new PrimaryCatalogInfo();
+    assertNull(primaryCatalogInfoModel.getEntity());
+    assertNull(primaryCatalogInfoModel.getHref());
+    assertNull(primaryCatalogInfoModel.getMetadata());
   }
 }

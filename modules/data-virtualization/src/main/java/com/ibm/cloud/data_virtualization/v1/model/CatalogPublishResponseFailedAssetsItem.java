@@ -12,26 +12,46 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * DatasourceNodesResponseV2.
+ * CatalogPublishResponseFailedAssetsItem.
  */
-public class DatasourceNodesResponseV2 extends GenericModel {
+public class CatalogPublishResponseFailedAssetsItem extends GenericModel {
 
-  @SerializedName("datasource_nodes_array")
-  protected List<DatasourceNodesResponseV2DatasourceNodesArrayItem> datasourceNodesArray;
+  @SerializedName("error_msg")
+  protected String errorMsg;
+  @SerializedName("schema_name")
+  protected String schemaName;
+  @SerializedName("table_name")
+  protected String tableName;
 
   /**
-   * Gets the datasourceNodesArray.
+   * Gets the errorMsg.
    *
-   * @return the datasourceNodesArray
+   * @return the errorMsg
    */
-  public List<DatasourceNodesResponseV2DatasourceNodesArrayItem> getDatasourceNodesArray() {
-    return datasourceNodesArray;
+  public String getErrorMsg() {
+    return errorMsg;
+  }
+
+  /**
+   * Gets the schemaName.
+   *
+   * @return the schemaName
+   */
+  public String getSchemaName() {
+    return schemaName;
+  }
+
+  /**
+   * Gets the tableName.
+   *
+   * @return the tableName
+   */
+  public String getTableName() {
+    return tableName;
   }
 }
 

@@ -16,13 +16,26 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * PostDatasourceConnectionResponse.
+ * PostDatasourceConnection.
  */
-public class PostDatasourceConnectionResponse extends GenericModel {
+public class PostDatasourceConnection extends GenericModel {
 
+  @SerializedName("connection_id")
+  protected String connectionId;
   @SerializedName("datasource_type")
   protected String datasourceType;
   protected String name;
+
+  /**
+   * Gets the connectionId.
+   *
+   * The identifier of data source connection.
+   *
+   * @return the connectionId
+   */
+  public String getConnectionId() {
+    return connectionId;
+  }
 
   /**
    * Gets the datasourceType.

@@ -32,11 +32,11 @@ public class DeleteDatasourceConnectionOptionsTest {
   @Test
   public void testDeleteDatasourceConnectionOptions() throws Throwable {
     DeleteDatasourceConnectionOptions deleteDatasourceConnectionOptionsModel = new DeleteDatasourceConnectionOptions.Builder()
-      .cid("DB210013")
       .connectionId("75e4d01b-7417-4abc-b267-8ffb393fb970")
+      .cid("DB210013")
       .build();
-    assertEquals(deleteDatasourceConnectionOptionsModel.cid(), "DB210013");
     assertEquals(deleteDatasourceConnectionOptionsModel.connectionId(), "75e4d01b-7417-4abc-b267-8ffb393fb970");
+    assertEquals(deleteDatasourceConnectionOptionsModel.cid(), "DB210013");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

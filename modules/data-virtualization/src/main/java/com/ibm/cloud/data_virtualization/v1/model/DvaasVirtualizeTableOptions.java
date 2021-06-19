@@ -18,9 +18,9 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The virtualizeTableV2 options.
+ * The dvaasVirtualizeTable options.
  */
-public class VirtualizeTableV2Options extends GenericModel {
+public class DvaasVirtualizeTableOptions extends GenericModel {
 
   protected String sourceName;
   protected List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef;
@@ -44,15 +44,15 @@ public class VirtualizeTableV2Options extends GenericModel {
     private String isIncludedColumns;
     private Boolean replace;
 
-    private Builder(VirtualizeTableV2Options virtualizeTableV2Options) {
-      this.sourceName = virtualizeTableV2Options.sourceName;
-      this.sourceTableDef = virtualizeTableV2Options.sourceTableDef;
-      this.sources = virtualizeTableV2Options.sources;
-      this.virtualName = virtualizeTableV2Options.virtualName;
-      this.virtualSchema = virtualizeTableV2Options.virtualSchema;
-      this.virtualTableDef = virtualizeTableV2Options.virtualTableDef;
-      this.isIncludedColumns = virtualizeTableV2Options.isIncludedColumns;
-      this.replace = virtualizeTableV2Options.replace;
+    private Builder(DvaasVirtualizeTableOptions dvaasVirtualizeTableOptions) {
+      this.sourceName = dvaasVirtualizeTableOptions.sourceName;
+      this.sourceTableDef = dvaasVirtualizeTableOptions.sourceTableDef;
+      this.sources = dvaasVirtualizeTableOptions.sources;
+      this.virtualName = dvaasVirtualizeTableOptions.virtualName;
+      this.virtualSchema = dvaasVirtualizeTableOptions.virtualSchema;
+      this.virtualTableDef = dvaasVirtualizeTableOptions.virtualTableDef;
+      this.isIncludedColumns = dvaasVirtualizeTableOptions.isIncludedColumns;
+      this.replace = dvaasVirtualizeTableOptions.replace;
     }
 
     /**
@@ -81,19 +81,19 @@ public class VirtualizeTableV2Options extends GenericModel {
     }
 
     /**
-     * Builds a VirtualizeTableV2Options.
+     * Builds a DvaasVirtualizeTableOptions.
      *
-     * @return the new VirtualizeTableV2Options instance
+     * @return the new DvaasVirtualizeTableOptions instance
      */
-    public VirtualizeTableV2Options build() {
-      return new VirtualizeTableV2Options(this);
+    public DvaasVirtualizeTableOptions build() {
+      return new DvaasVirtualizeTableOptions(this);
     }
 
     /**
      * Adds an sourceTableDef to sourceTableDef.
      *
      * @param sourceTableDef the new sourceTableDef
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder addSourceTableDef(VirtualizeTableParameterSourceTableDefItem sourceTableDef) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(sourceTableDef,
@@ -109,7 +109,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Adds an sources to sources.
      *
      * @param sources the new sources
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder addSources(String sources) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(sources,
@@ -125,7 +125,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Adds an virtualTableDef to virtualTableDef.
      *
      * @param virtualTableDef the new virtualTableDef
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder addVirtualTableDef(VirtualizeTableParameterVirtualTableDefItem virtualTableDef) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(virtualTableDef,
@@ -141,7 +141,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Set the sourceName.
      *
      * @param sourceName the sourceName
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder sourceName(String sourceName) {
       this.sourceName = sourceName;
@@ -153,7 +153,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Existing sourceTableDef will be replaced.
      *
      * @param sourceTableDef the sourceTableDef
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder sourceTableDef(List<VirtualizeTableParameterSourceTableDefItem> sourceTableDef) {
       this.sourceTableDef = sourceTableDef;
@@ -165,7 +165,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Existing sources will be replaced.
      *
      * @param sources the sources
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder sources(List<String> sources) {
       this.sources = sources;
@@ -176,7 +176,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Set the virtualName.
      *
      * @param virtualName the virtualName
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder virtualName(String virtualName) {
       this.virtualName = virtualName;
@@ -187,7 +187,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Set the virtualSchema.
      *
      * @param virtualSchema the virtualSchema
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder virtualSchema(String virtualSchema) {
       this.virtualSchema = virtualSchema;
@@ -199,7 +199,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Existing virtualTableDef will be replaced.
      *
      * @param virtualTableDef the virtualTableDef
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder virtualTableDef(List<VirtualizeTableParameterVirtualTableDefItem> virtualTableDef) {
       this.virtualTableDef = virtualTableDef;
@@ -210,7 +210,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Set the isIncludedColumns.
      *
      * @param isIncludedColumns the isIncludedColumns
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder isIncludedColumns(String isIncludedColumns) {
       this.isIncludedColumns = isIncludedColumns;
@@ -221,7 +221,7 @@ public class VirtualizeTableV2Options extends GenericModel {
      * Set the replace.
      *
      * @param replace the replace
-     * @return the VirtualizeTableV2Options builder
+     * @return the DvaasVirtualizeTableOptions builder
      */
     public Builder replace(Boolean replace) {
       this.replace = replace;
@@ -229,7 +229,7 @@ public class VirtualizeTableV2Options extends GenericModel {
     }
   }
 
-  protected VirtualizeTableV2Options(Builder builder) {
+  protected DvaasVirtualizeTableOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceName,
       "sourceName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTableDef,
@@ -255,7 +255,7 @@ public class VirtualizeTableV2Options extends GenericModel {
   /**
    * New builder.
    *
-   * @return a VirtualizeTableV2Options builder
+   * @return a DvaasVirtualizeTableOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);

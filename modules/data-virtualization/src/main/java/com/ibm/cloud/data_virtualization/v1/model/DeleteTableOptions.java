@@ -19,19 +19,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class DeleteTableOptions extends GenericModel {
 
-  protected String schemaName;
-  protected String tableName;
+  protected String virtualSchema;
+  protected String virtualName;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String schemaName;
-    private String tableName;
+    private String virtualSchema;
+    private String virtualName;
 
     private Builder(DeleteTableOptions deleteTableOptions) {
-      this.schemaName = deleteTableOptions.schemaName;
-      this.tableName = deleteTableOptions.tableName;
+      this.virtualSchema = deleteTableOptions.virtualSchema;
+      this.virtualName = deleteTableOptions.virtualName;
     }
 
     /**
@@ -43,12 +43,12 @@ public class DeleteTableOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param schemaName the schemaName
-     * @param tableName the tableName
+     * @param virtualSchema the virtualSchema
+     * @param virtualName the virtualName
      */
-    public Builder(String schemaName, String tableName) {
-      this.schemaName = schemaName;
-      this.tableName = tableName;
+    public Builder(String virtualSchema, String virtualName) {
+      this.virtualSchema = virtualSchema;
+      this.virtualName = virtualName;
     }
 
     /**
@@ -61,35 +61,35 @@ public class DeleteTableOptions extends GenericModel {
     }
 
     /**
-     * Set the schemaName.
+     * Set the virtualSchema.
      *
-     * @param schemaName the schemaName
+     * @param virtualSchema the virtualSchema
      * @return the DeleteTableOptions builder
      */
-    public Builder schemaName(String schemaName) {
-      this.schemaName = schemaName;
+    public Builder virtualSchema(String virtualSchema) {
+      this.virtualSchema = virtualSchema;
       return this;
     }
 
     /**
-     * Set the tableName.
+     * Set the virtualName.
      *
-     * @param tableName the tableName
+     * @param virtualName the virtualName
      * @return the DeleteTableOptions builder
      */
-    public Builder tableName(String tableName) {
-      this.tableName = tableName;
+    public Builder virtualName(String virtualName) {
+      this.virtualName = virtualName;
       return this;
     }
   }
 
   protected DeleteTableOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.schemaName,
-      "schemaName cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.tableName,
-      "tableName cannot be empty");
-    schemaName = builder.schemaName;
-    tableName = builder.tableName;
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.virtualSchema,
+      "virtualSchema cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.virtualName,
+      "virtualName cannot be empty");
+    virtualSchema = builder.virtualSchema;
+    virtualName = builder.virtualName;
   }
 
   /**
@@ -102,25 +102,25 @@ public class DeleteTableOptions extends GenericModel {
   }
 
   /**
-   * Gets the schemaName.
+   * Gets the virtualSchema.
    *
    * The schema of virtualized table to be deleted.
    *
-   * @return the schemaName
+   * @return the virtualSchema
    */
-  public String schemaName() {
-    return schemaName;
+  public String virtualSchema() {
+    return virtualSchema;
   }
 
   /**
-   * Gets the tableName.
+   * Gets the virtualName.
    *
    * The name of virtualized table to be deleted.
    *
-   * @return the tableName
+   * @return the virtualName
    */
-  public String tableName() {
-    return tableName;
+  public String virtualName() {
+    return virtualName;
   }
 }
 

@@ -16,19 +16,28 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VirtualizeTableResponse.
+ * CatalogPublishResponsePublishedAssetsItem.
  */
-public class VirtualizeTableResponse extends GenericModel {
+public class CatalogPublishResponsePublishedAssetsItem extends GenericModel {
 
-  @SerializedName("table_name")
-  protected String tableName;
   @SerializedName("schema_name")
   protected String schemaName;
+  @SerializedName("table_name")
+  protected String tableName;
+  @SerializedName("wkc_asset_id")
+  protected String wkcAssetId;
+
+  /**
+   * Gets the schemaName.
+   *
+   * @return the schemaName
+   */
+  public String getSchemaName() {
+    return schemaName;
+  }
 
   /**
    * Gets the tableName.
-   *
-   * The name of the table that is virtualized.
    *
    * @return the tableName
    */
@@ -37,14 +46,12 @@ public class VirtualizeTableResponse extends GenericModel {
   }
 
   /**
-   * Gets the schemaName.
+   * Gets the wkcAssetId.
    *
-   * The schema of the table that is virtualized.
-   *
-   * @return the schemaName
+   * @return the wkcAssetId
    */
-  public String getSchemaName() {
-    return schemaName;
+  public String getWkcAssetId() {
+    return wkcAssetId;
   }
 }
 

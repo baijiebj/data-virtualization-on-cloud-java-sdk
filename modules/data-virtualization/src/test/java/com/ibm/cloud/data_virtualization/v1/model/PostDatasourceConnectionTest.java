@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.GetDatasourceConnectionsOptions;
+import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnection;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,15 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the GetDatasourceConnectionsOptions model.
+ * Unit test class for the PostDatasourceConnection model.
  */
-public class GetDatasourceConnectionsOptionsTest {
+public class PostDatasourceConnectionTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testGetDatasourceConnectionsOptions() throws Throwable {
-    GetDatasourceConnectionsOptions getDatasourceConnectionsOptionsModel = new GetDatasourceConnectionsOptions();
-    assertNotNull(getDatasourceConnectionsOptionsModel);
+  public void testPostDatasourceConnection() throws Throwable {
+    PostDatasourceConnection postDatasourceConnectionModel = new PostDatasourceConnection();
+    assertNull(postDatasourceConnectionModel.getConnectionId());
+    assertNull(postDatasourceConnectionModel.getDatasourceType());
+    assertNull(postDatasourceConnectionModel.getName());
   }
 }

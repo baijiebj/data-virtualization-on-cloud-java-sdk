@@ -34,11 +34,11 @@ public class RevokeUserFromObjectOptionsTest {
     RevokeUserFromObjectOptions revokeUserFromObjectOptionsModel = new RevokeUserFromObjectOptions.Builder()
       .authid("PUBLIC")
       .tableName("EMPLOYEE")
-      .tableSchema("USER999")
+      .tableSchema("dv_ibmid_060000s4y5")
       .build();
     assertEquals(revokeUserFromObjectOptionsModel.authid(), "PUBLIC");
     assertEquals(revokeUserFromObjectOptionsModel.tableName(), "EMPLOYEE");
-    assertEquals(revokeUserFromObjectOptionsModel.tableSchema(), "USER999");
+    assertEquals(revokeUserFromObjectOptionsModel.tableSchema(), "dv_ibmid_060000s4y5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

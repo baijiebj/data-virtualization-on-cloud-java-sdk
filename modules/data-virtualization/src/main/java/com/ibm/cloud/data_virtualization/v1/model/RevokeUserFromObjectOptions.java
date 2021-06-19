@@ -100,8 +100,8 @@ public class RevokeUserFromObjectOptions extends GenericModel {
   }
 
   protected RevokeUserFromObjectOptions(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.authid,
-      "authid cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.authid,
+      "authid cannot be empty");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableName,
       "tableName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.tableSchema,

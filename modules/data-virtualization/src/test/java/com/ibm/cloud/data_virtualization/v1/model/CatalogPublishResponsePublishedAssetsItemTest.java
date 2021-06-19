@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.data_virtualization.v1.model;
 
-import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionResponse;
+import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponsePublishedAssetsItem;
 import com.ibm.cloud.data_virtualization.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -23,16 +23,17 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the PostDatasourceConnectionResponse model.
+ * Unit test class for the CatalogPublishResponsePublishedAssetsItem model.
  */
-public class PostDatasourceConnectionResponseTest {
+public class CatalogPublishResponsePublishedAssetsItemTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testPostDatasourceConnectionResponse() throws Throwable {
-    PostDatasourceConnectionResponse postDatasourceConnectionResponseModel = new PostDatasourceConnectionResponse();
-    assertNull(postDatasourceConnectionResponseModel.getDatasourceType());
-    assertNull(postDatasourceConnectionResponseModel.getName());
+  public void testCatalogPublishResponsePublishedAssetsItem() throws Throwable {
+    CatalogPublishResponsePublishedAssetsItem catalogPublishResponsePublishedAssetsItemModel = new CatalogPublishResponsePublishedAssetsItem();
+    assertNull(catalogPublishResponsePublishedAssetsItemModel.getSchemaName());
+    assertNull(catalogPublishResponsePublishedAssetsItemModel.getTableName());
+    assertNull(catalogPublishResponsePublishedAssetsItemModel.getWkcAssetId());
   }
 }

@@ -41,14 +41,14 @@ public class AddDatasourceConnectionOptionsTest {
       .clientSecret("testString")
       .collection("testString")
       .credentials("testString")
-      .database("testString")
-      .host("testString")
+      .database("TPCDS")
+      .host("192.168.0.1")
       .httpPath("testString")
       .jarUris("testString")
       .jdbcDriver("testString")
       .jdbcUrl("testString")
-      .password("testString")
-      .port("testString")
+      .password("password")
+      .port("50000")
       .projectId("testString")
       .xProperties("testString")
       .refreshToken("testString")
@@ -57,11 +57,11 @@ public class AddDatasourceConnectionOptionsTest {
       .server("testString")
       .serviceName("testString")
       .sid("testString")
-      .ssl("testString")
+      .ssl("false")
       .sslCertificate("testString")
       .sslCertificateHost("testString")
       .sslCertificateValidation("testString")
-      .username("testString")
+      .username("db2inst1")
       .warehouse("testString")
       .build();
     assertEquals(postDatasourceConnectionParametersPropertiesModel.accessToken(), "testString");
@@ -72,14 +72,14 @@ public class AddDatasourceConnectionOptionsTest {
     assertEquals(postDatasourceConnectionParametersPropertiesModel.clientSecret(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.collection(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.credentials(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.database(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.host(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.database(), "TPCDS");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.host(), "192.168.0.1");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.httpPath(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.jarUris(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcDriver(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcUrl(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.password(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.port(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.password(), "password");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.port(), "50000");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.projectId(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.xProperties(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.refreshToken(), "testString");
@@ -88,23 +88,23 @@ public class AddDatasourceConnectionOptionsTest {
     assertEquals(postDatasourceConnectionParametersPropertiesModel.server(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.serviceName(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.sid(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.ssl(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.ssl(), "false");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificate(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateHost(), "testString");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateValidation(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.username(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.username(), "db2inst1");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.warehouse(), "testString");
 
     AddDatasourceConnectionOptions addDatasourceConnectionOptionsModel = new AddDatasourceConnectionOptions.Builder()
-      .datasourceType("testString")
-      .name("testString")
-      .originCountry("testString")
+      .datasourceType("DB2")
+      .name("DB2")
+      .originCountry("us")
       .xProperties(postDatasourceConnectionParametersPropertiesModel)
       .assetCategory("testString")
       .build();
-    assertEquals(addDatasourceConnectionOptionsModel.datasourceType(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.name(), "testString");
-    assertEquals(addDatasourceConnectionOptionsModel.originCountry(), "testString");
+    assertEquals(addDatasourceConnectionOptionsModel.datasourceType(), "DB2");
+    assertEquals(addDatasourceConnectionOptionsModel.name(), "DB2");
+    assertEquals(addDatasourceConnectionOptionsModel.originCountry(), "us");
     assertEquals(addDatasourceConnectionOptionsModel.xProperties(), postDatasourceConnectionParametersPropertiesModel);
     assertEquals(addDatasourceConnectionOptionsModel.assetCategory(), "testString");
   }

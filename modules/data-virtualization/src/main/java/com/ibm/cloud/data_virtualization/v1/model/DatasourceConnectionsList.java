@@ -12,39 +12,26 @@
  */
 package com.ibm.cloud.data_virtualization.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VirtualizeTableResponse.
+ * DatasourceConnectionsList.
  */
-public class VirtualizeTableResponse extends GenericModel {
+public class DatasourceConnectionsList extends GenericModel {
 
-  @SerializedName("table_name")
-  protected String tableName;
-  @SerializedName("schema_name")
-  protected String schemaName;
+  @SerializedName("datasource_connections")
+  protected List<DatasourceConnectionsListDatasourceConnectionsItem> datasourceConnections;
 
   /**
-   * Gets the tableName.
+   * Gets the datasourceConnections.
    *
-   * The name of the table that is virtualized.
-   *
-   * @return the tableName
+   * @return the datasourceConnections
    */
-  public String getTableName() {
-    return tableName;
-  }
-
-  /**
-   * Gets the schemaName.
-   *
-   * The schema of the table that is virtualized.
-   *
-   * @return the schemaName
-   */
-  public String getSchemaName() {
-    return schemaName;
+  public List<DatasourceConnectionsListDatasourceConnectionsItem> getDatasourceConnections() {
+    return datasourceConnections;
   }
 }
 

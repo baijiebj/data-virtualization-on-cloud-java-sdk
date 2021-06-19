@@ -15,9 +15,9 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The getDatasourceConnections options.
+ * The getPrimaryCatalog options.
  */
-public class GetDatasourceConnectionsOptions extends GenericModel {
+public class GetPrimaryCatalogOptions extends GenericModel {
 
 }
 
