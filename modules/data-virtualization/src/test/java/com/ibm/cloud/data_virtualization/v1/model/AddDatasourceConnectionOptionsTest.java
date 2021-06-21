@@ -33,80 +33,80 @@ public class AddDatasourceConnectionOptionsTest {
   @Test
   public void testAddDatasourceConnectionOptions() throws Throwable {
     PostDatasourceConnectionParametersProperties postDatasourceConnectionParametersPropertiesModel = new PostDatasourceConnectionParametersProperties.Builder()
-      .accessToken("testString")
-      .accountName("testString")
-      .apiKey("testString")
-      .authType("testString")
-      .clientId("testString")
-      .clientSecret("testString")
-      .collection("testString")
-      .credentials("testString")
+      .accessToken("ya29.Il-_")
+      .accountName("ibmdatastage.us-east-1")
+      .apiKey("ApiKey-a31d60c5-0f7b-4995-a4ae-69bf09d3de50")
+      .authType("Bearer Token")
+      .clientId("81571342315")
+      .clientSecret("uIn8rVyIRsd")
+      .collection("test_collection")
+      .credentials("-----BEGIN PRIVATE KEY-----")
       .database("TPCDS")
       .host("192.168.0.1")
-      .httpPath("testString")
-      .jarUris("testString")
-      .jdbcDriver("testString")
-      .jdbcUrl("testString")
+      .httpPath("cliservice")
+      .jarUris("/v2/asset_files/dbdrivers/ngdbc.jar")
+      .jdbcDriver("Snowflake")
+      .jdbcUrl("/v2/asset_files/dbdrivers/ngdbc.jar")
       .password("password")
       .port("50000")
-      .projectId("testString")
-      .xProperties("testString")
-      .refreshToken("testString")
-      .role("testString")
-      .sapGatewayUrl("testString")
-      .server("testString")
-      .serviceName("testString")
-      .sid("testString")
+      .projectId("housecanary-com")
+      .xProperties("key=value")
+      .refreshToken("1//06uwhP7_312g")
+      .role("SYSADMIN")
+      .sapGatewayUrl("https://sapes5.sapdevcenter.com")
+      .server("ol_informix1410")
+      .serviceName("pdborcl.fyre.ibm.com")
+      .sid("orcl")
       .ssl("false")
-      .sslCertificate("testString")
-      .sslCertificateHost("testString")
-      .sslCertificateValidation("testString")
+      .sslCertificate("-----BEGIN CERTIFICATE-----")
+      .sslCertificateHost("test.com")
+      .sslCertificateValidation("false")
       .username("db2inst1")
-      .warehouse("testString")
+      .warehouse("wdpcondev")
       .build();
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.accessToken(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.accountName(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.apiKey(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.authType(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.clientId(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.clientSecret(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.collection(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.credentials(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.accessToken(), "ya29.Il-_");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.accountName(), "ibmdatastage.us-east-1");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.apiKey(), "ApiKey-a31d60c5-0f7b-4995-a4ae-69bf09d3de50");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.authType(), "Bearer Token");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.clientId(), "81571342315");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.clientSecret(), "uIn8rVyIRsd");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.collection(), "test_collection");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.credentials(), "-----BEGIN PRIVATE KEY-----");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.database(), "TPCDS");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.host(), "192.168.0.1");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.httpPath(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.jarUris(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcDriver(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcUrl(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.httpPath(), "cliservice");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.jarUris(), "/v2/asset_files/dbdrivers/ngdbc.jar");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcDriver(), "Snowflake");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.jdbcUrl(), "/v2/asset_files/dbdrivers/ngdbc.jar");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.password(), "password");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.port(), "50000");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.projectId(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.xProperties(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.refreshToken(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.role(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.sapGatewayUrl(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.server(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.serviceName(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.sid(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.projectId(), "housecanary-com");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.xProperties(), "key=value");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.refreshToken(), "1//06uwhP7_312g");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.role(), "SYSADMIN");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.sapGatewayUrl(), "https://sapes5.sapdevcenter.com");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.server(), "ol_informix1410");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.serviceName(), "pdborcl.fyre.ibm.com");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.sid(), "orcl");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.ssl(), "false");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificate(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateHost(), "testString");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateValidation(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificate(), "-----BEGIN CERTIFICATE-----");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateHost(), "test.com");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.sslCertificateValidation(), "false");
     assertEquals(postDatasourceConnectionParametersPropertiesModel.username(), "db2inst1");
-    assertEquals(postDatasourceConnectionParametersPropertiesModel.warehouse(), "testString");
+    assertEquals(postDatasourceConnectionParametersPropertiesModel.warehouse(), "wdpcondev");
 
     AddDatasourceConnectionOptions addDatasourceConnectionOptionsModel = new AddDatasourceConnectionOptions.Builder()
       .datasourceType("DB2")
       .name("DB2")
       .originCountry("us")
       .xProperties(postDatasourceConnectionParametersPropertiesModel)
-      .assetCategory("testString")
+      .assetCategory("USER")
       .build();
     assertEquals(addDatasourceConnectionOptionsModel.datasourceType(), "DB2");
     assertEquals(addDatasourceConnectionOptionsModel.name(), "DB2");
     assertEquals(addDatasourceConnectionOptionsModel.originCountry(), "us");
     assertEquals(addDatasourceConnectionOptionsModel.xProperties(), postDatasourceConnectionParametersPropertiesModel);
-    assertEquals(addDatasourceConnectionOptionsModel.assetCategory(), "testString");
+    assertEquals(addDatasourceConnectionOptionsModel.assetCategory(), "USER");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
