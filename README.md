@@ -1,8 +1,8 @@
-[![Build Status](https://travis.ibm.com/CloudEngineering/java-sdk-template.svg?token=eW5FVD71iyte6tTby8gr&branch=main)](https://travis.ibm.com/CloudEngineering/java-sdk-template)
+[![Build Status](https://travis-ci.com/IBM/data-virtualization-on-cloud-java-sdk.svg?branch=main)](https://travis-ci.com/IBM/data-virtualization-on-cloud-java-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # IBM Data Virtualization on Cloud Java SDK Version 0.0.0
-Java client library to interact with various [IBM Cloud My Services](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud).
+Java client library to interact with the [IBM Data Virtualization on Cloud APIs].
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
 Changes might occur which impact applications that use this SDK.
@@ -41,7 +41,7 @@ The IBM data virtualization on cloud Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-[Data Virtualization](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud-java-sdk) | com.ibm.cloud.data_virtualization.v1
+Data Virtualization | com.ibm.cloud.data_virtualization.v1
 
 ## Prerequisites
 
