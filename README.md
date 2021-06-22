@@ -41,7 +41,7 @@ The IBM data virtualization on cloud Java SDK allows developers to programmatica
 
 Service Name | Artifact Coordinates
 --- | ---
-[Data Virtualization on Cloud](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud-java-sdk) | com.ibm.cloud.data_virtualization.v1
+[Data Virtualization on Cloud](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud) | com.ibm.cloud.data_virtualization.v1
 
 ## Prerequisites
 
