@@ -11,8 +11,8 @@
  * specific language governing permissions and limitations under the License.
  */
 
-// >>> Replace "my_services" with the correct value for your project (e.g. "platform_services")
-package com.ibm.cloud.my_services.test;
+// >>> Replace "data_virtualization_on_cloud" with the correct value for your project (e.g. "platform_services")
+package com.ibm.cloud.data_virtualization_on_cloud.test;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
@@ -22,8 +22,8 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 
-// >>> Replace "my_services" with the correct value for your project (e.g. "platform_services")
-import com.ibm.cloud.my_services.common.SdkCommon;
+// >>> Replace "data_virtualization_on_cloud" with the correct value for your project (e.g. "platform_services")
+import com.ibm.cloud.data_virtualization_on_cloud.common.SdkCommon;
 
 /**
  * This class contains tests for the SdkCommon class.
