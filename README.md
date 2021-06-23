@@ -52,7 +52,7 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.0.0
+The current version of this SDK is: 0.0.1
 
 Each service's artifact coordinates are listed in the table above.
 
@@ -71,13 +71,13 @@ Here are examples for maven and gradle:
 <dependency>
     <groupId>com.ibm.cloud</groupId>
     <artifactId>data-virtualization</artifactId>
-    <version>0.0.0</version>
+    <version>0.0.1</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-compile 'com.ibm.cloud.data-virtualization.0.0.0'
+compile 'com.ibm.cloud.data-virtualization.0.0.1'
 ```
 
 ## Using the SDK
