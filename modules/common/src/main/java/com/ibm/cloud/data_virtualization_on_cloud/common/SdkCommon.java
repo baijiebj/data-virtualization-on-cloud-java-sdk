@@ -11,8 +11,8 @@
  * specific language governing permissions and limitations under the License.
  */
 
-// >>> Replace "my_services" with the correct value for your project
-package com.ibm.cloud.my_services.common;
+// >>> Replace "data_virtualization_on_cloud" with the correct value for your project
+package com.ibm.cloud.data_virtualization_on_cloud.common;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -36,8 +36,8 @@ public class SdkCommon {
     private static String projectName;
     private static String version;
 
-    // >>> Replace "my-services" with the parent project's artifactId (e.g. platform-services)
-    private static String parentArtifactId = "my-services";
+    // >>> Replace "data-virtualization-on-cloud" with the parent project's artifactId (e.g. platform-services)
+    private static String parentArtifactId = "data-virtualization-on-cloud";
 
     static {
         readBuildProperties();
