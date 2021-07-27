@@ -26,31 +26,31 @@
             of the SDK generator used to generate your SDK code.
             See this link for details: https://github.ibm.com/CloudEngineering/openapi-sdkgen/wiki/Compatibility-Chart
         -->
-        <sdk-core-version>9.5.4</sdk-core-version>
+        <sdk-core-version>9.11.0</sdk-core-version>
 
         <!-- >>> Replace this with the name of your SDK's github repository -->
         <git-repository-name>data-virtualization-on-cloud-java-sdk</git-repository-name>
 
-        <testng-version>7.1.0</testng-version>
-        <okhttp3-version>4.9.0</okhttp3-version>
-        <surefire-version>3.0.0-M3</surefire-version>
-        <jacoco-plugin-version>0.8.5</jacoco-plugin-version>
+        <testng-version>7.4.0</testng-version>
+        <okhttp3-version>4.9.1</okhttp3-version>
+        <surefire-version>3.0.0-M5</surefire-version>
+        <jacoco-plugin-version>0.8.7</jacoco-plugin-version>
         <maven-deploy-plugin-version>3.0.0-M1</maven-deploy-plugin-version>
         <nexus-staging-plugin-version>1.6.8</nexus-staging-plugin-version>
         <maven-gpg-plugin-version>1.6</maven-gpg-plugin-version>
         <maven-source-plugin-version>3.1.0</maven-source-plugin-version>
         <maven-shade-plugin-version>3.2.2</maven-shade-plugin-version>
         <maven-jar-plugin-version>3.2.0</maven-jar-plugin-version>
-        <maven-javadoc-plugin-version>3.1.1</maven-javadoc-plugin-version>
+        <maven-javadoc-plugin-version>3.3.0</maven-javadoc-plugin-version>
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
-        <maven-site-plugin-version>3.7.1</maven-site-plugin-version>
-        <maven-checkstyle-plugin-version>3.1.0</maven-checkstyle-plugin-version>
-        <maven-reports-plugin-version>3.0.0</maven-reports-plugin-version>
-        <maven-failsafe-plugin-version>3.0.0-M4</maven-failsafe-plugin-version>
+        <maven-site-plugin-version>3.9.1</maven-site-plugin-version>
+        <maven-checkstyle-plugin-version>3.1.2</maven-checkstyle-plugin-version>
+        <maven-reports-plugin-version>3.1.2</maven-reports-plugin-version>
+        <maven-failsafe-plugin-version>3.0.0-M5</maven-failsafe-plugin-version>
         <maven-buildnumber-plugin-version>1.4</maven-buildnumber-plugin-version>
-        <powermock-version>2.0.5</powermock-version>
+        <powermock-version>2.0.9</powermock-version>
         <mockito-version>3.2.4</mockito-version>
-        <slf4j-version>1.7.28</slf4j-version>
+        <slf4j-version>1.7.32</slf4j-version>
     </properties>
 
     <modules>
@@ -59,6 +59,7 @@
 
         <!-- >>> List each service's module here -->
         <!-- i.e. <module>modules/example-service</module> -->
+        <module>modules/data-virtualization</module>
 
         <!-- This module should be listed after all the service-related modules above -->
         <module>modules/coverage-reports</module>

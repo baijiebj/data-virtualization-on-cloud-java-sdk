@@ -11,10 +11,10 @@
     </parent>
 
     <!-- >>> Replace this with the service module's artifactId (e.g. "example-service") -->
-    <artifactId>MODULE-ARTIFACTID</artifactId>
+    <artifactId>data-virtualization</artifactId>
 
     <!-- >>> Replace this with a text description of this module (e.g. "Example Service") -->
-    <name>MODULE-DESCRIPTION</name>
+    <name>Data Virtualization on Cloud</name>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -25,11 +25,13 @@
         <dependency>
             <!-- >>> Replace this with the "common" module's artifactId (e.g. my-services-common) -->
             <artifactId>data-virtualization-on-cloud-common</artifactId>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.ibm.cloud</groupId>
+            <version>99-SNAPSHOT</version>
         </dependency>
         <dependency>
             <artifactId>data-virtualization-on-cloud-common</artifactId>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.ibm.cloud</groupId>
+            <version>99-SNAPSHOT</version>
             <type>test-jar</type>
             <classifier>tests</classifier>
             <scope>test</scope>
@@ -58,9 +60,9 @@
 
     <developers>
         <developer>
-            <name>IBM Cloud DevX SDK Development</name>
+            <name>IBM Cloud Data Virtualization SDK Development</name>
             <email>devxsdk@us.ibm.com</email>
-            <url>https://www.ibm.com/</url>
+            <url>https://www.ibm.com/analytics/data-virtualization/</url>
         </developer>
     </developers>
 

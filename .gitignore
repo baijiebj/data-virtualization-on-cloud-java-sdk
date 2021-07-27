@@ -42,3 +42,5 @@ package-lock.json
 
 # Examples depedency file
 /**/dependency-reduced-pom.xml
+.DS_Store
+.metadata
