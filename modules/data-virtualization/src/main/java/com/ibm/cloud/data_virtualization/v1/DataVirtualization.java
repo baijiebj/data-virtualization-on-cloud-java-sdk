@@ -18,7 +18,7 @@
 package com.ibm.cloud.data_virtualization.v1;
 
 import com.google.gson.JsonObject;
-import com.ibm.cloud.common.SdkCommon;
+import com.ibm.cloud.data_virtualization_on_cloud.common.SdkCommon;
 import com.ibm.cloud.data_virtualization.v1.model.AddDatasourceConnectionOptions;
 import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponse;
 import com.ibm.cloud.data_virtualization.v1.model.CheckPolicyStatusV2Options;
