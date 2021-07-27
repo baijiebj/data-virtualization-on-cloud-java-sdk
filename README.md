@@ -70,7 +70,7 @@ Here are examples for maven and gradle:
 ```xml
 <dependency>
     <groupId>com.ibm.cloud</groupId>
-    <artifactId>data-virtualization</artifactId>
+    <artifactId>data-virtualization-on-cloud</artifactId>
     <version>0.0.1</version>
 </dependency>
 ```
