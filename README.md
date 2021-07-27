@@ -79,6 +79,8 @@ Here are examples for maven and gradle:
 ```gradle
 compile 'com.ibm.cloud.data-virtualization.0.0.1'
 ```
+## Prerequisites
+- Java SE version 11 or newer is required
 
 ## Using the SDK
 For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/main/README.md)
