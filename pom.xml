@@ -15,7 +15,7 @@
     <url>https://github.com/IBM/data-virtualization-on-cloud-java-sdk</url>
 
     <groupId>com.ibm.cloud</groupId>
-    <version>99-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -98,14 +98,6 @@
         <system>Travis-CI</system>
         <url>https://travis.ibm.com/IBM/data-virtualization-on-cloud-java-sdk/</url>
     </ciManagement>
-
-    <repositories>
-        <!-- these definitions are useful only for internal SDK projects -->
-        <repository>
-            <id>na-artifactory-ibmcloud-sdks</id>
-            <url>https://na.artifactory.swg-devops.com:443/artifactory/wcp-ibmcloud-sdks-team-maven-local/</url>
-        </repository>
-    </repositories>
 
     <!-- This section is commented out because we use an alternate deploy plugin.
     <distributionManagement>
@@ -400,7 +392,7 @@
               <artifactId>maven-surefire-plugin</artifactId>
               <version>${surefire-version}</version>
               <configuration>
-                <skipTests>${skip.unit.tests}</skipTests>
+                <skipTests>false</skipTests>
               </configuration>
             </plugin>
             <plugin>
@@ -426,8 +418,19 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>buildnumber-maven-plugin</artifactId>
-            </plugin>
+            </plugin>         
         </plugins>
+      <resources>
+        <resource>
+            <directory>modules/data-virtualization/src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+                <include>**/*.xls</include>
+            </includes>
+            <filtering>false</filtering>
+           </resource>
+      </resources>
     </build>
 
     <reporting>
