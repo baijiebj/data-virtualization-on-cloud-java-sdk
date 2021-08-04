@@ -3,7 +3,7 @@ language: java
 dist: xenial
 
 jdk:
-- openjdk11
+- openjdk8
 
 notifications:
   email: true
@@ -35,7 +35,7 @@ before_install:
 jobs:
   include:
     - stage: Build-Test
-      jdk: openjdk11
+      jdk: openjdk8
       install:
         - curl -s https://codecov.io/bash > $HOME/codecov-bash.sh && chmod +x $HOME/codecov-bash.sh
       script:
@@ -61,7 +61,7 @@ jobs:
         - echo "Semantic release has successfully created a new tagged-release"
 
     - stage: Publish-Release
-      jdk: openjdk11
+      jdk: openjdk8
       name: Publish-Javadoc
       install: true
       script:
@@ -71,7 +71,7 @@ jobs:
       after_success:
         - echo "Javadocs successfully published to gh-pages!"
 
-    - jdk: openjdk11
+    - jdk: openjdk8
       name: Publish-To-Maven-Central
       install: true
       script:
