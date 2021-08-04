@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <suppress checks="UnusedImports"
+              files="DataVirtualization.java" />
+    <suppress checks="OperatorWrap"
+              files="modules/examples/src/main/java/com/ibm/cloud/data_virtualization_on_cloud/examples/.*" />
+    <suppress checks="HideUtilityClassConstructor"
+              files="modules/examples/src/main/java/com/ibm/cloud/data_virtualization_on_cloud/examples/.*" />
+</suppressions>
