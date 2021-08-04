@@ -1,69 +1,114 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <!-- >>> Replace this with the parent pom's artifactId -->
-        <artifactId>data-virtualization-on-cloud</artifactId>
-        <groupId>com.ibm.cloud</groupId>
-        <version>0.0.1</version>
-        <relativePath>../..</relativePath>
-    </parent>
+	<parent>
+		<!-- >>> Replace this with the parent pom's artifactId -->
+		<artifactId>data-virtualization-on-cloud</artifactId>
+		<groupId>com.ibm.cloud</groupId>
+		<version>0.0.1</version>
+		<relativePath>../..</relativePath>
+	</parent>
 
-    <!-- >>> Replace this with the service module's artifactId (e.g. "example-service") -->
-    <artifactId>data-virtualization</artifactId>
+	<!-- >>> Replace this with the service module's artifactId (e.g. "example-service") -->
+	<artifactId>data-virtualization</artifactId>
 
-    <!-- >>> Replace this with a text description of this module (e.g. "Example Service") -->
-    <name>Data Virtualization on Cloud</name>
-    <packaging>jar</packaging>
+	<!-- >>> Replace this with a text description of this module (e.g. "Example 
+		Service") -->
+	<name>Data Virtualization on Cloud</name>
+	<packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.ibm.cloud</groupId>
-            <artifactId>sdk-core</artifactId>
-        </dependency>
-        <dependency>
-            <!-- >>> Replace this with the "common" module's artifactId (e.g. my-services-common) -->
-            <artifactId>data-virtualization-on-cloud-common</artifactId>
-            <groupId>com.ibm.cloud</groupId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <artifactId>data-virtualization-on-cloud-common</artifactId>
-            <groupId>com.ibm.cloud</groupId>
-            <version>0.0.1</version>
-            <type>test-jar</type>
-            <classifier>tests</classifier>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>mockwebserver</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <developers>
-        <developer>
-            <name>IBM Cloud Data Virtualization SDK Development</name>
-            <email>devxsdk@us.ibm.com</email>
-            <url>https://www.ibm.com/analytics/data-virtualization/</url>
-        </developer>
-    </developers>
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.cloud</groupId>
+			<artifactId>sdk-core</artifactId>
+		</dependency>
+		<dependency>
+			<!-- >>> Replace this with the "common" module's artifactId (e.g. my-services-common) -->
+			<artifactId>data-virtualization-on-cloud-common</artifactId>
+			<groupId>com.ibm.cloud</groupId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<artifactId>data-virtualization-on-cloud-common</artifactId>
+			<groupId>com.ibm.cloud</groupId>
+			<version>0.0.1</version>
+			<type>test-jar</type>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>mockwebserver</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>3.0.0-M1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>net.ju-n.maven.plugins</groupId>
+				<artifactId>checksum-maven-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>checksum-maven-plugin-files</id>
+						<phase>package</phase>
+						<goals>
+							<goal>files</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<fileSets>
+						<fileSet>
+							<directory>${project.build.directory}</directory>
+							<includes>
+								<include>*.jar</include>
+							</includes>
+						</fileSet>
+					</fileSets>
+					<algorithms>
+						<algorithm>SHA-1</algorithm>
+						<algorithm>MD5</algorithm>
+					</algorithms>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<developers>
+		<developer>
+			<name>IBM Cloud Data Virtualization SDK Development</name>
+			<email>devxsdk@us.ibm.com</email>
+			<url>https://www.ibm.com/analytics/data-virtualization/</url>
+		</developer>
+	</developers>
 
 </project>
