@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.5...0.0.6) (2021-08-05)
+
+
+### Bug Fixes
+
+* **setupSigning.sh:** update command in setupSigning.sh file ([4b86d74](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/commit/4b86d7414c4024fe461e8a1fdbd11aa81c2c25b4))
+
 ## [0.0.5](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.4...0.0.5) (2021-08-05)
 
 
