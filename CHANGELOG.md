@@ -1,3 +1,10 @@
+## [0.0.3](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.2...0.0.3) (2021-08-05)
+
+
+### Bug Fixes
+
+* **signing.key:** add signing.key file ([30fec17](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/commit/30fec1784a0040f22e69a3fa61333b65af8247d3))
+
 ## [0.0.2](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.1...0.0.2) (2021-08-05)
 
 
