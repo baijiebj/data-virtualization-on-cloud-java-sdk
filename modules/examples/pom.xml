@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.ibm.cloud</groupId>
 		<artifactId>data-virtualization-on-cloud</artifactId>
-		<version>0.0.1</version>
+		<version>99-SNAPSHOT</version>
 		<relativePath>../..</relativePath>
 	</parent>
 
