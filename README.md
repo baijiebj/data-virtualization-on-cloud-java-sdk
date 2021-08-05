@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/IBM/data-virtualization-on-cloud-java-sdk.svg?branch=main)](https://travis-ci.com/IBM/data-virtualization-on-cloud-java-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Data Virtualization on Cloud Java SDK Version 0.0.5
+# IBM Data Virtualization on Cloud Java SDK Version 0.0.6
 Java client library to interact with the [IBM Data Virtualization on Cloud APIs](https://cloud.ibm.com/apidocs/data-virtualization-on-cloud).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -52,7 +52,7 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.0.5
+The current version of this SDK is: 0.0.6
 
 Each service's artifact coordinates are listed in the table above.
 
@@ -71,13 +71,13 @@ Here are examples for maven and gradle:
 <dependency>
     <groupId>com.ibm.cloud</groupId>
     <artifactId>data-virtualization-on-cloud</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-compile 'com.ibm.cloud.data-virtualization.0.0.5'
+compile 'com.ibm.cloud.data-virtualization.0.0.6'
 ```
 ## Prerequisites
 - Java SE version 11 or newer is required
