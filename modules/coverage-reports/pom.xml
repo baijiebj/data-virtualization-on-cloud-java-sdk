@@ -6,7 +6,7 @@
 		<!-- >>> Update this to reflect your parent project's artifact id -->
 		<artifactId>data-virtualization-on-cloud</artifactId>
 		<groupId>com.ibm.cloud</groupId>
-		<version>0.0.1</version>
+		<version>99-SNAPSHOT</version>
 		<relativePath>../..</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
