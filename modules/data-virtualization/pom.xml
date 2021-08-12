@@ -28,12 +28,10 @@
 			<!-- >>> Replace this with the "common" module's artifactId (e.g. my-services-common) -->
 			<artifactId>data-virtualization-on-cloud-common</artifactId>
 			<groupId>com.ibm.cloud</groupId>
-			<version>99-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<artifactId>data-virtualization-on-cloud-common</artifactId>
 			<groupId>com.ibm.cloud</groupId>
-			<version>99-SNAPSHOT</version>
 			<type>test-jar</type>
 			<classifier>tests</classifier>
 			<scope>test</scope>
