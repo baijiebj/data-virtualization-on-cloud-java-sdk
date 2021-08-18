@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.6...0.0.7) (2021-08-18)
+
+
+### Bug Fixes
+
+* allow unit tests to run ([7e00622](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/commit/7e006224eca0572e62bbcacf1e4aee8563be4985))
+
 ## [0.0.6](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.5...0.0.6) (2021-08-05)
 
 
