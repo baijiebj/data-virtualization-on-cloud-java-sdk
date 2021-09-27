@@ -1,3 +1,10 @@
+## [0.0.8](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.7...0.0.8) (2021-09-27)
+
+
+### Bug Fixes
+
+* update node version from 12 to 14.17 in .travis.yml file ([#23](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/issues/23)) ([5be3808](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/commit/5be3808fa2a35aaa2447d35124d71aac4d93fdf2))
+
 ## [0.0.7](https://github.com/IBM/data-virtualization-on-cloud-java-sdk/compare/0.0.6...0.0.7) (2021-08-18)
 
 
