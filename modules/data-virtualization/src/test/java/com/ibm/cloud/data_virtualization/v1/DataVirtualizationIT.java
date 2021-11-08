@@ -70,7 +70,7 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
-import com.ibm.cloud.test.SdkIntegrationTestBase;
+import com.ibm.cloud.data_virtualization_on_cloud.test.SdkIntegrationTestBase;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
