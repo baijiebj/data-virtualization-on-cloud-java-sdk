@@ -12,14 +12,16 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.34.1-ad041667-20210617-195430
+ * IBM OpenAPI SDK Code Generator Version: 3.41.1-790c0dfc-20211021-231519
  */
 
 package com.ibm.cloud.data_virtualization.v1;
 
 import com.google.gson.JsonObject;
-import com.ibm.cloud.data_virtualization_on_cloud.common.SdkCommon;
+import com.ibm.cloud.common.SdkCommon;
 import com.ibm.cloud.data_virtualization.v1.model.AddDatasourceConnectionOptions;
+import com.ibm.cloud.data_virtualization.v1.model.CacheListResponse;
+import com.ibm.cloud.data_virtualization.v1.model.CacheResponse;
 import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponse;
 import com.ibm.cloud.data_virtualization.v1.model.CheckPolicyStatusV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.CheckPolicyStatusV2Response;
@@ -29,20 +31,28 @@ import com.ibm.cloud.data_virtualization.v1.model.DeletePrimaryCatalogOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DvaasRevokeRoleFromTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DvaasVirtualizeTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCacheOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCacheStorageDetailOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCachesListOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetObjectStoreConnectionsV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.GetPrimaryCatalogOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ListDatasourceConnectionsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ListTablesForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.ObjStoreConnectionResponseV2;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnection;
 import com.ibm.cloud.data_virtualization.v1.model.PostPrimaryCatalog;
 import com.ibm.cloud.data_virtualization.v1.model.PostPrimaryCatalogOptions;
 import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfo;
 import com.ibm.cloud.data_virtualization.v1.model.PublishAssetsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.StorageDetails;
+import com.ibm.cloud.data_virtualization.v1.model.SuccessResponse;
 import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
 import com.ibm.cloud.data_virtualization.v1.model.TurnOnPolicyV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.TurnOnPolicyV2Response;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeCosV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
 import com.ibm.cloud.sdk.core.http.RequestBuilder;
 import com.ibm.cloud.sdk.core.http.ResponseConverter;
@@ -59,7 +69,7 @@ import java.util.Map.Entry;
  * The Data Virtualization REST API connects to your service, so you can manage your virtual data, data sources, and
  * user roles.
  *
- * @version v1
+ * API Version: 1.6.0
  */
 public class DataVirtualization extends BaseService {
 
@@ -189,6 +199,39 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
+   * Gets object store connection details.
+   *
+   * @param getObjectStoreConnectionsV2Options the {@link GetObjectStoreConnectionsV2Options} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ObjStoreConnectionResponseV2}
+   */
+  public ServiceCall<ObjStoreConnectionResponseV2> getObjectStoreConnectionsV2(GetObjectStoreConnectionsV2Options getObjectStoreConnectionsV2Options) {
+    if (getObjectStoreConnectionsV2Options == null) {
+      getObjectStoreConnectionsV2Options = new GetObjectStoreConnectionsV2Options.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/datasource/objectstore_connections"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getObjectStoreConnectionsV2");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getObjectStoreConnectionsV2Options.jwtAuthUserPayload() != null) {
+      builder.header("jwt-auth-user-payload", getObjectStoreConnectionsV2Options.jwtAuthUserPayload());
+    }
+    ResponseConverter<ObjStoreConnectionResponseV2> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ObjStoreConnectionResponseV2>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Gets object store connection details.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link ObjStoreConnectionResponseV2}
+   */
+  public ServiceCall<ObjStoreConnectionResponseV2> getObjectStoreConnectionsV2() {
+    return getObjectStoreConnectionsV2(null);
+  }
+
+  /**
    * Grant user access.
    *
    * Grants a user access to a specific virtualized table.
@@ -312,9 +355,9 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
-   * Turn on or off WKC policy enforcement status.
+   * Turn policy enforcement status on or off.
    *
-   * Turn on WKC policy enforcement status.
+   * Turns policy enforcement status on or off.
    *
    * @param turnOnPolicyV2Options the {@link TurnOnPolicyV2Options} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link TurnOnPolicyV2Response}
@@ -335,9 +378,9 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
-   * Get WKC policy enforcement status.
+   * Get policy enforcement status.
    *
-   * Get WKC policy enforcement status, return enabled or disabled.
+   * Get policy enforcement status, return enabled or disabled.
    *
    * @param checkPolicyStatusV2Options the {@link CheckPolicyStatusV2Options} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CheckPolicyStatusV2Response}
@@ -355,9 +398,9 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
-   * Get WKC policy enforcement status.
+   * Get policy enforcement status.
    *
-   * Get WKC policy enforcement status, return enabled or disabled.
+   * Get policy enforcement status, return enabled or disabled.
    *
    * @return a {@link ServiceCall} with a result of type {@link CheckPolicyStatusV2Response}
    */
@@ -425,9 +468,46 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
+   * Create a remote table for the ORC or Parquet file on a cloud object store (COS).
+   *
+   * Create a remote table for the ORC or Parquet file on a cloud object store (COS).
+   *
+   * @param virtualizeCosV2Options the {@link VirtualizeCosV2Options} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> virtualizeCosV2(VirtualizeCosV2Options virtualizeCosV2Options) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(virtualizeCosV2Options,
+      "virtualizeCosV2Options cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v2/virtualization/cloud_object_storages"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "virtualizeCosV2");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (virtualizeCosV2Options.jwtAuthUserPayload() != null) {
+      builder.header("jwt-auth-user-payload", virtualizeCosV2Options.jwtAuthUserPayload());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("url", virtualizeCosV2Options.url());
+    contentJson.addProperty("virtual_name", virtualizeCosV2Options.virtualName());
+    contentJson.addProperty("virtual_schema", virtualizeCosV2Options.virtualSchema());
+    contentJson.add("virtual_table_def", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(virtualizeCosV2Options.virtualTableDef()));
+    if (virtualizeCosV2Options.isReplace() != null) {
+      contentJson.addProperty("is_replace", virtualizeCosV2Options.isReplace());
+    }
+    if (virtualizeCosV2Options.options() != null) {
+      contentJson.addProperty("options", virtualizeCosV2Options.options());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * Get primary catalog ID.
    *
-   * Get primary catalog ID from the table DVSYS.INSTANCE_INFO.
+   * Gets the primary catalog ID from the DVSYS.INSTANCE_INFO table.
    *
    * @param getPrimaryCatalogOptions the {@link GetPrimaryCatalogOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link PrimaryCatalogInfo}
@@ -447,7 +527,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Get primary catalog ID.
    *
-   * Get primary catalog ID from the table DVSYS.INSTANCE_INFO.
+   * Gets the primary catalog ID from the DVSYS.INSTANCE_INFO table.
    *
    * @return a {@link ServiceCall} with a result of type {@link PrimaryCatalogInfo}
    */
@@ -458,7 +538,7 @@ public class DataVirtualization extends BaseService {
   /**
    * Add primary catalog.
    *
-   * Insert primary catalog ID into table DVSYS.INSTANCE_INFO.
+   * Inserts primary catalog ID into table DVSYS.INSTANCE_INFO.
    *
    * @param postPrimaryCatalogOptions the {@link PostPrimaryCatalogOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link PostPrimaryCatalog}
@@ -502,9 +582,9 @@ public class DataVirtualization extends BaseService {
   }
 
   /**
-   * publish virtual table to WKC.
+   * Publish virtual tables to a catalog.
    *
-   * publish virtual tables to WKC.
+   * Publishes virtual tables to a catalog.
    *
    * @param publishAssetsOptions the {@link PublishAssetsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CatalogPublishResponse}
@@ -526,6 +606,92 @@ public class DataVirtualization extends BaseService {
     ResponseConverter<CatalogPublishResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CatalogPublishResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List caches.
+   *
+   * List all active, inactive and deleted caches in Data Virtualization.
+   *
+   * @param getCachesListOptions the {@link GetCachesListOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link CacheListResponse}
+   */
+  public ServiceCall<CacheListResponse> getCachesList(GetCachesListOptions getCachesListOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v1/caching/caches"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getCachesList");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    ResponseConverter<CacheListResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CacheListResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List caches.
+   *
+   * List all active, inactive and deleted caches in Data Virtualization.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link CacheListResponse}
+   */
+  public ServiceCall<CacheListResponse> getCachesList() {
+    return getCachesList(null);
+  }
+
+  /**
+   * List a cache.
+   *
+   * List a specific cache in Data Virtualization.
+   *
+   * @param getCacheOptions the {@link GetCacheOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link CacheResponse}
+   */
+  public ServiceCall<CacheResponse> getCache(GetCacheOptions getCacheOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getCacheOptions,
+      "getCacheOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getCacheOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v1/caching/caches/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getCache");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    ResponseConverter<CacheResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CacheResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Fetch the cache storage.
+   *
+   * Fetch the total cache storage and used capacities for active and inactive caches in Data Virtualization.
+   *
+   * @param getCacheStorageDetailOptions the {@link GetCacheStorageDetailOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link StorageDetails}
+   */
+  public ServiceCall<StorageDetails> getCacheStorageDetail(GetCacheStorageDetailOptions getCacheStorageDetailOptions) {
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/v1/caching/storage"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("data_virtualization", "v1", "getCacheStorageDetail");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    ResponseConverter<StorageDetails> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<StorageDetails>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Fetch the cache storage.
+   *
+   * Fetch the total cache storage and used capacities for active and inactive caches in Data Virtualization.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link StorageDetails}
+   */
+  public ServiceCall<StorageDetails> getCacheStorageDetail() {
+    return getCacheStorageDetail(null);
   }
 
 }
