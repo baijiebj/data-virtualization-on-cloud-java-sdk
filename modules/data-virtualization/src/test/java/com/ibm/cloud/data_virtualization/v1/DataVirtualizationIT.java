@@ -14,6 +14,9 @@
 package com.ibm.cloud.data_virtualization.v1;
 
 import com.ibm.cloud.data_virtualization.v1.model.AddDatasourceConnectionOptions;
+import com.ibm.cloud.data_virtualization.v1.model.CacheListResponse;
+import com.ibm.cloud.data_virtualization.v1.model.CacheListResponseCachesItem;
+import com.ibm.cloud.data_virtualization.v1.model.CacheResponse;
 import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponse;
 import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponseDuplicateAssetsItem;
 import com.ibm.cloud.data_virtualization.v1.model.CatalogPublishResponseFailedAssetsItem;
@@ -28,11 +31,17 @@ import com.ibm.cloud.data_virtualization.v1.model.DeletePrimaryCatalogOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DeleteTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DvaasRevokeRoleFromTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.DvaasVirtualizeTableOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCacheOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCacheStorageDetailOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetCachesListOptions;
+import com.ibm.cloud.data_virtualization.v1.model.GetObjectStoreConnectionsV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.GetPrimaryCatalogOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantRolesToVirtualizedTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.GrantUserToVirtualTableOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ListDatasourceConnectionsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.ListTablesForRoleOptions;
+import com.ibm.cloud.data_virtualization.v1.model.ObjStoreConnectionResponseV2;
+import com.ibm.cloud.data_virtualization.v1.model.ObjStoreConnectionResponseV2CosConnectionsItem;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnection;
 import com.ibm.cloud.data_virtualization.v1.model.PostDatasourceConnectionParametersProperties;
 import com.ibm.cloud.data_virtualization.v1.model.PostPrimaryCatalog;
@@ -43,10 +52,16 @@ import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfoEntity;
 import com.ibm.cloud.data_virtualization.v1.model.PrimaryCatalogInfoMetadata;
 import com.ibm.cloud.data_virtualization.v1.model.PublishAssetsOptions;
 import com.ibm.cloud.data_virtualization.v1.model.RevokeUserFromObjectOptions;
+import com.ibm.cloud.data_virtualization.v1.model.StorageDetails;
+import com.ibm.cloud.data_virtualization.v1.model.StorageDetailsDisabled;
+import com.ibm.cloud.data_virtualization.v1.model.StorageDetailsEnabled;
+import com.ibm.cloud.data_virtualization.v1.model.SuccessResponse;
 import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponse;
 import com.ibm.cloud.data_virtualization.v1.model.TablesForRoleResponseObjectsItem;
 import com.ibm.cloud.data_virtualization.v1.model.TurnOnPolicyV2Options;
 import com.ibm.cloud.data_virtualization.v1.model.TurnOnPolicyV2Response;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeCosV2Options;
+import com.ibm.cloud.data_virtualization.v1.model.VirtualizeCosV2RequestVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterSourceTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableParameterVirtualTableDefItem;
 import com.ibm.cloud.data_virtualization.v1.model.VirtualizeTableResponse;
@@ -100,6 +115,8 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
     assertFalse(config.isEmpty());
     assertEquals(service.getServiceUrl(), config.get("URL"));
 
+    service.enableRetries(4, 30);
+
     System.out.println("Setup complete.");
   }
 
@@ -117,6 +134,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       DatasourceConnectionsList datasourceConnectionsListResult = response.getResult();
 
       assertNotNull(datasourceConnectionsListResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -176,6 +204,51 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       PostDatasourceConnection postDatasourceConnectionResult = response.getResult();
 
       assertNotNull(postDatasourceConnectionResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 409
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetObjectStoreConnectionsV2() throws Exception {
+    try {
+      GetObjectStoreConnectionsV2Options getObjectStoreConnectionsV2Options = new GetObjectStoreConnectionsV2Options.Builder()
+      .jwtAuthUserPayload("testString")
+      .build();
+
+      // Invoke operation
+      Response<ObjStoreConnectionResponseV2> response = service.getObjectStoreConnectionsV2(getObjectStoreConnectionsV2Options).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      ObjStoreConnectionResponseV2 objStoreConnectionResponseV2Result = response.getResult();
+
+      assertNotNull(objStoreConnectionResponseV2Result);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -196,6 +269,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -216,6 +300,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -238,6 +333,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       TablesForRoleResponse tablesForRoleResponseResult = response.getResult();
 
       assertNotNull(tablesForRoleResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -260,6 +366,16 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       TurnOnPolicyV2Response turnOnPolicyV2ResponseResult = response.getResult();
 
       assertNotNull(turnOnPolicyV2ResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -280,6 +396,16 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       CheckPolicyStatusV2Response checkPolicyStatusV2ResponseResult = response.getResult();
 
       assertNotNull(checkPolicyStatusV2ResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -302,7 +428,7 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       DvaasVirtualizeTableOptions dvaasVirtualizeTableOptions = new DvaasVirtualizeTableOptions.Builder()
       .sourceName("Tab1")
       .sourceTableDef(new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)))
-      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")))
+      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("DB210001:\"Hjq1\"")))
       .virtualName("Tab1")
       .virtualSchema("dv_ibmid_060000s4y5")
       .virtualTableDef(new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)))
@@ -319,6 +445,61 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       VirtualizeTableResponse virtualizeTableResponseResult = response.getResult();
 
       assertNotNull(virtualizeTableResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testVirtualizeCosV2() throws Exception {
+    try {
+      VirtualizeCosV2RequestVirtualTableDefItem virtualizeCosV2RequestVirtualTableDefItemModel = new VirtualizeCosV2RequestVirtualTableDefItem.Builder()
+      .columnName("Column_1")
+      .columnType("INTEGER")
+      .build();
+
+      VirtualizeCosV2Options virtualizeCosV2Options = new VirtualizeCosV2Options.Builder()
+      .url("s3a://testBucket/home/data.csv")
+      .virtualName("testString")
+      .virtualSchema("testString")
+      .virtualTableDef(new java.util.ArrayList<VirtualizeCosV2RequestVirtualTableDefItem>(java.util.Arrays.asList(virtualizeCosV2RequestVirtualTableDefItemModel)))
+      .isReplace(false)
+      .options("INCPARTS=true")
+      .jwtAuthUserPayload("testString")
+      .build();
+
+      // Invoke operation
+      Response<SuccessResponse> response = service.virtualizeCosV2(virtualizeCosV2Options).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      SuccessResponse successResponseResult = response.getResult();
+
+      assertNotNull(successResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -339,6 +520,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       PrimaryCatalogInfo primaryCatalogInfoResult = response.getResult();
 
       assertNotNull(primaryCatalogInfoResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -361,6 +553,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       PostPrimaryCatalog postPrimaryCatalogResult = response.getResult();
 
       assertNotNull(postPrimaryCatalogResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -390,6 +593,112 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       CatalogPublishResponse catalogPublishResponseResult = response.getResult();
 
       assertNotNull(catalogPublishResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetCachesList() throws Exception {
+    try {
+      GetCachesListOptions getCachesListOptions = new GetCachesListOptions();
+
+      // Invoke operation
+      Response<CacheListResponse> response = service.getCachesList(getCachesListOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      CacheListResponse cacheListResponseResult = response.getResult();
+
+      assertNotNull(cacheListResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetCache() throws Exception {
+    try {
+      GetCacheOptions getCacheOptions = new GetCacheOptions.Builder()
+      .id("DV20210810191252390327")
+      .build();
+
+      // Invoke operation
+      Response<CacheResponse> response = service.getCache(getCacheOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      CacheResponse cacheResponseResult = response.getResult();
+
+      assertNotNull(cacheResponseResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test
+  public void testGetCacheStorageDetail() throws Exception {
+    try {
+      GetCacheStorageDetailOptions getCacheStorageDetailOptions = new GetCacheStorageDetailOptions();
+
+      // Invoke operation
+      Response<StorageDetails> response = service.getCacheStorageDetail(getCacheStorageDetailOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      StorageDetails storageDetailsResult = response.getResult();
+
+      assertNotNull(storageDetailsResult);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -410,6 +719,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -430,6 +750,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -449,6 +780,16 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -467,6 +808,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
@@ -486,6 +838,17 @@ public class DataVirtualizationIT extends SdkIntegrationTestBase {
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 204);
+
+      //
+      // The following status codes aren't covered by tests.
+      // Please provide integration tests for these too.
+      //
+      // 400
+      // 401
+      // 500
+      //
+      //
+
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));

@@ -52,7 +52,7 @@ public class DvaasVirtualizeTableOptionsTest {
     DvaasVirtualizeTableOptions dvaasVirtualizeTableOptionsModel = new DvaasVirtualizeTableOptions.Builder()
       .sourceName("Tab1")
       .sourceTableDef(new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)))
-      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")))
+      .sources(new java.util.ArrayList<String>(java.util.Arrays.asList("DB210001:\"Hjq1\"")))
       .virtualName("Tab1")
       .virtualSchema("dv_ibmid_060000s4y5")
       .virtualTableDef(new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)))
@@ -61,7 +61,7 @@ public class DvaasVirtualizeTableOptionsTest {
       .build();
     assertEquals(dvaasVirtualizeTableOptionsModel.sourceName(), "Tab1");
     assertEquals(dvaasVirtualizeTableOptionsModel.sourceTableDef(), new java.util.ArrayList<VirtualizeTableParameterSourceTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterSourceTableDefItemModel)));
-    assertEquals(dvaasVirtualizeTableOptionsModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("\"DB210001:\"Hjq1\"\"")));
+    assertEquals(dvaasVirtualizeTableOptionsModel.sources(), new java.util.ArrayList<String>(java.util.Arrays.asList("DB210001:\"Hjq1\"")));
     assertEquals(dvaasVirtualizeTableOptionsModel.virtualName(), "Tab1");
     assertEquals(dvaasVirtualizeTableOptionsModel.virtualSchema(), "dv_ibmid_060000s4y5");
     assertEquals(dvaasVirtualizeTableOptionsModel.virtualTableDef(), new java.util.ArrayList<VirtualizeTableParameterVirtualTableDefItem>(java.util.Arrays.asList(virtualizeTableParameterVirtualTableDefItemModel)));

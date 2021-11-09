@@ -15,20 +15,20 @@ package com.ibm.cloud.data_virtualization.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The turnOnPolicyV2 options.
+ * The getCache options.
  */
-public class TurnOnPolicyV2Options extends GenericModel {
+public class GetCacheOptions extends GenericModel {
 
-  protected String status;
+  protected String id;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private String status;
+    private String id;
 
-    private Builder(TurnOnPolicyV2Options turnOnPolicyV2Options) {
-      this.status = turnOnPolicyV2Options.status;
+    private Builder(GetCacheOptions getCacheOptions) {
+      this.id = getCacheOptions.id;
     }
 
     /**
@@ -40,57 +40,57 @@ public class TurnOnPolicyV2Options extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
-     * @param status the status
+     * @param id the id
      */
-    public Builder(String status) {
-      this.status = status;
+    public Builder(String id) {
+      this.id = id;
     }
 
     /**
-     * Builds a TurnOnPolicyV2Options.
+     * Builds a GetCacheOptions.
      *
-     * @return the new TurnOnPolicyV2Options instance
+     * @return the new GetCacheOptions instance
      */
-    public TurnOnPolicyV2Options build() {
-      return new TurnOnPolicyV2Options(this);
+    public GetCacheOptions build() {
+      return new GetCacheOptions(this);
     }
 
     /**
-     * Set the status.
+     * Set the id.
      *
-     * @param status the status
-     * @return the TurnOnPolicyV2Options builder
+     * @param id the id
+     * @return the GetCacheOptions builder
      */
-    public Builder status(String status) {
-      this.status = status;
+    public Builder id(String id) {
+      this.id = id;
       return this;
     }
   }
 
-  protected TurnOnPolicyV2Options(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.status,
-      "status cannot be null");
-    status = builder.status;
+  protected GetCacheOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.id,
+      "id cannot be empty");
+    id = builder.id;
   }
 
   /**
    * New builder.
    *
-   * @return a TurnOnPolicyV2Options builder
+   * @return a GetCacheOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
   }
 
   /**
-   * Gets the status.
+   * Gets the id.
    *
-   * Set the status of policy enforcement.
+   * The ID of the cache to be listed.
    *
-   * @return the status
+   * @return the id
    */
-  public String status() {
-    return status;
+  public String id() {
+    return id;
   }
 }
 
